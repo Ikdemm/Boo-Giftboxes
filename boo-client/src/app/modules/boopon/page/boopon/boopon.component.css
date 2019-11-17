@@ -1,0 +1,75 @@
+::placeholder {
+    color: dimgray !important;
+    font-weight:bold !important;
+    text-align: center !important;
+    opacity: 0.6; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: dimgray !important;
+    font-weight:bold !important;
+    text-align: center !important;
+    opacity: 0.6;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: dimgray !important;
+    font-weight:bold !important;
+    text-align: center !important;
+    opacity: 0.6;
+}
+
+.content {
+    /*background-image: url("../img/ILLUSTRATIONS/boopon/background.PNG");*/
+    width:100%;
+    background-color: white;
+    margin-top: 14%;
+    /*background-repeat: no-repeat;
+    background-size: 100%;*/
+}
+
+.background-img {
+    max-width: 80%;
+    margin-left: 10%;
+}
+
+h6 {
+    color: #7dced8;
+    font-size: 1.1em;
+    letter-spacing: 0.2em;
+    font-weight: bold;
+    margin-top: 15%;
+    padding-left: 20%;
+}
+
+i {
+    color: #7dced8;
+    font-size: 1.1em;
+}
+
+#input-code {
+    background-color: white !important;
+    color: dimgray !important;
+    border: 5px solid #29246b !important;
+    text-align: right;
+    font-size: 1.4em !important;
+    padding: 1em !important;
+    font-weight: bold !important;
+    letter-spacing: 0.1em !important;
+    border-radius: 7px !important;
+    /*margin-bottom: 0.5em;*/
+}
+
+.go-button {
+    width: 4.5em;
+}
+
+p {
+    font-size: 0.7em;
+    color: #29246b;
+    text-transform: uppercase;
+    text-align: left;
+    line-height: 1.1em;
+    margin-top: 7em;
+    margin-left: 1.5em;
+}

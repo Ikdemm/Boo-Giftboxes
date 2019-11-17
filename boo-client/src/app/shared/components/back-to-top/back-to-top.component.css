@@ -1,0 +1,10 @@
+.back-to-top {
+    position: absolute;
+    position: fixed;
+    bottom: 5%;
+    right: 2%;
+}
+  
+.back-to-top-btn {
+    max-width: 4em;
+}

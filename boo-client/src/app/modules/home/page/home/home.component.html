@@ -1,0 +1,284 @@
+<app-navbar></app-navbar>
+            
+<div class="w3-display-container wow fadeIn delay-05s">
+    <div id="banner-slide1">
+        <div class="container">
+            <div class="row">
+                <h3 id="banner1-title">Le meilleur des cadeaux!</h3>
+                <div class="col-md-12 wow fadeIn delay-05s">
+                    <div class="banner-text col-md-6">
+                        <img src="assets/images/home/hello.svg" width="20%">
+                        <p>Je suis BOO le génie des cadeaux. Je propose des<br>
+                            <a id="myBtn" (click)="openBooboxModal()">BOO'BOX</a> qui offrent à leurs bénéficiaires la possibilité<br>
+                            de choisir LE cadeau coup de coeur parmi plusieurs.<br>
+                            C'est parti!</p>
+                        <a [routerLink]="['/boopon']">
+                            <button type="button" class="btn" id="boobox-button">
+                                Voir BOO'Box
+                            </button>
+                        </a>
+                        <a [routerLink]="['/guide']">
+                            <button type="button" class="btn" id="guide-button">
+                                Voir Guide
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img src="assets/images/home/banner1.svg" class="banner-illustration">
+                    </div>
+                </div>
+                <button class="w3-button next" onclick="next()">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <!--<div id="banner-slide2">
+        <div class="container">
+            <button class="w3-button prev" onclick="prev()">&#10094;</button>
+            <div class="row">
+                <img src="img/ILLUSTRATIONS/Banner/background2.png" class="background-image">
+                
+                <div class="col-md-12 wow fadeIn delay-05s">
+                    <div class="col-md-5 text-center">
+                        <img src="img/ILLUSTRATIONS/banner/box.svg" class="banner2-illustration">
+                    </div>
+                    <div class="banner-text col-md-7 text-center">
+                        <h2 id="banner2-title">TOUCHE</h2>
+                        <h3 class="banner2-subtitle">à Nous de faire plaisir,<h3>
+                        <h3 class="banner2-subtitle">à Eux de choisir<h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+        
+    <div class="overlay-detail text-center">
+        <!--<a href="#about"><i class="fa fa-angle-double-down"></i></a>-->
+        <a href="#about">
+            <img src="assets/images/home/double-arrow.svg">
+        </a>
+    </div>
+
+</div> 
+
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content text-center">
+        <span class="close">&times;</span>
+        <img src="assets/images/home/contenu-boobox.PNG" width="70%" height="auto">
+    </div>
+    
+</div>
+    
+<!-- About -->
+
+<section id="about" class="section-padding wow fadeIn delay-05s">
+    <div class="container">
+        <h5 class="text-center title-about">Pourquoi offrir une BOO’BOX? </h5>
+        <div class="row">
+            
+            <div class="col-md-4 about-element text-center">
+                <img src="assets/images/home/avantage2.png" class="about-illustration">
+                <h6 class="about-element-title">Un cadeau qui plaira à coup sûr</h6>
+                <p class="about-element-description">Une BOO'BOX offre à son bénéficiaire plusieurs choix de cadeaux et il choisira par lui-même son coup de cœur.
+                </p>
+            </div>
+            
+            <div class="col-md-4 about-element text-center">
+                <img src="assets/images/home/avantage1.png" class="about-illustration">
+                <h6 class="about-element-title">Un cadeau original</h6>
+                <p class="about-element-description">
+                    Mis à part le plaisir que procure un cadeau, une BOO'BOX
+                    fera découvrir à son bénéficiaire les tendances, les bons plans, les endroits les plus trendy ...
+                </p>
+            </div>
+            
+            <div class="col-md-4 about-element text-center">
+                <img src="assets/images/home/avantage3.png" class="about-illustration">
+                <h6 class="about-element-title">Un cadeau en deux clics</h6>
+                <p class="about-element-description">Le manque de temps ne sera plus jamais une excuse pour ne pas faire plaisir aux personnes qu’on aime. En deux clics, fais-toi livrer le meilleur des cadeaux.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BooBox -->
+
+<section id="boobox" class="section-padding wow fadeIn delay-05s">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="boobox-title text-center">BOO'BOX</h1>
+            <div class="col-md-3 boobox-element" *ngFor="let box of printedBoxes"
+            [class.selected]="box.id === selectedId">
+                <img class="boobox-image" [src]="box.imageUrl">
+                <div class="boobox-description">
+                    <h3 class="boobox-name">{{box.name}}</h3>
+                    <p class="boobox-price">{{box.priceClient}} dt</p>
+                    <a [routerLink]="['/boobox-details', box.id]">
+                        <button class="btn details-button">Plus de détails</button>
+                    </a>
+                </div>
+            </div>
+            <a [routerLink]="['/boobox-list']">Voir tout les boobox</a>
+        </div>
+    </div>
+    </div>
+</section>
+
+<!-- Guide -->
+
+<section id="guide" class="section-padding wow fadeIn delay-05s">
+    <div class="container text-center">
+        <h3 class="guide-title text-center">Comment ça marche?</h3>
+        <div class="row col-md-12 etapes">
+            <div class="col-md-2 text-center etape">
+                <img src="assets/images/home/demarche1.png" class="etape-illustration">
+                <h6 class="etape-title">Commander</h6>
+                <div class="etape-number text-center">1</div>
+            </div>
+            <div class="col-md-2 text-center etape">
+                <img src="assets/images/home/demarche2.png" class="etape-illustration">
+                <h6 class="etape-title">livrer</h6>
+                <div class="etape-number text-center">2</div>
+            </div>
+            <div class="col-md-2 text-center etape">
+                <img src="assets/images/home/demarche3.png" class="etape-illustration">
+                <h6 class="etape-title">offrir</h6>
+                <div class="etape-number text-center">3</div>
+            </div>
+            <div class="col-md-2 text-center etape">
+                <img src="assets/images/home/demarche4.png" class="etape-illustration">
+                <h6 class="etape-title">choisir</h6>
+                <div class="etape-number text-center">4</div>
+            </div>
+            <div class="col-md-2 text-center etape">
+                <img src="assets/images/home/demarche5.png" class="etape-illustration">
+                <h6 class="etape-title">profiter</h6>
+                <div class="etape-number text-center">5</div>
+            </div>
+        </div>
+        <a [routerLink]="['/guide']">
+            <button class="btn guide-button">
+                Voir Guide
+            </button>
+        </a>
+    </div>
+</section>
+
+<!-- Valeurs --> 
+
+<section id="valeurs" class="section-padding wow fadeIn delay-05s">
+    <div class="container text-center">
+        <h2 class="valeurs-title text-center"><b>Boo</b>'s valeurs</h2>
+        <!--<img src="img/ILLUSTRATIONS/valeurs/valeurs.PNG" class="valeurs-img">-->
+        <div class="col-md-12 text-center row valeurs">
+            <div class="col-md-3 text-center valeurs-element">
+                <img class="valeurs-image" src="assets/images/home/valeur1.png">
+                <h4 class="valeurs-name" style="color: #7dced8; padding-top:1em;">La confiance</h4>
+            </div>
+            <div class="col-md-3 text-center valeurs-element">
+                <img class="valeurs-image" src="assets/images/home/valeur2.png">
+                <h4 class="valeurs-name" style="color: #f8f297">L'innovation & <br> la créativité</h4>
+            </div>
+            <div class="col-md-3 text-center valeurs-element">
+                <img class="valeurs-image" src="assets/images/home/valeur3.png">
+                <h4 class="valeurs-name" style="color: #f6b4d1">le plaisir & <br> le partage</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="bookeurs" class="section-padding wow fadeIn">
+    <div class="container">
+        <h2 class="bookeurs-title text-center">Mes BOO'KEURS</h2>
+
+        <div class="bookeurs-description text-center">
+            <h5 style="font-weight: bold;">Qui sont les BOO'keurs?</h5>
+            <p>Ce sont mes partenaires de confiances. Ils offrent leurs établissements dans les BOO'BOX.</p>
+            <p style="font-weight: bold;">les BOO'keurs sont répartis selon les catégories suivantes:</p>
+        </div>
+
+        <div class="container" style="margin-top:3em;">
+            <owl-carousel [options]="mySlideOptions" [items]="images" [carouselClasses]="['owl-theme', 'sliding']" >
+                <div class="item" *ngFor="let image of mySlideImages;let i = index">
+                 <div style="padding: 1.5em;">
+                   <img src={{image}}/>
+                 </div>
+                </div>
+            </owl-carousel>
+        </div>
+        <div class="text-center ">
+            <button class="btn bookeurs-button" [routerLink]="['/bookeur']">Devenir Boo'keur</button>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section-padding wow fadeIn delay-05s">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <h4 class="contact-title">Contactez boo</h4>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-push-2 text-center contact-form">
+                <form action="" method="post" role="form" class="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="NOM" data-rule="minlen:3" data-msg="Un nom doit dépasser 3 caractères"/>
+                        <div class="validation">bla bla</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="EMAIL" data-rule="email" data-msg="Veuillez entrer un email valide" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="SUJET" data-rule="minlen:5" data-msg="Un sujet doit dépasser 5 caractères" />
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="MESSAGE" placeholder="MESSAGE"></textarea>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn contact-button">Envoyer</button>
+                    </div>
+                </form>
+                <div class="col-md-6">
+                    <div class="col-md-1">
+                        <img src="assets/images/home/facebook-f-brands.svg" class="contact-icon">
+                    </div>
+                    <div class="col-md-10 text-left">
+                        <p class="contact-text">boo_box_cadeau</p>
+                    </div>
+                    <div class="col-md-1">
+                        <img src="assets/images/home/instagram-brands.svg" class="contact-icon">
+                    </div>
+                    <div class="col-md-10 text-left">
+                        <p class="contact-text">BOO BOX cadeau</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-1">
+                        <img src="assets/images/home/phone-solid.svg" class="contact-icon">
+                    </div>
+                    <div class="col-md-10 text-left">
+                        <p class="contact-text">21 115 217</p>
+                    </div>
+                    <div class="col-md-1">
+                        <img src="assets/images/home/envelope-solid.svg" class="contact-icon">
+                    </div>
+                    <div class="col-md-10 text-left">
+                        <p class="contact-text">contact@boo.tn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-back-to-top></app-back-to-top>

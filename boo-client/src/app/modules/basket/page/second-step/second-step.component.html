@@ -1,0 +1,98 @@
+<div class="header">
+  <div class="bg-color">
+    <header id="main-header">
+      <app-navbar></app-navbar>
+    </header>
+  </div>
+</div>
+
+<div class="main-content">
+    <img src="assets/images/basket/leaf1.PNG" id="leaf1">
+    <img src="assets/images/basket/leaf2.PNG" id="leaf2">
+    <hr class="section-line">
+    
+    <div class="container content">
+        
+        <div class="row">
+            <div class="col-md-4 text-left">
+                <a [routerLink]="['/basket']">
+                <h5 class="section-number section-number1 text-center">1</h5>
+                </a>
+            </div>
+            <div class="col-md-4 text-center">
+            <a [routerLink]="['/second-step']">
+                <h5 class="section-number section-number2 text-center">2</h5>
+            </a>
+            </div>
+            <div class="col-md-4 text-right">
+            <a [routerLink]="['/third-step']">
+                <h5 class="section-number section-number3 text-center">3</h5>
+            </a>
+            </div>  
+        </div>
+
+        <div class="text-center">
+        <h4 class="section-title">Paiement</h4>
+        </div>
+        
+        <div class="row table-content">
+        <div class="purchases-table col-md-9">
+            <div class="col-mx-12 tab">
+                <div class="col-md-6 text-center">
+                    <button class="tablinks" onclick="openMethod(event, 'online')">Payer en ligne</button>
+                </div>
+                <div class="col-md-6 text-center">
+                    <button class="tablinks" onclick="openMethod(event, 'delivery')">Payer à la livraison</button>
+                </div>
+            </div>
+            <div class="addresses col-mx-12">
+                <div id="online" class="tabcontent">
+                    <h6 class="form-title">Insérez une ou plusieurs adresses pour les catalogues achetés</h6>
+                    <div class="row address">
+                        <div class="col-md-7 inputs">
+                            <input type="text" name="line1" placeholder="ADRESSE (LIGNE 1)" class="address-input"><br>
+                            <input type="text" name="line2" placeholder="ADRESSE (LIGNE 2)" class="address-input"><br>
+                            <input type="text" name="postcode" placeholder="CODE POSTAL" class="postcode-input"><br>
+                        </div>
+                        <div class="col-md-5 category">
+                            <select>
+                                <option value="catalogue1">Catalogue1</option>
+                                <option value="catalogue2">Catalogue2</option>
+                                <option value="catalogue3">Catalogue3</option>
+                            </select> 
+                        </div>
+                    </div>
+                    <a><img src="img/ILLUSTRATIONS/panier/add-address.svg" class="add-address" alt=""></a>
+                </div>
+                <div id="delivery" class="tabcontent">
+                    <h6 class="form-title">Insérez l'adresse ou vous voulez livrer le cadeau</h6>
+                    <div class="row address">
+                        <div class="col-md-7 inputs">
+                            <input type="text" name="line1" placeholder="ADRESSE (LIGNE 1)" class="address-input"><br>
+                            <input type="text" name="line2" placeholder="ADRESSE (LIGNE 2)" class="address-input"><br>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" name="postcode" placeholder="CODE POSTAL" class="postcode-input">
+                        </div>  
+                    </div>
+                </div>  
+            </div>
+            
+        </div>
+
+        <div class="col-md-2 total text-center">
+            <div class="total-table">
+                <h4 class="table-header">Total</h4>
+                <div class="total-content">
+                    <p class="purchase-text">XX dt</p>
+                </div>
+            </div>
+            <button class="btn confirm-button">
+            Confirmer
+            </button>
+        </div>
+            
+    </div>
+        
+</div>
+</div>

@@ -1,0 +1,113 @@
+<div class="header">
+  <div class="bg-color">
+    <header id="main-header">
+        <app-navbar></app-navbar>
+    </header>
+  </div>
+</div>
+
+<div class="main-content">
+  <img src="assets/images/basket/leaf1.PNG" id="leaf1">
+  <img src="assets/images/basket/leaf2.PNG" id="leaf2">
+  <hr class="section-line">
+
+  <div class="container content">
+    <div class="row">
+      <div class="col-md-4 text-left">
+        <a [routerLink]="['/basket']">
+          <h5 class="section-number section-number1 text-center">1</h5>
+        </a>
+      </div>
+    <div class="col-md-4 text-center">
+      <a [routerLink]="['/second-step']">
+        <h5 class="section-number section-number2 text-center">2</h5>
+      </a>
+    </div>
+    <div class="col-md-4 text-right">
+      <a [routerLink]="['/third-step']">
+        <h5 class="section-number section-number3 text-center">3</h5>
+      </a>
+    </div>  
+  </div>
+
+  <div class="text-center">
+    <h4 class="section-title">Mes Achats</h4>
+  </div>
+
+  <div class="row table-content">
+    
+  <div class="purchases-table col-md-9">
+    <div class="col-mx-12">
+      <div class="col-md-3">
+        <h4 class="table-header text-center">Catalogue</h4>
+      </div>
+      <div class="col-md-3">
+        <h4 class="table-header text-center">Prix</h4>
+      </div>
+      <div class="col-md-3">
+        <h4 class="table-header text-center">Quatité</h4>
+      </div>
+      <div class="col-md-3">
+        <h4 class="table-header text-center">Total</h4>
+      </div>
+    </div>
+    <div class="purchases col-mx-12">
+      <div class="purchase">
+        <div class="col-md-3 text-center">
+          <p class="purchase-text">Un moment pour elle<p>
+        </div>
+        <div class="col-md-3 text-center">
+          <p class="purchase-text">XX dt</p>
+        </div>
+        <div class="col-md-3 text-center">
+          <input type="number" name="number" id="number">
+        </div>
+        <div class="col-md-3 text-center">
+          <p class="purchase-text">XX dt</p>
+        </div>
+      </div>
+      <div class="purchase">
+        <div class="col-md-3 text-center">
+          <p class="purchase-text">Un moment pour elle<p>
+        </div>
+        <div class="col-md-3 text-center">
+          <p class="purchase-text">XX dt</p>
+        </div>
+        <div class="col-md-3 text-center">
+          <input type="number" name="number" id="number">
+        </div>
+        <div class="col-md-3 text-center">
+          <p class="purchase-text">XX dt</p>
+        </div>
+      </div>
+      <div class="purchase">
+        <div class="col-md-3 text-center">
+          <p class="purchase-text">Un moment pour elle<p>
+        </div>
+        <div class="col-md-3 text-center">
+          <p class="purchase-text">XX dt</p>
+        </div>
+        <div class="col-md-3 text-center">
+          <input type="number" name="number" id="number">
+        </div>
+        <div class="col-md-3 text-center">
+          <p class="purchase-text">XX dt</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 total text-center">
+    <div class="total-table">
+      <h4 class="table-header">Total</h4>
+      <div class="total-content">
+        <p class="purchase-text">XX dt</p>
+      </div>
+    </div>
+    <button class="btn confirm-button">
+    Confirmer
+    </button>
+  </div>
+</div>
+    
+</div>
+</div>

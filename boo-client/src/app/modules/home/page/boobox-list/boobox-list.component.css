@@ -1,0 +1,82 @@
+/* ----------------------------------- */
+  /* -------------- BOOBOX ------------- */
+  /* ----------------------------------- */
+  
+  #boobox {
+    background-color: #e8fafd;
+    padding-top: 10em;
+  }
+  
+  .boobox-title {
+    color: #29246b;
+    text-transform: uppercase;
+    font-weight: bolder;
+    letter-spacing: 0.2em;
+  }
+
+  .booboxes {
+    padding-top: 2%;
+    padding-left: 5%;
+  }
+  
+  .boobox-element {
+    border: #29246b 6px solid;
+    border-radius: 30px;
+    margin: 1em 2em;
+    padding: 0.7em;
+  }
+  
+  .boobox-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: 20em;
+  }
+  
+  .boobox-description {
+    background-color: #29246b;
+    border: #29246b solid 2px;
+    border-radius: 20px;
+  }
+  
+  .boobox-name {
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    color: #f3fd6f;
+  }
+  
+  .boobox-price {
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    color: white;
+    margin-top: -0.4em;
+    padding-bottom: 1em;
+  }
+  
+  .boobox-link {
+    color: white;
+    font-size: 0.6em;
+    text-decoration: underline;
+    text-transform: uppercase;
+    padding-top: 20em;
+  }
+
+  .details-button {
+    font-size: 0.4em;
+    font-weight: 700;
+    color: #29246b;
+    background-color: #f3fd6f;
+    border-radius: 30px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+  }
+  
+  .details-button:hover {
+    background-color: #29246b;
+    color: #f3fd6f;
+    border: solid 1px #f3fd6f;
+  }

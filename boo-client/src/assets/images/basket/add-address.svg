@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="179" height="22" viewBox="0 0 179 22">
+  <g id="Group_839" data-name="Group 839" transform="translate(-525 -751)">
+    <g id="ajouter">
+      <ellipse id="Ellipse_102" data-name="Ellipse 102" cx="10" cy="10.5" rx="10" ry="10.5" transform="translate(525 752)" fill="#29246b"/>
+      <g id="Group_838" data-name="Group 838" transform="translate(530.148 750.91)">
+        <text id="_" data-name="+" transform="translate(4.852 17.09)" fill="#f8f297" font-size="17" font-family="Lato-Black, Lato" font-weight="800"><tspan x="-4.93" y="0">+</tspan></text>
+      </g>
+    </g>
+    <text id="Ajouter_une_adresse" data-name="Ajouter une adresse" transform="translate(626 765.947)" fill="#29246b" font-size="11" font-family="Lato-Black, Lato" font-weight="800" letter-spacing="0.15em"><tspan x="-77.88" y="0">AJOUTER UNE ADRESSE</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,134 @@
+#boopon-button:hover {
+    color: #fff !important;
+    background-color: #f6b4d1 !important;
+    border: solid 2px #fff !important;
+}
+
+#login-button:hover {
+    color: #fff !important;
+    background-color: #f6b4d1 !important;
+    border: solid 2px #fff !important;
+}
+
+#title {
+    padding: 13em 0 2em 0;
+    background-color: #fff;
+}
+
+#concept {
+    background-color: #ffdfee;
+    padding-top: 15%;
+    padding-bottom: 15%;
+}
+
+.concept-title {
+    font-weight: 900;
+    color: #29246b;
+    letter-spacing: 0.1em;
+    margin-left: 25%;
+    text-transform: uppercase;
+}
+
+.concept-text {
+    color: #29246b;
+    font-size: 1.1em;
+    width: 85%;
+}
+
+#contenu {
+    padding-top: 5%;
+    padding-bottom: 20%;
+    background-color: #29246b;
+}
+
+.contenu-title {
+    font-weight: 900;
+    color: #7dced8;
+    letter-spacing: 0.1em;
+    margin-top: 13%;
+    margin-left: 25%;
+    text-transform: uppercase;
+}
+
+#demarche {
+    background-color: white;
+    padding-top: 5%;
+    padding-bottom: 82%;
+}
+
+.demarche-title {
+    font-weight: 900;
+    color: #29246b;
+    letter-spacing: 0.1em;
+    margin-left: 25%;
+    text-transform: uppercase;
+}
+
+#demarche> h1{
+    font-size: 2em;
+    font-weight: 900;
+    color: #29246b;
+    letter-spacing: 0.1em;
+    margin-bottom: 1em;
+}
+
+.demarche-element {
+    margin: 2em 0;
+}
+
+.etape-number {
+    background-color: #29246b;
+    color: #f6b4d1;
+    font-size: 1em;
+    font-weight: bolder !important;
+    border-radius: 50%;
+    height: 2em;
+    width: 2em;
+    margin: auto;
+    vertical-align: 50%;
+    margin-top: 30%;
+    padding-top: 0.2em;
+    margin-left: 80%;
+  }
+
+.etape-illustration {
+height: 9em !important;
+width: auto;
+}
+
+.etape-text {
+    border: solid #29246b 4px;
+    border-radius: 2em;
+    padding: 1em 1.5em;
+}
+
+.etape-text>h4 {
+font-weight: 900;
+color: #29246b;
+text-transform: uppercase;
+}
+
+.etape-text>p {
+color: #29246b;
+}
+
+#faq {
+    background-color: #29246b;
+    padding: 3% 0;
+}
+
+#faq>h1 {
+    color: #7dced8;
+    font-weight: 700;
+    margin-bottom: 1em;
+}
+
+#faq>button {
+    max-width: 25em;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 30%;
+    left: 30%;
+}

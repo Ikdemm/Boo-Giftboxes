@@ -1,0 +1,70 @@
+.content {
+    margin-top: 13%;
+  }
+
+.box-button {
+  text-transform: uppercase;
+  background-color: #7dced8;
+  color: #29246b;
+  border-radius: 20px;
+  margin-top: 1em;
+  font-weight: bold;
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
+  padding:1em 2em;
+}
+
+.text {
+    padding-left: 7%;
+    padding-right: 10%;
+}
+
+.box-name {
+  font-size: 3em;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #7dced8;
+  margin-bottom: 0.5em;
+}
+
+.box-description {
+    border: 5px solid #29246b;
+    border-radius: 20px;
+    width: 100%;
+    padding: 2% 5%;
+    color: #29246b
+}
+
+.box-summary {
+    font-weight: 700;
+    font-size: 1em;
+}
+
+.box-details {
+    font-size: 0.9em;
+    padding: 0.2em;
+}
+
+.price {
+    font-size: 700;
+    color: #29246b;
+}
+
+.offrir-button {
+    background-color: #f8f297;
+    color: #29246b;
+    font-size: 0.7em;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-radius: 20px;
+}
+
+.offrir-button:hover {
+    color: #f8f297 !important;
+    background-color: #29246b !important;
+}
+
+.actions {
+    padding-right: 10%;
+}

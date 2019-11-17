@@ -1,0 +1,122 @@
+#leaf1 {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    width: 10em;
+    height:auto;
+    z-index: -1;
+}
+
+#leaf2 {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+}
+
+.content {
+    margin-top: 15%;
+    padding: 0 2em;
+}
+
+.section-number {
+    border: 2px solid #29246b;
+    border-radius: 100px;
+    color: #29246b;
+    font-weight: bolder;
+    padding: 0.3em;
+    width: 2em;
+    font-size: 1em;
+}
+
+.section-line {
+    height: 2px;
+    width: 80%;
+    background: #29246b;
+    position: absolute;
+    top: 33.3%;
+    left: 10%;
+}
+
+.section-number1 {
+    background-color: #f6b4d1;
+}
+
+.section-number3 {
+    margin-left: 90%;
+    background-color: white;
+}
+
+.section-number2 {
+    margin-left: 45%;
+    background-color: white;
+}
+
+.section-title {
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #29246b;
+}
+
+/* Table */
+
+.table {
+    margin-top: 2em;
+}
+
+.table-header {
+    color: #29246b;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 1em;
+}
+
+.total-header {
+    margin-left: 5em;
+}
+
+.purchases-table {
+    border: #29246b solid 3px;
+    border-radius: 0.7em;
+    padding: 0.2em;
+    background: white;
+}
+
+.table-content {
+    margin-top: 2em;
+}
+
+.purchase {
+    margin-top: 5%;
+}
+
+#number {
+    border: 3px solid #29246b;
+    max-width: 4em;
+    border-radius: 0.6em;
+}
+
+.total-table {
+    border: #29246b solid 3px;
+    border-radius: 0.7em;
+}
+
+.total {
+    margin-left: 5em;
+}
+
+.confirm-button {
+    background-color: #7dced8;
+    color: #29246b;
+    border-radius: 1em;
+    text-transform: uppercase;
+    padding: 0.5em 0.7em;
+    font-size: 0.7em;
+    font-weight: 900;
+    margin-top: 1em;
+}
+
+.confirm-button:hover {
+    color: white;
+    border: 1px solid #fff;
+    background-color: #29246b;
+}
