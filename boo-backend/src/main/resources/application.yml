@@ -1,9 +1,9 @@
 
 spring:
     datasource:
-        url: jdbc:mysql://localhost:3306/freelance?useSSL=false
+        url: jdbc:mysql://localhost:3306/boo?useSSL=false
         username: root
-        password: 123
+        password: rootroot
     servlet:
       ## MULTIPART (MultipartProperties)
       multipart:
@@ -16,10 +16,9 @@ spring:
         # Max Request Size
         max-request-size: 25MB
     mail:
-      default-encoding: UTF-8
       host: smtp.gmail.com
-      username: ikdem.benmbarek@aiesec.net
-      password: HIIVQCIA
+      username: boo.freelance.test@gmail.com
+      password: RicardoKaka22!..
       port: 587
       properties:
         mail:
@@ -27,8 +26,10 @@ spring:
             auth: true
             starttls:
               enable: true
-      protocol: smtp
-      test-connection: false
+            connectiontimeout: 5000
+            timeout: 5000
+            writetimeout: 5000
+
     jpa:
         show-sql: true
         hibernate:

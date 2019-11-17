@@ -21,6 +21,7 @@ public class Cheque {
     @Column(nullable = false)
     private UUID code;
 
+
     public UUID getCode() {
         return code;
     }
