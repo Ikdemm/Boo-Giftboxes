@@ -1,0 +1,47 @@
+<div class="dialog-content-wrapper">
+  <mat-toolbar class="mat-accent m-0">
+    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title">Modifier Catégorie </span>
+      <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+    <form name="composeForm" [formGroup]="categorieEditForm" class="compose-form" fxLayout="column" fxFlex>
+      
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+        <mat-form-field appearance="outline" fxFlex="100">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="name" value={{categorie.name}} required>
+          <mat-icon matSuffix class="secondary-text">category</mat-icon>
+          <mat-error>Vous devez nommer votre Categorie</mat-error>
+        </mat-form-field>
+
+      </div>
+
+    </form>
+  </div>
+  <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+    <div>
+      <button mat-raised-button color="accent" (click)="updateCategorie(categorieEditForm)" class="save-button"
+        aria-label="SAVE">
+        SEND
+        
+      </button>
+      <!--<mat-label> <span class="primary-text" [ngStyle]="{'color': 'green'}"> Icon:</span>
+      </mat-label>
+      <button (click)="fileInput.click()" mat-icon-button matTooltip="Attach a file">
+        <mat-icon>attach_file</mat-icon>
+        <input #fileInput type="file" style="display:none;" (change)="onIconFileChange($event)">
+      </button>
+      
+      <mat-label *ngIf="iconFile"> <span  class="secondary-text">{{iconFile.name}}</span>
+      </mat-label>
+      -->
+    </div>
+
+
+  </div>
+</div>

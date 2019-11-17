@@ -1,0 +1,124 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center">
+      <!-- APP TITLE -->
+      <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+          blur_on
+        </mat-icon>
+        <span *ngIf="category" class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+          Liste des Partenaires / {{category.name}}
+        </span>
+      </div>
+      <!-- / APP TITLE -->
+
+      <!-- ADD BUTTON -->
+      <button mat-raised-button (click)="addNewPartner()" class="add-product-button fuse-white mt-24 mt-md-0">
+        <span>NOUVEAU PARTENAIRE</span>
+      </button>
+      <!-- / ADD BUTTON -->
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+
+      <mat-table class="products-table" #table [dataSource]="dataSource " matSort [@animateStagger]="{value:'50'}"
+        fusePerfectScrollbar>
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+          <mat-cell *matCellDef="let partner">
+            <p class="text-truncate">{{partner.id}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- Image Column -->
+        <ng-container matColumnDef="image">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let partner">
+            <img class="product-image" *ngIf="partner.imageUrl" [alt]="partner.name" [src]="partner.imageUrl" />
+
+          </mat-cell>
+        </ng-container>
+
+        <!-- NAME Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
+          <mat-cell *matCellDef="let partner">
+            <p class="text-truncate">{{partner.name}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- ! NAME Column -->
+
+
+        <!-- ADDRESS Column -->
+        <ng-container matColumnDef="address">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Adresse</mat-header-cell>
+          <mat-cell *matCellDef="let partner">
+            <p class="category text-truncate">{{partner.address}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- ! ADDRESS Column -->
+
+        <!-- PHONE Column -->
+        <ng-container matColumnDef="phone">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Numero de Téléphoe</mat-header-cell>
+          <mat-cell *matCellDef="let partner">
+            <p class="category text-truncate">{{partner.phone}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- ! PHONE Column -->
+
+
+
+        <!-- ACTION  Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Actions</mat-header-cell>
+          <mat-cell *matCellDef="let partner">
+            <button (click)="editPartner(partner.id)" mat-icon-button color="primary" matTooltip="Edit Partner">
+              <mat-icon>create</mat-icon>
+            </button>&nbsp;
+            <button mat-icon-button color="warn" matTooltip="Delete Network" type="button"
+              (click)="deletePartner(partner)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+        <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple>
+          <!--[routerLink]="'/apps/e-commerce/products/'+product.id+'/'+product.handle">-->
+        </mat-row>
+
+      </mat-table>
+      <div style="display: flex; justify-content: center; align-items: center" *ngIf="hasItems">
+        <br>
+        Pas de partenaires
+      </div>
+      <!-- Message for empty data  -->
+      <div style="display: flex; justify-content: center; align-items: center" *ngIf="loading">
+        <br>
+        <mat-spinner [diameter]="20" *ngIf="loading"></mat-spinner>
+        Veuillez attendre SVP...
+      </div>
+
+      <mat-paginator *ngIf="dataSource" #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="5"
+        [pageSizeOptions]="[3,5, 10, 25]">
+      </mat-paginator>
+
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

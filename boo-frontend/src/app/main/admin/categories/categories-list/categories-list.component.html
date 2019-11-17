@@ -1,0 +1,71 @@
+<div id="cards" class="page-layout simple fullwidth">
+
+  <!-- HEADER -->
+  <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="space-between center">
+
+    <div fxLayout="column" fxLayoutAlign="center start">
+      <!-- APP TITLE -->
+      <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+          blur_on
+        </mat-icon>
+        <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+          Liste des catégories
+        </span>
+      </div>
+      <!-- / APP TITLE -->
+    </div>
+
+    <!-- ADD BUTTON -->
+    <button mat-raised-button (click)="addNewCategorie()" class="add-product-button fuse-white mt-24 mt-md-0">
+      <span>NOUVELLE CATEGORIE</span>
+    </button>
+    <!-- / ADD BUTTON -->
+
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content" [ngClass]="this.view">
+    <div fxLayout="row wrap" fxLayoutAlign="start" [@animateStagger]="{value:'50'}">
+
+
+      <!-- CARD -->
+      <div *ngFor="let categorie of categories">
+        <div class="card">
+
+          <div class="fuse-card">
+
+            <div class="p-16" fxLayout="row" fxLayoutAlign="space-between start">
+
+              <div class="pr-16">
+                <div class="h1">{{categorie.name}}</div>
+                <div class="h4 secondary-text">{{categorie.partners.length}} Partenaires</div>
+              </div>
+
+              <div class="w-120 h-120">
+                <img src="{{categorie.imageUrl}}">
+
+              </div>
+
+            </div>
+
+            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
+              <button mat-button color="accent" (click)="explorerCategorie(categorie)">EXPLORER</button>
+              <button mat-button color="accent" (click)="openEditCategorie(categorie)">MODIFIER</button>
+              <button mat-button color="accent" (click)="deleteCategorie(categorie.id)">SUPPRIMER</button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- / CARD -->
+
+    </div>
+
+  </div>
+  <!-- / CONTENT -->
+
+</div>

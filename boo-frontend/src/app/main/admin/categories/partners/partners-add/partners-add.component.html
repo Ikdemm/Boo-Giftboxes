@@ -1,0 +1,121 @@
+<div class="dialog-content-wrapper">
+  <mat-toolbar class="mat-accent m-0">
+    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="title dialog-title">Nouveau Partenaire </span>
+      <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+    <form name="composeForm" [formGroup]="partnerAddForm" class="compose-form" fxLayout="column" fxFlex>
+      
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+        <mat-form-field appearance="outline" fxFlex="100">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="name" required>
+          <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+          <mat-error>Vous devez nommer votre Partenaire</mat-error>
+        </mat-form-field>
+
+      </div>
+    
+
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+        <mat-form-field appearance="outline" fxFlex="100">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required>
+          <mat-icon matSuffix class="secondary-text">email</mat-icon>
+          <mat-error>Vous devez Enter l'email votre Partenaire</mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+        <mat-form-field appearance="outline" fxFlex="100">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput formControlName="password" required>
+          <mat-icon matSuffix class="secondary-text">paswword</mat-icon>
+          <mat-error>Vous devez Enter le mot passe </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+        <mat-form-field appearance="outline" fxFlex="100">
+          <mat-label>Numero de Téléphone</mat-label>
+          <input matInput formControlName="phone" required>
+          <mat-icon matSuffix class="secondary-text">phone_iphone</mat-icon>
+          <mat-error>Vous devez Entrer le numero de Téléphne votre Partenaire</mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Addresse</mat-label>
+            
+            <textarea matInput formControlName="address" required>
+            </textarea>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+
+            <mat-error>Vous devez ajouter une adresse au Partenaire</mat-error>
+        </mat-form-field>
+
+        
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+        <mat-form-field appearance="outline" fxFlex="33">
+            <mat-label>Ville</mat-label>
+            <input matInput formControlName="city" required>
+            <mat-icon matSuffix class="secondary-text">location_city</mat-icon>
+            <mat-error>Vous devez ajouter une ville au Partenaire!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex="34" class="px-8">
+            <mat-label>Gourvenerat</mat-label>
+            <input matInput formControlName="state" required>
+            <mat-icon matSuffix class="secondary-text">location_city</mat-icon>
+            <mat-error>Vous devez ajouter une Gouvernera au Partenaire</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex="33">
+            <mat-label>Code Postale</mat-label>
+            <input matInput #postalCode type="number"
+                   formControlName="postalCode" maxlength="4" max="9999" min="0" required>
+            <mat-icon matSuffix class="secondary-text">markunread_mailbox</mat-icon>
+            <mat-hint align="end">{{postalCode.value.length}} / 4</mat-hint>
+            <mat-error>Vous devez ajouter une adresse postale au Partenaire</mat-error>
+        </mat-form-field>
+
+    </div>
+
+
+    </form>
+  </div>
+  <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+    <div>
+      <button mat-raised-button color="accent" (click)="submitPartenaire(partnerAddForm)" class="save-button"
+        [disabled]="partnerAddForm.invalid" aria-label="SAVE">
+        SEND
+        
+      </button>
+      <mat-label> <span class="primary-text" [ngStyle]="{'color': 'green'}"> Logo:</span>
+      </mat-label>
+      <button (click)="fileInput1.click()" mat-icon-button matTooltip="Attach a file">
+        <mat-icon>attach_file</mat-icon>
+        <input #fileInput1 type="file" style="display:none;" accept="image/*"  (change)="onLogoFileChange($event)">
+      </button>
+      
+      <mat-label *ngIf="logoFile"> <span  class="secondary-text">{{logoFile.name}}</span>
+      </mat-label>
+
+    </div>
+
+
+  </div>
+</div>

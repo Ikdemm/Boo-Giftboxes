@@ -1,0 +1,150 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center">
+      <!-- APP TITLE -->
+      <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+          blur_on
+        </mat-icon>
+        <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+          Liste des Commandes
+        </span>
+      </div>
+      <!-- / APP TITLE -->
+
+     
+
+      
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+
+      <mat-table class="products-table" #table [dataSource]="dataSource " matSort [@animateStagger]="{value:'50'}"
+        fusePerfectScrollbar>
+
+        <!-- NUMBER Column -->
+        <ng-container matColumnDef="number">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Numéro</mat-header-cell>
+          <mat-cell *matCellDef="let network">
+            <p class="text-truncate">{{network.name}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- ! NUMBER Column -->
+
+        <!-- CUSTOMER Column -->
+        <ng-container matColumnDef="customer">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Client</mat-header-cell>
+          <mat-cell *matCellDef="let network">
+            <p class="text-truncate">{{network.name}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- ! CUSTOMER Column -->
+
+        <!-- DATE Column -->
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+          <mat-cell *matCellDef="let network">
+            <p class="text-truncate">{{network.name}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- ! DATE Column -->
+
+        <!-- Delivery Address Column -->
+        <ng-container matColumnDef="deliveryAddress">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Adr Livraison</mat-header-cell>
+          <mat-cell *matCellDef="let network">
+            <p class="text-truncate">{{network.name}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- ! Delivery Address Column -->
+
+         <!-- Total Price Address Column -->
+         <ng-container matColumnDef="totalPrice">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Prix Total</mat-header-cell>
+          <mat-cell *matCellDef="let network">
+            <p class="text-truncate">{{network.name}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- ! Total Price Address Column -->
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+          <mat-cell *matCellDef="let network">
+            <p class="text-truncate">{{status}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- ! Status Column -->
+
+        <!-- isLaunched Price Address Column -->
+        <!--<ng-container matColumnDef="isLaunched">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>isLaunched</mat-header-cell>
+          <mat-cell *matCellDef="let network">
+            <p class="text-truncate">{{network.name}}</p>
+          </mat-cell>
+        </ng-container>-->
+        <!-- ! isLaunched Price Address Column -->
+
+        <!-- isDelivered Price Address Column -->
+        <!--<ng-container matColumnDef="isDelivered">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>isDelivered</mat-header-cell>
+          <mat-cell *matCellDef="let network">
+            <p class="text-truncate">{{network.name}}</p>
+          </mat-cell>
+        </ng-container>-->
+        <!-- ! isDelivered Price Address Column -->
+
+        <!-- ACTIONS Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Actions</mat-header-cell>
+          <mat-cell *matCellDef="let network">
+            <button (click)="editNetwork(network._id)" [disabled]="!network.status" mat-icon-button color="primary" matTooltip="Edit Network">
+              <mat-icon>create</mat-icon>
+            </button>&nbsp;
+            <button mat-icon-button color="warn" matTooltip="Delete Network" type="button"
+              (click)="deleteNetwork(network)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+       
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+        <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple>
+          <!--[routerLink]="'/apps/e-commerce/products/'+product.id+'/'+product.handle">-->
+        </mat-row>
+
+      </mat-table>
+      <div style="display: flex; justify-content: center; align-items: center" *ngIf="hasItems">
+        <br>
+        Auccune Commande trouvée
+      </div>
+      <!-- Message for empty data  -->
+      <div style="display: flex; justify-content: center; align-items: center" *ngIf="loading">
+        <br>
+        <mat-spinner [diameter]="20" *ngIf="loading"></mat-spinner>
+        Please wait...
+      </div>
+
+      <mat-paginator *ngIf="dataSource" #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="5"
+        [pageSizeOptions]="[3,5, 10, 25]">
+      </mat-paginator>
+
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>
