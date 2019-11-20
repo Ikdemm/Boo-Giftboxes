@@ -4,6 +4,8 @@ import com.example.springsocial.exception.ResourceNotFoundException;
 import com.example.springsocial.model.Cheque;
 import com.example.springsocial.repository.ChequeRepository;
 import com.example.springsocial.services.ChequeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import java.util.UUID;
 public class ChequeServiceImpl implements ChequeService {
     @Autowired
     ChequeRepository chequeRepository;
+    private static final Logger log = LoggerFactory.getLogger(ChequeServiceImpl.class);
 
     @Override
     public Cheque findByCode(UUID code) {
@@ -24,12 +27,16 @@ public class ChequeServiceImpl implements ChequeService {
     @Override
     public Cheque save(Cheque object) {
         UUID code = UUID.randomUUID();
+        log.info("/**************************/");
+        log.info(code.toString()    );
         object.setDate(new Date());
         object.setStatus("INVALID");
         while (this.findByCode(code) != null) {
+            log.info(code.toString());
             code = UUID.randomUUID();
         }
         object.setCode(code);
+
         return chequeRepository.save(object);
     }
 

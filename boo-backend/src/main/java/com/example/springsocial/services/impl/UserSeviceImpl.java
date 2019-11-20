@@ -65,7 +65,11 @@ public class UserSeviceImpl implements UserSevice {
             log.error(String.format("Duplicate email ", user.getEmail()));
             throw new BadRequestException("Email: " + user.getEmail() + " is already exist");
         }
-        return userRepository.save(user);
+        user = userRepository.save(user);
+        /**
+         *  TODO SEND MAIL CONFIRMATION
+         */
+        return  user;
     }
 
     @Override
@@ -104,6 +108,13 @@ public class UserSeviceImpl implements UserSevice {
         List<User> users = userRepository.findAllByRolesAndCategory(roles, category);
 
         return users;
+    }
+
+    @Override
+    public void ResetPassword(String email) {
+        /**
+         *  TODO Reset password Method
+         */
     }
 
 

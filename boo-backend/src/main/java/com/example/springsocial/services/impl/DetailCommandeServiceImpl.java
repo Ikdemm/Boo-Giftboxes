@@ -6,9 +6,13 @@ import com.example.springsocial.model.DetailCommande;
 import com.example.springsocial.repository.DetailCommandeRepository;
 import com.example.springsocial.services.ChequeService;
 import com.example.springsocial.services.DetailCommandeService;
+import com.example.springsocial.services.EmailService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,14 +23,30 @@ public class DetailCommandeServiceImpl implements DetailCommandeService {
     DetailCommandeRepository detailCommandeRepository;
     @Autowired
     ChequeService chequeService;
-
+    private static final Logger log = LoggerFactory.getLogger(DetailCommandeService.class);
+    @Autowired
+    EmailService emailService;
     @Override
     public DetailCommande save(DetailCommande object) {
-        object.setPrice(object.getCoffret().getPriceClient() * object.getQuantite());
+        object.setPrix(object.getCoffret().getPriceClient() * object.getQuantite());
         Set<Cheque> cheques = new HashSet<Cheque>();
-        for (int i = 0; i < object.getQuantite(); i++) {
-            cheques.add(chequeService.save(new Cheque()));
-        }
+        log.info(cheques.size()+"");
+        /**
+         * TODO
+         * FIX CHEQUE not mutch to quantite
+         */
+        object.getCheques().forEach(cheque -> {
+            cheque.setDate(new Date());
+            cheque = chequeService.save(cheque);
+            cheques.add(cheque);
+            emailService.sendASynchronousMail(cheque.getEmail(),"CHEQUE SEND",cheque.getCode().toString());
+            log.info("afer submit email");
+            /**
+             * TODO GENERATE QR CODE TO EACH CHEQUE AND SEND IT WITH EMAIL
+             */
+
+
+        });
         object.setCheques(cheques);
         return detailCommandeRepository.save(object);
     }
@@ -51,23 +71,5 @@ public class DetailCommandeServiceImpl implements DetailCommandeService {
     public Long count() {
         return detailCommandeRepository.count();
     }
-   /* @Override
-    public DetailCommande save(DetailCommande detailCommande) {
-        return detailCommandeRepository.save(detailCommande);
-    }
 
-    @Override
-    public List<DetailCommande> findAll() {
-        return detailCommandeRepository.findAll();
-    }
-
-    @Override
-    public DetailCommande findOne(long id) {
-        return detailCommandeRepository.findById(id).get();
-    }
-
-    @Override
-    public void delete(long id) {
-        detailCommandeRepository.deleteById(id);
-    }*/
 }

@@ -2,10 +2,12 @@ package com.example.springsocial.controller;
 
 import com.example.springsocial.model.Commande;
 import com.example.springsocial.model.User;
+import com.example.springsocial.modelDto.CommandeDto;
 import com.example.springsocial.security.CurrentUser;
 import com.example.springsocial.security.UserPrincipal;
 import com.example.springsocial.services.CommandeService;
 import com.example.springsocial.services.UserSevice;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.DataInput;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -26,6 +30,8 @@ public class CommandeController {
     CommandeService commandeService;
     @Autowired
     UserSevice userSevice;
+    @Autowired
+    ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * Get List Partners
@@ -70,11 +76,11 @@ public class CommandeController {
      */
     @PutMapping("/update")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> Update(@RequestBody Commande commande, @CurrentUser UserPrincipal userPrincipal) {
+    public ResponseEntity<?> Update(@RequestBody CommandeDto commande, @CurrentUser UserPrincipal userPrincipal) throws IOException {
         System.out.println("monta");
         log.info(String.format("received request to list Commande "));
         User user = userSevice.findOne(userPrincipal.getId());
 
-        return new ResponseEntity<Commande>(commandeService.save(commande, user), HttpStatus.OK);
+        return new ResponseEntity<Commande>(commandeService.save(objectMapper.readValue((DataInput) commande,Commande.class), user), HttpStatus.OK);
     }
 }

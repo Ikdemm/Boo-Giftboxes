@@ -1,6 +1,7 @@
 package com.example.springsocial.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -10,10 +11,10 @@ public class DetailCommande implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @NotNull(message = "Quantité cannot't be null")
     private Long quantite;
-    @Column(nullable = false)
-    private Long price;
+    @NotNull(message = "Prix cannot't be null")
+    private float prix;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COFFRET_ID")
     private Coffret coffret;
@@ -45,12 +46,12 @@ public class DetailCommande implements Serializable {
         this.quantite = quantite;
     }
 
-    public Long getPrice() {
-        return price;
+    public float getPrix() {
+        return this.prix;
     }
 
-    public void setPrice(Long price) {
-        this.price = price;
+    public void setPrix(float price) {
+        this.prix = price;
     }
 
     public Coffret getCoffret() {

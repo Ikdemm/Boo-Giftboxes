@@ -10,4 +10,6 @@ public interface UserSevice extends GenericService<User> {
     List<User> findAllByRole(String role);
 
     List<User> findPartnerByCategory(Long id);
+
+    void ResetPassword(String email);
 }

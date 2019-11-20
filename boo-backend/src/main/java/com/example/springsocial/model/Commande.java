@@ -1,6 +1,8 @@
 package com.example.springsocial.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -12,13 +14,13 @@ public class Commande implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @NotNull(message = "Date cannot't be null")
     private Date date;
-    @Column(nullable = false)
-    private String addresse;
-    @Column(nullable = false)
-    private Long prix_totale;
-    @Column(nullable = false)
+    @NotNull(message = "Prix Totale cannot't be null")
+    private float prix_totale;
+    @NotNull(message = "Adresse cannot't be null")
+    private String adresse;
+    @NotNull(message = "Status cannot't be null")
     private String status;
     @OneToMany
     @JoinColumn(name = "COMMANDE_ID")
@@ -53,18 +55,18 @@ public class Commande implements Serializable {
     }
 
     public String getAddresse() {
-        return addresse;
+        return adresse;
     }
 
     public void setAddresse(String addresse) {
-        this.addresse = addresse;
+        this.adresse = addresse;
     }
 
-    public Long getPrix_totale() {
-        return prix_totale;
+    public float getPrix_totale() {
+        return this.prix_totale;
     }
 
-    public void setPrix_totale(Long prix_totale) {
+    public void setPrix_totale(float prix_totale) {
         this.prix_totale = prix_totale;
     }
 

@@ -35,11 +35,17 @@ public class CommandeSerivceImpl implements CommandeService {
         log.info(user.getEmail());
         commande.setUser(user);
         commande.setPrix_totale(Long.valueOf(0));
+        log.info(String.valueOf(commande.getDetailCommandes().size()));
         commande.getDetailCommandes().forEach(detailCommande -> {
-            log.info(detailCommande.getPrice().toString());
+            log.info("quantite detail Commande "+detailCommande.getQuantite());
+            log.info(detailCommande.getPrix()+"");
             detailCommande = detailCommandeService.save(detailCommande);
-            commande.setPrix_totale(commande.getPrix_totale() + detailCommande.getPrice());
+            commande.setPrix_totale(commande.getPrix_totale() + detailCommande.getPrix());
         });
+        /**
+         *  SEND MAIL ORDER CONFIRMATION
+         */
+        log.info("AFTER SEND EMAIL AND BEFORE SUBMIT COMMANDE");
         return commandeRepository.save(commande);
     }
 

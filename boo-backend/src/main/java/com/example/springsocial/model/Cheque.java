@@ -1,6 +1,8 @@
 package com.example.springsocial.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,14 +15,26 @@ public class Cheque {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @NotNull(message = "Date cannot't be null")
     private Date date;
 
-    @Column(nullable = false)
+    @NotNull(message = "Status cannot't be null")
     private String status;
-    @Column(nullable = false)
+    @NotNull(message = "Code cannot't be null")
+
     private UUID code;
 
+    @NotNull(message = "email should be not null")
+    @Email
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public UUID getCode() {
         return code;
