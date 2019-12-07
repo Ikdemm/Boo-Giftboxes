@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { map } from 'rxjs/operators';
 import decode from 'jwt-decode';
+import { environment } from 'environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  api: string = "http://localhost:8080/auth/";
+  api: string = environment.apiURL+"auth/";
 
   constructor(private http: HttpClient) { }
   login(email: string, password: string) {

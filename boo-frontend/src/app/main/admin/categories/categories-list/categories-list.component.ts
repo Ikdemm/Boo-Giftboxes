@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MatDialog } from "@angular/material";
+import { MatDialog, MatDialogRef } from "@angular/material";
 import { CategoriesAddComponent } from "../categories-add/categories-add.component";
 import { fuseAnimations } from "@fuse/animations";
 import { Categorie } from "app/shared/models/categorie.model";
@@ -11,6 +11,7 @@ import { async } from "@angular/core/testing";
 import { resolve } from "q";
 import { read } from "fs";
 import { AuthenticationService } from "app/core/_services/authentication.service";
+import { FuseConfirmDialogComponent } from "@fuse/components/confirm-dialog/confirm-dialog.component";
 
 @Component({
     selector: "app-categories-list",
@@ -19,6 +20,8 @@ import { AuthenticationService } from "app/core/_services/authentication.service
     animations: fuseAnimations
 })
 export class CategoriesListComponent implements OnInit {
+    confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
+
     isImageLoading: boolean;
     imageToShow;
     categories: Categorie[] = [];
@@ -35,6 +38,7 @@ export class CategoriesListComponent implements OnInit {
     }
 
     async getListCategories() {
+        
         this.categoriesService.findAll().subscribe(data => {
             data.forEach(category => {
                 this.categories = [];
@@ -70,15 +74,27 @@ export class CategoriesListComponent implements OnInit {
 
     deleteCategorie(id) {
         console.log("Deleting Category " + id + " ...");
-        this.categoriesService.delete(id).subscribe(
-            data => {
-                console.log(data);
-                this.getListCategories();
-            },
-            error => {
-                console.log(error);
+        this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
+            disableClose: false
+          });
+      
+          this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete?';
+      
+          this.confirmDialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.categoriesService.delete(id).subscribe(
+                    data => {
+                        console.log(data);
+                        this.getListCategories();
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                );
             }
-        );
+            this.confirmDialogRef = null;
+          });
+        
     }
 
     openEditCategorie(categorie: Categorie): void {

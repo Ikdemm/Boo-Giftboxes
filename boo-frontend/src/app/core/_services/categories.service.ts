@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Categorie } from 'app/shared/models/categorie.model';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
 
-  api: string = "http://localhost:8080/categories/";
+  api: string = environment.apiURL+"categories/";
   constructor(private http: HttpClient) { }
   findAll(){
     return this.http.get<Categorie[]>(this.api+"findAll");

@@ -63,6 +63,7 @@ export class PartnersListComponent implements OnInit {
                 if (data.length == 0) {
                     this.dataSource = new MatTableDataSource<Partner>(data);
                     this.hasItems = true;
+                    this.loading = false;
                 } else {
                     data.forEach(partner => {
                         this.dataSource = new MatTableDataSource<Partner>();
@@ -79,6 +80,7 @@ export class PartnersListComponent implements OnInit {
                                 this.dataSource.data.push(partner);
                                 this.dataSource.paginator = this.paginator;
                                 this.loading = false;
+                                this.hasItems = false;
                             });
                     });
                 }
