@@ -18,7 +18,7 @@ public class Commande implements Serializable {
     private Date date;
     @NotNull(message = "Prix Totale cannot't be null")
     private float prix_totale;
-    @NotNull(message = "Adresse cannot't be null")
+    //@NotNull(message = "Adresse cannot't be null")
     private String adresse;
     @NotNull(message = "Status cannot't be null")
     private String status;

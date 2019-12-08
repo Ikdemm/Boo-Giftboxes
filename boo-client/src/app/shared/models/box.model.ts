@@ -1,5 +1,5 @@
 export class Box {
-    _id?: string;
+    id?: string;
     name: string;
     description: string;
     priceClient: number;

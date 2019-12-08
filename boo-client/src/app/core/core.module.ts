@@ -5,6 +5,8 @@ import { CategoryService } from './services/category.service';
 import { EmailService } from './services/email.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import{RequestHttpInterceptor} from './helpers/request-http.interceptor'
+import { CartService } from './services/cart.service';
+import { AuthenticationService } from './services/authentication.service';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import{RequestHttpInterceptor} from './helpers/request-http.interceptor'
     BoxService,
     CategoryService,
     EmailService,
+    CartService,
+    AuthenticationService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestHttpInterceptor,

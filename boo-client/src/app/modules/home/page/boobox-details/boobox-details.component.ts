@@ -7,6 +7,8 @@ import { Box } from 'src/app/shared/models/box.model';
 
 import { BooboxCatalogComponent } from '../boobox-catalog/boobox-catalog.component';
 import { switchMap } from 'rxjs/operators';
+import { CartService } from 'src/app/core/services/cart.service';
+import { OrderDetails } from 'src/app/shared/models/order-details.model';
 
 @Component({
   selector: 'app-boobox-details',
@@ -18,7 +20,9 @@ export class BooboxDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private boxService: BoxService) { }
+    private boxService: BoxService,
+    private cartService:CartService
+    ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -26,10 +30,19 @@ export class BooboxDetailsComponent implements OnInit {
         let boxes = data;
         let id = params['id'];
         console.log(id);
-        this.gottenBox = boxes.find(box => box._id = id);
+        this.gottenBox = boxes.find(box => box.id = id);
         console.log(this.gottenBox);
       });
     });
+  }
+
+  addToShoppingCart(box){
+    console.log(box)
+    let orderDetail:OrderDetails=new OrderDetails();
+    orderDetail.box=this.gottenBox;
+    orderDetail.quantity=1;
+    console.log(orderDetail)
+    this.cartService.addToCart(orderDetail);
   }
 
 }

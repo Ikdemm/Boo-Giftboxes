@@ -35,6 +35,10 @@ public class CommandeSerivceImpl implements CommandeService {
         log.info(user.getEmail());
         commande.setUser(user);
         commande.setPrix_totale(Long.valueOf(0));
+        commande.setAddresse(user.getAddress());
+        commande.setStatus("intial");
+        log.info(commande.getDate().toString());
+        log.info(commande.getDetailCommandes().toString());
         log.info(String.valueOf(commande.getDetailCommandes().size()));
         commande.getDetailCommandes().forEach(detailCommande -> {
             log.info("quantite detail Commande "+detailCommande.getQuantite());

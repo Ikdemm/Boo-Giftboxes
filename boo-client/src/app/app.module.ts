@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { OwlModule } from 'ngx-owl-carousel';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     OwlModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   declarations: [AppComponent, PageNotFoundComponent],
   bootstrap: [AppComponent]

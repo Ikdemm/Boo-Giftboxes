@@ -48,7 +48,7 @@ public class CommandeController {
      * Add Partners
      */
     @PostMapping("/save")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> save(@RequestBody Commande commande, @CurrentUser UserPrincipal userPrincipal) {
         log.info(String.format("received request to save Commande "));
         User user = userSevice.findOne(userPrincipal.getId());

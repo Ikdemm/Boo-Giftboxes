@@ -28,6 +28,10 @@ public class DetailCommandeServiceImpl implements DetailCommandeService {
     EmailService emailService;
     @Override
     public DetailCommande save(DetailCommande object) {
+        log.info("save detail commande");
+        log.info("coffret quantite: "+object.getQuantite());
+        log.info("coffret price: "+object.getCoffret().getPriceClient());
+
         object.setPrix(object.getCoffret().getPriceClient() * object.getQuantite());
         Set<Cheque> cheques = new HashSet<Cheque>();
         log.info(cheques.size()+"");

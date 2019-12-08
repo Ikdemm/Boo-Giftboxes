@@ -69,6 +69,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/coffrets/getBoxes");
         web.ignoring().antMatchers("/categories/getCategories");
         web.ignoring().antMatchers("/mail/send-mail");
+        web.ignoring().antMatchers("/auth/*");
+
     }
 
     @Override

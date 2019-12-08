@@ -1,0 +1,110 @@
+::placeholder {
+    color: dimgray !important;
+    font-weight:bold !important;
+    opacity: 0.6; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: dimgray !important;
+    font-weight:bold !important;
+    opacity: 0.6;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: dimgray !important;
+    font-weight:bold !important;
+    opacity: 0.6;
+}
+
+.content {
+    /*background-image: url("assets/images/auth/background.png");*/
+    width:100%;
+    height: 40em;
+    margin-top: 1.65em;
+    background-color: white;
+    /*background-repeat: no-repeat;*/
+    /*background-size: 100%;*/
+}
+
+h4 {
+    color: #7dced8;
+    font-size: 1.3em;
+    letter-spacing: 0.1em;
+    font-weight: bolder;
+    margin-top: 10em;
+    text-decoration: underline;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+input {
+    background-color: white !important;
+    color: dimgray !important;
+    border: 2px solid #29246b !important;
+    max-width: 20em !important;
+    font-size: 0.8em !important;
+    padding-left: 0.7em !important;
+    padding-top: 1em !important;
+    padding-bottom: 1em !important;
+    font-weight: bold !important;
+    letter-spacing: 0.1em !important;
+    border-radius: 7px !important;
+    margin-bottom: 0.5em;
+    margin-top: 0.1em;
+}
+
+#nom,#prenom, #password, #email {
+  margin-left: 41%;
+}
+
+.login-checkbox {
+    text-align: right;
+}
+
+.login-checkbox input {
+    cursor: pointer;
+    height: 1em;
+    width: 1em;
+    background-color: #fff;
+    border: solid 3px #29246b;
+}
+
+.input-text {
+    font-size: 0.6em;
+    color: #29246b;
+}
+
+.password-forgotten {
+    font-size: 0.6em;
+    color: #29246b;
+    text-transform: uppercase;
+    text-decoration: underline;
+    padding-left: 0.4em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.login-button {
+    background-color: #7dced8;
+    color: #29246b;
+    text-transform: uppercase;
+    font-size: 0.6em;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    border-radius: 20px;
+    padding: 0.4em 1em;
+    margin: 2em 0;
+}
+
+.content> p {
+    color: #29246b;
+    font-size: 0.7em;
+    letter-spacing: 0.1em;
+}
+
+.content> p> a {
+    color: #7dced8;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: underline;
+}

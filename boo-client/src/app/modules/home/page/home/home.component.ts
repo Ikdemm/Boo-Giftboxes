@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   openBoxDetails(box: Box) {
-    this.router.navigate(['/boobox-details', box._id]);
+    this.router.navigate(['/boobox-details', box.id]);
   }
 
   getBackgroundImages() {

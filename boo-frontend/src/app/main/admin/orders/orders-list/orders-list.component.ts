@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { OrdersService } from 'app/core/_services/orders.service';
 import { fuseAnimations } from '@fuse/animations';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { OrderModalComponent } from './order-modal/order-modal.component';
 
 @Component({
   selector: 'app-orders-list',
@@ -18,7 +19,6 @@ export class OrdersListComponent implements OnInit {
     "number",
     "customer",
     "date",
-    "deliveryAddress",
     "totalPrice",
     "status",
     "actions"
@@ -26,7 +26,7 @@ export class OrdersListComponent implements OnInit {
   hasItems = false;
   loading = true;
   status;
-  constructor(private orderService:OrdersService) { }
+  constructor(private orderService:OrdersService,private _matDialog: MatDialog) { }
 
   ngOnInit() {
     this.getListOrder();
@@ -43,6 +43,21 @@ export class OrdersListComponent implements OnInit {
       this.hasItems = true;
       this.loading = false;
     })
+  }
+  detailOrder(order){
+    console.log(order);
+    console.log("ADD NEW CATEGORIE");
+    let dialogRef = this._matDialog.open(OrderModalComponent, {
+      panelClass: "mail-compose-dialog",
+      width:"900px"
+    });
+    dialogRef.componentInstance.order = order
+    dialogRef.afterClosed().subscribe(response => {
+      if (!response) {
+        return;
+      }
+    });
+
   }
 
 }

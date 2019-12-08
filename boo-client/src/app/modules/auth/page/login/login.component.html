@@ -1,26 +1,24 @@
-<div class="header">
-  <div class="bg-color">
-    <header id="main-header">
-      <app-navbar></app-navbar>
+
 
       <div class="container col-mx-12 content text-center">
-        <h4>Identifiez-vous</h4>
-        <input type="text" name="name" class="form-control" id="name" placeholder="NOM" width="100%"/>
-        <input type="password" name="password" class="form-control" id="password" placeholder="MOT DE PASSE" width="100%"/>
-        
-        <div class="row col-md-12">
-          <div class="col-md-6 login-checkbox text-right">
-            <input type="checkbox">
-            <label class="input-text">Restez Connecté</label>
-          </div>
-          <div class="col-md-6 text-left">
-            <a [routerLink]="['/password-reset']" class="password-forgotten">Mot de passe oublié?</a>
-          </div>
-        </div>
-        <button class="btn login-button">Login</button>
+          <form name="loginForm" [formGroup]="loginForm" class="loginForm" (ngSubmit)="submitLogin()" fxLayout="column" fxFlex>
+
+            <h4>Identifiez-vous</h4>
+            <input type="email" name="email" formControlName="email" class="form-control" id="name" placeholder="Email" width="100%"/>
+            <input type="password" name="password" formControlName="password" class="form-control" id="password" placeholder="Mot de passe" width="100%"/>
+            
+            <div class="row col-md-12">
+              <div class="col-md-6 login-checkbox text-right">
+                <input type="checkbox">
+                <label class="input-text">Restez Connecté</label>
+              </div>
+              <div class="col-md-6 text-left">
+                <a [routerLink]="['/password-reset']" class="password-forgotten">Mot de passe oublié?</a>
+              </div>
+            </div>
+            <button type="submit" [disabled]="!loginForm.valid" class="btn login-button">Login</button>
+            
+        </form>
         <p>Vous n'êtes pas membre? <a [routerLink]="['/register']">Inscrivez vous ici</a></p>   
       </div>      
-      
-    </header>
-  </div>
-</div>
+   

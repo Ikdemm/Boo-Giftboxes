@@ -1,5 +1,8 @@
 
 spring:
+    jackson:
+      serialization:
+        FAIL_ON_EMPTY_BEANS : false
     datasource:
         url: jdbc:mysql://localhost:3306/boo?useSSL=false
         username: root

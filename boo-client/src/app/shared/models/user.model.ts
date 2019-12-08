@@ -1,9 +1,10 @@
 import { Role } from './role.model';
 
 export class User {
-    _id?: string;
+    id: string;
     name: string;
     imageUrl: string;
+    email:string;
     phone: string;
     city: string;
     state: string;

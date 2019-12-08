@@ -26,6 +26,7 @@ import {
 import { SharedModule } from 'app/shared/shared.module';
 import { FuseWidgetModule, FuseConfirmDialogModule } from '@fuse/components';
 import { FuseSharedModule } from '@fuse/shared.module';
+import { OrderModalComponent } from './orders-list/order-modal/order-modal.component';
 const routes = [
   {
     path: '',
@@ -37,7 +38,7 @@ const routes = [
   }
 ]
 @NgModule({
-  declarations: [ OrdersListComponent],
+  declarations: [ OrdersListComponent, OrderModalComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -64,6 +65,8 @@ const routes = [
     FuseSharedModule,
     FuseWidgetModule,
     SharedModule
+  ],entryComponents:[
+    OrderModalComponent
   ]
 })
 export class OrdersModule { }

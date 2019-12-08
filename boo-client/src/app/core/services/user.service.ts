@@ -5,13 +5,13 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class EmailService {
-
-  api: string = environment.apiUrl+"email/";
+export class UserService {
+  api: string = environment.apiUrl+"auth/";
 
   constructor(private http: HttpClient) { }
 
-  sendEmail(body) {
-    return this.http.post(this.api, body);
+  signUP(user){
+    return this.http.post(this.api+"signup",user);
   }
+  
 }

@@ -10,11 +10,12 @@ import { Box } from 'src/app/shared/models/box.model';
 })
 export class BooboxListComponent implements OnInit {
 
-  boobox$: Observable<Box[]>;
+  boobox: Box[];
 
   constructor(private boxService: BoxService) { }
 
   ngOnInit() {
+    this.boxService.findAll().subscribe(data=>{this.boobox=data})
     
   }
 
