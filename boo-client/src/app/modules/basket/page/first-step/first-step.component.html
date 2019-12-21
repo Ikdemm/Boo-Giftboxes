@@ -156,62 +156,47 @@
     <!-- STEP 3 -->
     <div *ngIf="step==3">
         <div class="text-center">
-          <h4 class="section-title">Mes Achats</h4>
-        </div>
-  
-        <div class="row table-content">
-  
-          <div class="purchases-table col-md-9">
-            <div class="col-mx-12">
-              <div class="col-md-3">
-                <h4 class="table-header text-center">Catalogue</h4>
-              </div>
-              <div class="col-md-3">
-                <h4 class="table-header text-center">Prix</h4>
-              </div>
-              <div class="col-md-3">
-                <h4 class="table-header text-center">Quatité</h4>
-              </div>
-              <div class="col-md-3">
-                <h4 class="table-header text-center">Total</h4>
-              </div>
+            <h4 class="section-title">Payer par carte bancaire</h4>
             </div>
-            <div class="purchases col-mx-12">
-              <div *ngIf="orderDetailList.length == '0'" class="purchase">
-                <div class="col-md-23 text-center">
-                  <p class="purchase-text">Empty Cart<p>
+    
+            <div class="paiement-form text-center">
+                <select placeholder="Pays">
+                    <option value="tunisia">Tunisie</option>
+                    <option value="france">France</option>
+                    <option value="england">Angleterre</option>
+                </select>
+                <input type="text" name="line1" placeholder="Nom"><br>
+                <input type="text" name="line1" placeholder="Prénom"><br>
+                <input type="text" name="line1" placeholder="Numéro de carte crédit"><br>
+                <select placeholder="Type de paiement">
+                    <option value="Type1">Type1</option>
+                    <option value="Type2">Type2</option>
+                    <option value="Type3">Type3</option>
+                </select>
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <h6 class="form-label">Date d'expiration</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="number" name="month" class="date-input" placeholder="00">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="number" name="year" class="date-input" placeholder="00">
+                    </div>
                 </div>
-              </div>
-              <div *ngFor="let orderDetail of orderDetailList" class="purchase">
-                <div class="col-md-3 text-center">
-                  <p class="purchase-text">{{orderDetail.coffret.name}}<p>
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <h6 class="form-label">Cryptogramme visuel</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" name="month" class="crypto-input" placeholder="000">
+                    </div>
                 </div>
-                <div class="col-md-3 text-center">
-                  <p class="purchase-text">{{orderDetail.coffret.priceClient}} dt</p>
-                </div>
-                <div class="col-md-3 text-center">
-                  <input type="number" name="number" id="number" (change)="updateQuantite(orderDetail,$event)"
-                    value="{{orderDetail.quantite}}">
-                </div>
-                <div class="col-md-3 text-center">
-                  <p class="purchase-text">{{orderDetail.coffret.priceClient * orderDetail.quantite}} dt</p>
-                </div>
-              </div>
-  
+                <button class="btn confirm-button">
+                    Confirmer
+                </button>
             </div>
-          </div>
-          <div class="col-md-2 total text-center">
-            <div class="total-table">
-              <h4 class="table-header">Total</h4>
-              <div class="total-content">
-                <p class="purchase-text">{{total}} dt</p>
-              </div>
-            </div>
-            <button [disabled]="orderDetailList.length == '0'" (click)="confirmerOrder()" class="btn confirm-button">
-              Confirmer
-            </button>
-          </div>
-        </div>
+        
   
     </div>
   
