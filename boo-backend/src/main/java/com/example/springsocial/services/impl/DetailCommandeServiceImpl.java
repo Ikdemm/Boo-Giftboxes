@@ -3,6 +3,7 @@ package com.example.springsocial.services.impl;
 import com.example.springsocial.exception.ResourceNotFoundException;
 import com.example.springsocial.model.Cheque;
 import com.example.springsocial.model.DetailCommande;
+import com.example.springsocial.model.User;
 import com.example.springsocial.repository.DetailCommandeRepository;
 import com.example.springsocial.services.ChequeService;
 import com.example.springsocial.services.DetailCommandeService;
@@ -27,7 +28,7 @@ public class DetailCommandeServiceImpl implements DetailCommandeService {
     @Autowired
     EmailService emailService;
     @Override
-    public DetailCommande save(DetailCommande object) {
+    public DetailCommande save(DetailCommande object, User user) {
         log.info("save detail commande");
         log.info("coffret quantite: "+object.getQuantite());
         log.info("coffret price: "+object.getCoffret().getPriceClient());
@@ -41,18 +42,27 @@ public class DetailCommandeServiceImpl implements DetailCommandeService {
          */
         object.getCheques().forEach(cheque -> {
             cheque.setDate(new Date());
+            cheque.setCoffret(object.getCoffret());
             cheque = chequeService.save(cheque);
             cheques.add(cheque);
-            emailService.sendASynchronousMail(cheque.getEmail(),"CHEQUE SEND",cheque.getCode().toString());
             log.info("afer submit email");
             /**
              * TODO GENERATE QR CODE TO EACH CHEQUE AND SEND IT WITH EMAIL
              */
+            /**
+             * TODO GENERATE QR CODE
+             */
 
+            emailService.sendChequeMail(cheque,user);
 
         });
         object.setCheques(cheques);
         return detailCommandeRepository.save(object);
+    }
+
+    @Override
+    public DetailCommande save(DetailCommande object) {
+        return null;
     }
 
     @Override

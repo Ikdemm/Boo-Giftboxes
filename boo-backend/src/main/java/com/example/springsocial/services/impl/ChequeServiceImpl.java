@@ -1,7 +1,10 @@
 package com.example.springsocial.services.impl;
 
 import com.example.springsocial.exception.ResourceNotFoundException;
+import com.example.springsocial.model.Category;
 import com.example.springsocial.model.Cheque;
+import com.example.springsocial.model.User;
+import com.example.springsocial.model.enumClasses.ChequeStatusEnum;
 import com.example.springsocial.repository.ChequeRepository;
 import com.example.springsocial.services.ChequeService;
 import org.slf4j.Logger;
@@ -20,9 +23,56 @@ public class ChequeServiceImpl implements ChequeService {
     private static final Logger log = LoggerFactory.getLogger(ChequeServiceImpl.class);
 
     @Override
+    public Cheque findByCodeUser(UUID code, User user) {
+            Cheque cheque = chequeRepository.findByCode(code);
+            if(cheque!=null && cheque.getStatus()==ChequeStatusEnum.initial){
+                cheque.setClient(user);
+                cheque.setStatus(ChequeStatusEnum.checkedByUser);
+                return chequeRepository.save(cheque);
+            }
+            else{
+                throw new ResourceNotFoundException("Cheque", "code", code);
+            }
+
+
+    }
+
+    @Override
+    public Cheque findByCodePartner(UUID code, User user) {
+        Cheque cheque = chequeRepository.findByCode(code);
+        if(cheque!=null && cheque.getStatus()==ChequeStatusEnum.checkedByUser){
+            cheque.setPartner(user);
+            cheque.setStatus(ChequeStatusEnum.checkedByPartner);
+            return chequeRepository.save(cheque);
+        }
+        else{
+            throw new ResourceNotFoundException("Cheque", "code", code);
+        }
+
+
+    }
+
+    @Override
+    public List<Cheque> findAllByPartner(User partner) {
+        return chequeRepository.findAllByPartner(partner);
+    }
+
+    @Override
+    public List<Cheque> findAllByUser(User user) {
+        return chequeRepository.findAllByClient(user);
+    }
+
+
+    @Override
     public Cheque findByCode(UUID code) {
         return chequeRepository.findByCode(code);
     }
+
+    @Override
+    public Cheque findAndValid(UUID code) {
+        return null;
+    }
+
 
     @Override
     public Cheque save(Cheque object) {
@@ -30,7 +80,7 @@ public class ChequeServiceImpl implements ChequeService {
         log.info("/**************************/");
         log.info(code.toString()    );
         object.setDate(new Date());
-        object.setStatus("INVALID");
+        object.setStatus(ChequeStatusEnum.initial);
         while (this.findByCode(code) != null) {
             log.info(code.toString());
             code = UUID.randomUUID();

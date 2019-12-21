@@ -1,14 +1,16 @@
 package com.example.springsocial.services;
 
-import com.example.springsocial.model.EmailAddress;
-import com.example.springsocial.model.Mail;
+import com.example.springsocial.model.*;
 import org.springframework.mail.MailException;
 
 import javax.mail.MessagingException;
 
 public interface EmailService {
-    void sendASynchronousMail(String toEmail,String subject,String text);
-    void sendEmail(EmailAddress user) throws MailException;
     void sendEmailWithAttachment(EmailAddress user) throws MailException, MessagingException;
+    void sendPartnertAddMail( User user);
+    void sendChequeMail( Cheque cheque,User user);
+    void sendOrderMail(User user, Commande commande);
+    void sendSignUpMail(User user);
+
 
 }

@@ -6,6 +6,7 @@ import com.example.springsocial.model.Role;
 import com.example.springsocial.model.User;
 import com.example.springsocial.modelDto.PartnerDto;
 import com.example.springsocial.repository.RoleRepository;
+import com.example.springsocial.services.EmailService;
 import com.example.springsocial.services.FileStorageService;
 import com.example.springsocial.services.UserSevice;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -49,7 +50,8 @@ public class GestionUsersController {
     private RoleRepository roleRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
-
+    @Autowired
+    private EmailService emailService;
     /**
      * Get List Partners
      */
@@ -92,7 +94,9 @@ public class GestionUsersController {
         for (ConstraintViolation<PartnerDto> violation : violations) {
             throw new BadRequestException(violation.getPropertyPath() + " " + violation.getMessage());
         }
+
         User user = modelMapper.map(partnerDto, User.class);
+        emailService.sendPartnertAddMail(user);
         user.setEmailVerified(false);
         user.setProvider(AuthProvider.local);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -106,6 +110,7 @@ public class GestionUsersController {
         }
         fileStorageService.storeFile(image);
         return new ResponseEntity<User>(userSevice.save(user), HttpStatus.OK);
+        //return new ResponseEntity<User>(userSevice.save(user), HttpStatus.OK);
         // return new ResponseEntity<User>(userSevice.save(user), HttpStatus.OK);
     }
 
@@ -129,13 +134,13 @@ public class GestionUsersController {
     /**
      * Update Partner
      */
-    @PutMapping("/update")
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
+    /*@PutMapping("/update")
     public ResponseEntity<?> UpdatePartner(@RequestBody User user) {
         System.out.println("monta");
         log.info(String.format("received request to list Partners "));
         return new ResponseEntity<User>(userSevice.save(user, "PARTNER"), HttpStatus.OK);
-    }
+    }*/
 
     @GetMapping("/imageDownload/{fileName}")
     @PreAuthorize("hasRole('ADMIN')")

@@ -6,6 +6,7 @@ import { BooponRoutingModule } from './boopon-routing.module';
 import { BooponComponent } from './page/boopon/boopon.component';
 
 import { SharedModule } from '../../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     SharedModule,
     BooponRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class BooponModule { }

@@ -8,12 +8,15 @@ import{RequestHttpInterceptor} from './helpers/request-http.interceptor'
 import { CartService } from './services/cart.service';
 import { AuthenticationService } from './services/authentication.service';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AuthGuard } from './guard/auth-guard';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
   providers:[
     BoxService,
@@ -21,6 +24,7 @@ import { AuthenticationService } from './services/authentication.service';
     EmailService,
     CartService,
     AuthenticationService,
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestHttpInterceptor,

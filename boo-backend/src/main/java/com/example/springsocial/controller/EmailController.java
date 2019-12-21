@@ -23,7 +23,7 @@ public class EmailController {
     @Autowired
     EmailService emailService;
 
-    @RequestMapping("send-mail")
+   /* @RequestMapping("send-mail")
     public String send() {
         user.setEmailAddress("ikdem.benmbarek@etudiant-fst.utm.tn");
         try {
@@ -43,7 +43,7 @@ public class EmailController {
             System.out.println(mailException);
         }
         return "Congratulations! Your mail has been send to the user.";
-    }
+    }*/
 
 
 }

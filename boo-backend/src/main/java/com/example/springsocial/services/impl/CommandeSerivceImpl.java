@@ -6,6 +6,7 @@ import com.example.springsocial.model.User;
 import com.example.springsocial.repository.CommandeRepository;
 import com.example.springsocial.services.CommandeService;
 import com.example.springsocial.services.DetailCommandeService;
+import com.example.springsocial.services.EmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ import java.util.List;
 @Service
 public class CommandeSerivceImpl implements CommandeService {
     private static final Logger log = LoggerFactory.getLogger(CommandeSerivceImpl.class);
+    @Autowired
+    EmailService emailService;
     /**
      * ToDo
      * Save commande with coffret
@@ -37,20 +40,32 @@ public class CommandeSerivceImpl implements CommandeService {
         commande.setPrix_totale(Long.valueOf(0));
         commande.setAddresse(user.getAddress());
         commande.setStatus("intial");
+        log.info("Prix Totale Commande "+commande.getPrix_totale());
         log.info(commande.getDate().toString());
         log.info(commande.getDetailCommandes().toString());
         log.info(String.valueOf(commande.getDetailCommandes().size()));
         commande.getDetailCommandes().forEach(detailCommande -> {
             log.info("quantite detail Commande "+detailCommande.getQuantite());
             log.info(detailCommande.getPrix()+"");
-            detailCommande = detailCommandeService.save(detailCommande);
+            detailCommande = detailCommandeService.save(detailCommande,user);
             commande.setPrix_totale(commande.getPrix_totale() + detailCommande.getPrix());
         });
         /**
          *  SEND MAIL ORDER CONFIRMATION
          */
         log.info("AFTER SEND EMAIL AND BEFORE SUBMIT COMMANDE");
+        emailService.sendOrderMail(user,commande);
         return commandeRepository.save(commande);
+    }
+
+    /**
+     * Find list order by User
+     * @param user
+     * @return
+     */
+    @Override
+    public List<Commande> findAllByUser(User user) {
+        return this.commandeRepository.findAllByUser(user);
     }
 
     @Override

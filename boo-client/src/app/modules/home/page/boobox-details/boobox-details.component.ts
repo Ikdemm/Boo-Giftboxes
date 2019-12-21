@@ -5,10 +5,11 @@ import { BoxService } from 'src/app/core/services/box.service';
 import { Observable } from 'rxjs';
 import { Box } from 'src/app/shared/models/box.model';
 
-import { BooboxCatalogComponent } from '../boobox-catalog/boobox-catalog.component';
-import { switchMap } from 'rxjs/operators';
+
 import { CartService } from 'src/app/core/services/cart.service';
+import { MatDialog } from '@angular/material';
 import { OrderDetails } from 'src/app/shared/models/order-details.model';
+import { ConfirmModalComponent } from 'src/app/shared/modals/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-boobox-details',
@@ -19,14 +20,17 @@ export class BooboxDetailsComponent implements OnInit {
   gottenBox: Box;
 
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private boxService: BoxService,
-    private cartService:CartService
-    ) { }
+    private cartService: CartService,
+    private _matDialog: MatDialog
+  ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.boxService.findAll().subscribe((data: Box[]) => {console.log(data);
+    this.activatedRoute.params.subscribe(params => {
+      this.boxService.findAll().subscribe((data: Box[]) => {
+        console.log(data);
         let boxes = data;
         let id = params['id'];
         console.log(id);
@@ -36,13 +40,28 @@ export class BooboxDetailsComponent implements OnInit {
     });
   }
 
-  addToShoppingCart(box){
-    console.log(box)
-    let orderDetail:OrderDetails=new OrderDetails();
-    orderDetail.box=this.gottenBox;
-    orderDetail.quantity=1;
+  addToShoppingCart(box: Box) {
+    let orderDetail: OrderDetails = new OrderDetails();
+    orderDetail.coffret = this.gottenBox;
+    orderDetail.quantite = 1;
     console.log(orderDetail)
     this.cartService.addToCart(orderDetail);
+
+    let confirmRef = this._matDialog.open(ConfirmModalComponent, {
+      data: {
+        title: "Ajouté au panier !",
+        message: box.name + " a été ajouté à votre panier",
+        titleConfirmButton: "Finaliser La Commande",
+        titleCancelButton: "Poursuivre Vos Achats"
+      },
+      width: "500px",
+      height: "200px"
+    });
+    confirmRef.afterClosed().subscribe(data => {
+      console.log(data)
+      if (data)
+        this.router.navigate(['basket'])
+    })
   }
 
 }

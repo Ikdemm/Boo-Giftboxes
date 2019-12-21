@@ -83,4 +83,13 @@ public class CommandeController {
 
         return new ResponseEntity<Commande>(commandeService.save(objectMapper.readValue((DataInput) commande,Commande.class), user), HttpStatus.OK);
     }
+    @GetMapping("/findAllByUser")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('PARTNER') or  hasRole('USER')")
+    public ResponseEntity<?> findAllCommandeByUser( @CurrentUser UserPrincipal userPrincipal) throws IOException {
+        System.out.println("monta");
+        log.info(String.format("received request to list Commande "));
+        User user = userSevice.findOne(userPrincipal.getId());
+
+        return new ResponseEntity<List<Commande>>(commandeService.findAllByUser(user), HttpStatus.OK);
+    }
 }

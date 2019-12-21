@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CategoryService {
 
-  api: string = environment.apiUrl+"/categories/";
+  api: string = environment.apiUrl+"categories/";
 
   constructor(private http: HttpClient) { }
 

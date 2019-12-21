@@ -40,7 +40,7 @@ export class PartnersAddComponent implements OnInit {
 
     ngOnInit() {
         this.initPartnerForm();
-        this.languages = ["java", "golang", "node"];
+        
     }
 
     initPartnerForm() {
@@ -79,7 +79,7 @@ export class PartnersAddComponent implements OnInit {
                     "Partner " + object.name + " has been added",
                     MessageType.Create
                 );
-                this.matDialogRef.close("saved");
+        //        this.matDialogRef.close("saved");
             },
             error => {
                 console.log(error)

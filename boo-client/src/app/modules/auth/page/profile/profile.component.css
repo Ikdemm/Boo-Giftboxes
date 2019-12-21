@@ -1,0 +1,52 @@
+.profile-pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    border-radius: 50%;
+    margin-top: 10%;
+    border: solid 8px rgba(125, 206, 216, 0.5);
+}
+
+.content {
+    padding-top: 8%;
+}
+
+.photo-button{
+    background-color: #7dced8;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    font-size: 1em;
+    text-transform: uppercase;
+    border-radius: 30px;
+    padding: 0.5em 1.5em;
+    margin-top: 1em;
+  }
+  
+.photo-button:hover {
+    color: #7dced8;
+    border: solid 1px #7dced8;
+    background-color: white;
+  }
+
+.profile-box {
+    background-color: rgba(125, 206, 216, 0.5);
+    margin-top: 6%;
+    border-radius: 1em;
+    padding: 1em;
+    width: 100%;
+}
+
+input {
+    background-color: white !important;
+    color: dimgray !important;
+    font-size: 0.8em !important;
+    padding-left: 0.7em !important;
+    padding-top: 1em !important;
+    padding-bottom: 1em !important;
+    font-weight: bold !important;
+    letter-spacing: 0.1em !important;
+    border-radius: 7px !important;
+    margin-bottom: 0.1em;
+}

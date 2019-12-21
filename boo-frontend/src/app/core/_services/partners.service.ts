@@ -23,4 +23,7 @@ export class PartnersService {
   getImageFile(name){
     return this.http.get(this.api+"imageDownload/"+name,{responseType: 'blob'});
   }
+  delete(id){
+    return this.http.delete(this.api+"delete/"+id);
+  }
 }

@@ -3,8 +3,8 @@ import { Check } from './check.model';
 
 export class OrderDetails {
     id?: string;
-    quantity: number;
+    quantite: number;
     price: number;
-    box: Box;
-    checks: Array<Check>;
+    coffret: Box;
+    cheques: Array<Check>;
 }

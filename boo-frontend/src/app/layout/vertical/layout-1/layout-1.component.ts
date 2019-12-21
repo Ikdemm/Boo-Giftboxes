@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, OnDestroy, OnInit, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { FuseConfigService } from '@fuse/services/config.service';
@@ -17,6 +17,9 @@ export class VerticalLayout1Component implements OnInit, OnDestroy
     fuseConfig: any;
     navigation: any;
     user;
+
+    isLoggedIn$: Observable<boolean>;
+    isLoggedInCheck:Boolean;
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -27,7 +30,8 @@ export class VerticalLayout1Component implements OnInit, OnDestroy
      */
     constructor(
         private _fuseConfigService: FuseConfigService,
-        private authenticationService:AuthenticationService
+        private _authenticationService:AuthenticationService,
+         private cdRef : ChangeDetectorRef,
         
     )
     {
@@ -37,6 +41,14 @@ export class VerticalLayout1Component implements OnInit, OnDestroy
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+        this.isLoggedIn$ = this._authenticationService.isLoggedIn;
+        this.isLoggedIn$.subscribe(data=>{
+            console.log(data);
+         //   this.cdRef.detectChanges();
+
+        })
+
+
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -7,6 +7,6 @@ export class Order {
     address: string;
     totalPrice: number;
     status: string;
-    detailCommandes: Set<OrderDetails>;
+    detailCommandes: Array<OrderDetails>;
     user: User;
 }

@@ -28,7 +28,7 @@ export class CartService {
   }
   addToCart(orderDetails:OrderDetails){
     console.log(orderDetails)
-    let oDetailIndex= this.boxes.findIndex(element=>element.box.id == orderDetails.box.id)
+    let oDetailIndex= this.boxes.findIndex(element=>element.coffret.id == orderDetails.coffret.id)
     if (oDetailIndex==-1)
     {
       this.boxes.push(orderDetails);    

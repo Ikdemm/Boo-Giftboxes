@@ -19,14 +19,11 @@ export class ChecksListComponent implements OnInit {
   @ViewChild("sort") sort: MatSort;
   displayedColumns = [
     "number",
-    "price",
     "date",
-    "deadline",
+    "email",
     "status",
-    "partner",
     "box",
     "actions",
-
   ];
   hasItems = false;
   loading = true;
@@ -39,7 +36,7 @@ export class ChecksListComponent implements OnInit {
     }, 1000);
   }
   getListCheck() {
-    this.chekService.findAll().subscribe(data => {
+    this.chekService.findAllByPartner().subscribe(data => {
       console.log(data);
       this.dataSource = new MatTableDataSource<any>(data);
       if (this.dataSource.data.length == 0) {
@@ -64,8 +61,10 @@ export class ChecksListComponent implements OnInit {
       panelClass: "mail-compose-dialog"
     });
     dialogRef.afterClosed().subscribe(response => {
-      if (!response) {
-        return;
+      console.log(response)
+      if (response) {
+        this.getListCheck();
+
       }
     });
   }

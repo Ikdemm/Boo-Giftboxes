@@ -11,6 +11,7 @@ import com.example.springsocial.payload.SignUpRequest;
 import com.example.springsocial.repository.RoleRepository;
 import com.example.springsocial.repository.UserRepository;
 import com.example.springsocial.security.TokenProvider;
+import com.example.springsocial.services.EmailService;
 import com.example.springsocial.services.FileStorageService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -50,6 +51,8 @@ public class AuthController {
     @Autowired
     private TokenProvider tokenProvider;
     @Autowired
+    private EmailService emailService;
+    @Autowired
     private RoleRepository roleRepository;
     @Autowired
     private FileStorageService fileStorageService;
@@ -86,7 +89,7 @@ public class AuthController {
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(signUpRequest.getPassword());
         user.setProvider(AuthProvider.local);
-
+        emailService.sendSignUpMail(user);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Set<Role> roles = new HashSet<Role>(roleRepository.findByName("USER"));
         user.setRoles(roles);

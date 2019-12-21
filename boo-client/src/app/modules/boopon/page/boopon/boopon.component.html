@@ -3,16 +3,19 @@
         <img src="assets/images/boopon/boo_cameleon.svg" class="background-img">
     </div>
     <div class="col-md-6">
+         <form name="booponForm" [formGroup]="booponForm"  (ngSubmit)="submitBoopon()" fxLayout="column" fxFlex>
         <h6>J'ai un BOO'PON <img src="assets/images/boopon/minifleche.svg" width="15em"></h6>
         <div class="col-md-9 text-center">
-            <input id="input-code" type="text" name="name" class="form-control text-center" id="name"
+            <input id="input-code" type="text" formControlName="code" name="name" class="form-control text-center" id="name"
                 placeholder="P4Mth'25rQBDH?DS" />
         </div>
         <div class="col-md-3 text-left">
-            <a href="">
-                <img src="assets/images/boopon/boutonGo.svg" class="go-button">
-            </a>
+                <button [disabled]="!booponForm.valid"type="submit"><img src="assets/images/boopon/boutonGo.svg" class="go-button" alt=""></button>
+                
+               <!--<img src="assets/images/boopon/boutonGo.svg" class="go-button">-->
+            
         </div>
         <p>Enregistrez votre BOO'PON pour L'activer et le sécuriser en cas de perte</p>
+        </form>
     </div>
 </div>

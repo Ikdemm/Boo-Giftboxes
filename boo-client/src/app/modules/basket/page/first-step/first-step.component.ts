@@ -5,6 +5,8 @@ import { element } from 'protractor';
 import { Order } from 'src/app/shared/models/order.model';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { OrderService } from 'src/app/core/services/order.service';
+import { Check } from 'src/app/shared/models/check.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-first-step',
@@ -14,10 +16,15 @@ import { OrderService } from 'src/app/core/services/order.service';
 export class FirstStepComponent implements OnInit {
   orderDetailList: Array<OrderDetails>;
   total: number = 0;
-  constructor(private cartService: CartService, private authService: AuthenticationService, private orderService: OrderService) { }
+  step: Number = 1;
+  loggedIn: boolean;
+  constructor(private router:Router,private cartService: CartService, private authService: AuthenticationService, private orderService: OrderService) { }
 
   ngOnInit() {
     this.findAllItems();
+    this.authService.isLoggedIn.subscribe(data =>
+      this.loggedIn = data
+    );
 
   }
   findAllItems() {
@@ -29,25 +36,42 @@ export class FirstStepComponent implements OnInit {
     this.total = 0;
 
     this.orderDetailList.forEach(element => {
-      this.total += element.box.priceClient * element.quantity
+      this.total += element.coffret.priceClient * element.quantite
     })
   }
   updateQuantite(orderDetail: OrderDetails, event) {
-    orderDetail.quantity = event.target.value
+    orderDetail.quantite = event.target.value
     this.cartService.addToCart(orderDetail);
     this.calculTotal()
   }
   confirmerOrder() {
-    let order = new Order();
-    order.date = new Date();
-    order.detailCommandes = new Set<OrderDetails>(this.orderDetailList);
-    console.log(order)
-    this.orderService.confirmOrder(order).subscribe(
-      data => {
-        console.log(data)
-      },
-      err=>{
-        console.log(err)
+    if (this.loggedIn) {
+      let order = new Order();
+      order.date = new Date();
+      order.detailCommandes = this.orderDetailList;
+      console.log(order);
+      order.detailCommandes.forEach(detailCommande => {
+        let cheque = new Check();
+        cheque.email = "monta.garfa.1920@gmail.com"
+        detailCommande.cheques = new Array<Check>();
+        for (let i = 0; i < detailCommande.quantite; i++)
+          detailCommande.cheques[i] = cheque;
       })
+      this.orderService.confirmOrder(order).subscribe(
+        data => {
+          console.log(data)
+          localStorage.removeItem('cart');
+        },
+        err => {
+          console.log(err)
+        })
+    }
+    else {
+      this.router.navigate(['/login'])
+    }
+
+  }
+  goToStep(step) {
+    this.step = step;
   }
 }

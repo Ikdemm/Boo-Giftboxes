@@ -25,14 +25,26 @@
             </button>
           </a>
         </li>
+        
         <li>
-          <a [routerLink]="['/login']">
+          <a [routerLink]="['/login']" *ngIf="!(isLoggedIn$ | async)">
             <button type="button" class="btn" id="login-button">
               LOGIN
             </button>
           </a>
+          <a  *ngIf="isLoggedIn$ | async">
+            <button  type="button" (click)="onLogout()" class="btn" id="login-button">
+              LOGOUT
+            </button>
+          </a>
         </li>
-        <li>
+        <li *ngIf="isLoggedIn$ | async">
+          <a [routerLink]="['/my-profile']">
+            <img src="assets/images/navbar/profile.svg" width="26em">
+          </a>
+        </li>
+        
+        <li >
           <a [routerLink]="['/basket']">
             <img src="assets/images/navbar/PANIER.svg" width="26em">
           </a>

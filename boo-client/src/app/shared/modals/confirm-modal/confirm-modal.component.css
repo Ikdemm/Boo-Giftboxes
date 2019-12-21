@@ -1,0 +1,18 @@
+.cancel-button {
+    background-color: #f8f297;
+    color: #29246b;
+    font-size: 0.7em;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-radius: 20px;
+}
+.confirm-button {
+    background-color: #7dced8;
+    color: #29246b;
+    font-size: 0.7em;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-radius: 20px;
+}

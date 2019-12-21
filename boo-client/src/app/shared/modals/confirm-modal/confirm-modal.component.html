@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<mat-dialog-content>
+    <p>
+        {{data.message}}
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <button *ngIf="data.titleCancelButton" mat-button color="primary" class="btn cancel-button"
+            (click)="onDismiss()">{{data.titleCancelButton}}</button>
+        <button *ngIf="data.titleConfirmButton" mat-raised-button class="btn confirm-button" (click)="onConfirm()">{{data.titleConfirmButton}}</button>
+    </div>
+</mat-dialog-actions>

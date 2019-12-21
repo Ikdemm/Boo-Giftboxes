@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/basket/basket.module').then(mod => mod.BasketModule),
   },
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: '**', component: PageNotFoundComponent}
+  {path: '**', redirectTo: '/home'}
 ];
 
 @NgModule({

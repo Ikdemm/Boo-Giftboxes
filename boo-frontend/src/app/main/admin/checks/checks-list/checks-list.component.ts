@@ -18,14 +18,12 @@ export class ChecksListComponent implements OnInit {
   @ViewChild("sort") sort: MatSort;
   displayedColumns = [
     "number",
-    "price",
     "date",
-    "deadline",
+    "email",
     "status",
     "partner",
     "box",
     "actions",
-
   ];
   hasItems = false;
   loading = true;

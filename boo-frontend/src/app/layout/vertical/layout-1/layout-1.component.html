@@ -1,4 +1,4 @@
-<div id="main" *ngIf="authenticationService.getUser()">
+<div id="main" *ngIf="isLoggedIn$ | async">
 
     <!-- TOOLBAR: Above -->
     <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'above'">
@@ -55,7 +55,7 @@
 </div>
 
 
-<div id="main" *ngIf="!authenticationService.getUser()">
+<div id="main" *ngIf="!(isLoggedIn$ | async)">
     <!-- TOOLBAR: Above -->
     <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'above'">
         <ng-container *ngTemplateOutlet="toolbar"></ng-container>

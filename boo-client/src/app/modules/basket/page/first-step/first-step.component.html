@@ -1,83 +1,219 @@
 <div class="main-content">
-  <img src="assets/images/basket/leaf1.PNG" id="leaf1">
-  <img src="assets/images/basket/leaf2.PNG" id="leaf2">
+  <!--<img src="assets/images/basket/leaf1.PNG" id="leaf1">-->
+  <!--<img src="assets/images/basket/leaf2.PNG" id="leaf2">-->
   <hr class="section-line">
 
   <div class="container content">
     <div class="row">
       <div class="col-md-4 text-left">
-        <a [routerLink]="['/basket']">
+        <a (click)="goToStep(1)">
           <h5 class="section-number section-number1 text-center">1</h5>
         </a>
       </div>
       <div class="col-md-4 text-center">
-        <a [routerLink]="['/second-step']">
+        <a (click)="goToStep(2)">
           <h5 class="section-number section-number2 text-center">2</h5>
         </a>
       </div>
       <div class="col-md-4 text-right">
-        <a [routerLink]="['/third-step']">
+        <a (click)="goToStep(3)">
           <h5 class="section-number section-number3 text-center">3</h5>
         </a>
       </div>
     </div>
+    <!-- STEP 1 -->
+    <div *ngIf="step==1">
+      <div class="text-center">
+        <h4 class="section-title">Mes Achats</h4>
+      </div>
 
-    <div class="text-center">
-      <h4 class="section-title">Mes Achats</h4>
-    </div>
+      <div class="row table-content">
 
-    <div class="row table-content">
+        <div class="purchases-table col-md-9">
+          <div class="col-mx-12">
+            <div class="col-md-3">
+              <h4 class="table-header text-center">Catalogue</h4>
+            </div>
+            <div class="col-md-3">
+              <h4 class="table-header text-center">Prix</h4>
+            </div>
+            <div class="col-md-3">
+              <h4 class="table-header text-center">Quatité</h4>
+            </div>
+            <div class="col-md-3">
+              <h4 class="table-header text-center">Total</h4>
+            </div>
+          </div>
+          <div class="purchases col-mx-12">
+            <div *ngIf="orderDetailList.length == '0'" class="purchase">
+              <div class="col-md-23 text-center">
+                <p class="purchase-text">Empty Cart<p>
+              </div>
+            </div>
+            <div *ngFor="let orderDetail of orderDetailList" class="purchase">
+              <div class="col-md-3 text-center">
+                <p class="purchase-text">{{orderDetail.coffret.name}}<p>
+              </div>
+              <div class="col-md-3 text-center">
+                <p class="purchase-text">{{orderDetail.coffret.priceClient}} dt</p>
+              </div>
+              <div class="col-md-3 text-center">
+                <input type="number" name="number" id="number" (change)="updateQuantite(orderDetail,$event)"
+                  value="{{orderDetail.quantite}}">
+              </div>
+              <div class="col-md-3 text-center">
+                <p class="purchase-text">{{orderDetail.coffret.priceClient * orderDetail.quantite}} dt</p>
+              </div>
+            </div>
 
-      <div class="purchases-table col-md-9">
-        <div class="col-mx-12">
-          <div class="col-md-3">
-            <h4 class="table-header text-center">Catalogue</h4>
-          </div>
-          <div class="col-md-3">
-            <h4 class="table-header text-center">Prix</h4>
-          </div>
-          <div class="col-md-3">
-            <h4 class="table-header text-center">Quatité</h4>
-          </div>
-          <div class="col-md-3">
-            <h4 class="table-header text-center">Total</h4>
           </div>
         </div>
-        <div class="purchases col-mx-12">
-          <div *ngIf="orderDetailList.length == '0'" class="purchase">
-            <div class="col-md-23 text-center">
-              <p class="purchase-text">Empty Cart<p>
+        <div class="col-md-2 total text-center">
+          <div class="total-table">
+            <h4 class="table-header">Total</h4>
+            <div class="total-content">
+              <p class="purchase-text">{{total}} dt</p>
             </div>
           </div>
-          <div *ngFor="let orderDetail of orderDetailList" class="purchase">
-            <div class="col-md-3 text-center">
-              <p class="purchase-text">{{orderDetail.box.name}}<p>
-            </div>
-            <div class="col-md-3 text-center">
-              <p class="purchase-text">{{orderDetail.box.priceClient}} dt</p>
-            </div>
-            <div class="col-md-3 text-center">
-              <input type="number" name="number" id="number" (change)="updateQuantite(orderDetail,$event)" value="{{orderDetail.quantity}}">
-            </div>
-            <div class="col-md-3 text-center">
-              <p class="purchase-text">{{orderDetail.box.priceClient * orderDetail.quantity}} dt</p>
-            </div>
-          </div>
-
+          <button [disabled]="orderDetailList.length == '0'" (click)="confirmerOrder()" class="btn confirm-button">
+            Confirmer
+          </button>
         </div>
       </div>
-      <div class="col-md-2 total text-center">
-        <div class="total-table">
-          <h4 class="table-header">Total</h4>
-          <div class="total-content">
-            <p class="purchase-text">{{total}} dt</p>
+
+    </div>
+    <!-- STEP 2 -->
+    <div *ngIf="step==2">
+     
+        <div class="text-center">
+            <h4 class="section-title">Paiement</h4>
+        </div>
+
+        <div class="row table-content">
+            <div class="purchases-table col-md-9">
+                <div class="col-mx-12 tab">
+                    <div class="col-md-6 text-center">
+                        <button class="tablinks" onclick="openMethod(event, 'online')">Payer en ligne</button>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <button class="tablinks" onclick="openMethod(event, 'delivery')">Livraison</button>
+                    </div>
+                </div>
+                <div class="addresses col-mx-12">
+                    <div id="online" class="tabcontent">
+                        <h6 class="form-title">Insérez une ou plusieurs adresses pour les coffrets achetés</h6>
+                        <div class="row address">
+                            <div class="col-md-7 inputs">
+                                <input type="text" name="line1" placeholder="ADRESSE (LIGNE 1)"
+                                    class="address-input"><br>
+                                <input type="text" name="line2" placeholder="ADRESSE (LIGNE 2)"
+                                    class="address-input"><br>
+                                <input type="text" name="postcode" placeholder="CODE POSTAL" class="postcode-input"><br>
+                            </div>
+                            <div class="col-md-5 category">
+                                <select>
+                                    <option value="catalogue1">Catalogue1</option>
+                                    <option value="catalogue2">Catalogue2</option>
+                                    <option value="catalogue3">Catalogue3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <a><img src="img/ILLUSTRATIONS/panier/add-address.svg" class="add-address" alt=""></a>
+                    </div>
+                    <div id="delivery" class="tabcontent">
+                        <h6 class="form-title">Insérez l'adresse ou vous voulez livrer le cadeau</h6>
+                        <div class="row address">
+                            <div class="col-md-7 inputs">
+                                <input type="text" name="line1" placeholder="ADRESSE (LIGNE 1)"
+                                    class="address-input"><br>
+                                <input type="text" name="line2" placeholder="ADRESSE (LIGNE 2)"
+                                    class="address-input"><br>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="text" name="postcode" placeholder="CODE POSTAL" class="postcode-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-2 total text-center">
+                <div class="total-table">
+                    <h4 class="table-header">Total</h4>
+                    <div class="total-content">
+                        <p class="purchase-text">XX dt</p>
+                    </div>
+                </div>
+                <button class="btn confirm-button">
+                    Confirmer
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- STEP 3 -->
+    <div *ngIf="step==3">
+        <div class="text-center">
+          <h4 class="section-title">Mes Achats</h4>
+        </div>
+  
+        <div class="row table-content">
+  
+          <div class="purchases-table col-md-9">
+            <div class="col-mx-12">
+              <div class="col-md-3">
+                <h4 class="table-header text-center">Catalogue</h4>
+              </div>
+              <div class="col-md-3">
+                <h4 class="table-header text-center">Prix</h4>
+              </div>
+              <div class="col-md-3">
+                <h4 class="table-header text-center">Quatité</h4>
+              </div>
+              <div class="col-md-3">
+                <h4 class="table-header text-center">Total</h4>
+              </div>
+            </div>
+            <div class="purchases col-mx-12">
+              <div *ngIf="orderDetailList.length == '0'" class="purchase">
+                <div class="col-md-23 text-center">
+                  <p class="purchase-text">Empty Cart<p>
+                </div>
+              </div>
+              <div *ngFor="let orderDetail of orderDetailList" class="purchase">
+                <div class="col-md-3 text-center">
+                  <p class="purchase-text">{{orderDetail.coffret.name}}<p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <p class="purchase-text">{{orderDetail.coffret.priceClient}} dt</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <input type="number" name="number" id="number" (change)="updateQuantite(orderDetail,$event)"
+                    value="{{orderDetail.quantite}}">
+                </div>
+                <div class="col-md-3 text-center">
+                  <p class="purchase-text">{{orderDetail.coffret.priceClient * orderDetail.quantite}} dt</p>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+          <div class="col-md-2 total text-center">
+            <div class="total-table">
+              <h4 class="table-header">Total</h4>
+              <div class="total-content">
+                <p class="purchase-text">{{total}} dt</p>
+              </div>
+            </div>
+            <button [disabled]="orderDetailList.length == '0'" (click)="confirmerOrder()" class="btn confirm-button">
+              Confirmer
+            </button>
           </div>
         </div>
-        <button [disabled]="orderDetailList.length == '0'" (click)="confirmerOrder()" class="btn confirm-button">
-          Confirmer
-        </button>
-      </div>
+  
     </div>
-
+  
   </div>
 </div>

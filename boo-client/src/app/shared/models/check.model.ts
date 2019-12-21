@@ -6,4 +6,5 @@ export class Check {
     date: Date;
     status: string;
     code: uuid;
+    email:string;
 }

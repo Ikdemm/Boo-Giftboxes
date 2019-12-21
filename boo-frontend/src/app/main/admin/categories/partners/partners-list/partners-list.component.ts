@@ -13,6 +13,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Categorie } from "app/shared/models/categorie.model";
 import { Partner } from "app/shared/models/partner.model";
 import { TabGroupStretchedExample } from "assets/angular-material-examples/tab-group-stretched/tab-group-stretched-example";
+import { LayoutUtilsService, MessageType } from "app/core/_utils/layout-utils.service";
 
 @Component({
     selector: "app-partners-list",
@@ -33,7 +34,9 @@ export class PartnersListComponent implements OnInit {
         private categoriesService: CategoriesService,
         private activatedRoute: ActivatedRoute,
         private partnersSrevice: PartnersService,
-        private _matDialog: MatDialog
+        private _matDialog: MatDialog,
+        private layoutUtilsService: LayoutUtilsService
+
     ) {}
 
     ngOnInit() {
@@ -106,6 +109,22 @@ export class PartnersListComponent implements OnInit {
             this.getListPartnersByCategory(this.category.id);
         });
     }
-    deletePartner(id) {}
+    deletePartner(partner) {
+        this.partnersSrevice.delete(partner.id).subscribe(
+            data=>{
+                this.layoutUtilsService.showActionNotification(
+                    "Partner " + partner.email + " has been delete",
+                    MessageType.Delete
+                );
+                this.getListPartnersByCategory(this.category.id)
+            },
+            err=>{
+                this.layoutUtilsService.showActionNotification(
+                    err.message,
+                    MessageType.Error
+                );
+            }
+        )
+    }
     editPartner(partner) {}
 }

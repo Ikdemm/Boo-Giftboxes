@@ -21,8 +21,8 @@ export class CheckVerifComponent implements OnInit {
     private formBuilder: FormBuilder,
     public matDialogRef: MatDialogRef<ChecksListComponent>,
     private _matDialog: MatDialog,
-    private layoutUtilsService: LayoutUtilsService,
-    private checksService: ChecksService
+    private _checksService: ChecksService,
+    private _layoutUtilsService:LayoutUtilsService
   ) { }
   ngOnInit() {
     this.initCategorieForm();
@@ -33,25 +33,17 @@ export class CheckVerifComponent implements OnInit {
       code: ["", Validators.required],
     });
   }
-  submitCategorie(categorieAddForm) {
-    console.log(categorieAddForm.value)
+  submitCheque() {
+    this._checksService.confirmeCheque(this.codeCheckForm.get('code').value).subscribe(
+      data=>{
+      this._layoutUtilsService.showActionNotification("Validation cheque à été effectuée",MessageType.Update);
+      this.matDialogRef.close("validee");
+    },
+    err=>{
+      this._layoutUtilsService.showActionNotification("Validation cheque à été échouéee",MessageType.Error);
+    
+    })
 
-    this.checksService.findAll().subscribe(
-      data => {
-        console.log(data);
-                /*this.layoutUtilsService.showActionNotification(
-                    "Category " + data.name + " has been added",
-                    MessageType.Create
-                );
-                this.matDialogRef.close("saved");
-                */},
-      error => {
-        console.log(error)
-        this.layoutUtilsService.showActionNotification(
-          error.error.message,
-          MessageType.Error
-        );
-      });
 
   }
 

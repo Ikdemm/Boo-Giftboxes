@@ -8,6 +8,7 @@ import com.example.springsocial.model.Role;
 import com.example.springsocial.model.User;
 import com.example.springsocial.repository.RoleRepository;
 import com.example.springsocial.repository.UserRepository;
+import com.example.springsocial.security.UserPrincipal;
 import com.example.springsocial.services.CategoryService;
 import com.example.springsocial.services.UserSevice;
 import org.slf4j.Logger;
@@ -54,6 +55,13 @@ public class UserSeviceImpl implements UserSevice {
         user1 = userRepository.save(user);
 
         return user1;
+    }
+
+    @Override
+    public User update(UserPrincipal userPrincipal,User user) {
+        log.info("user password: "+userPrincipal.getPassword());
+        user.setPassword(userPrincipal.getPassword());
+        return userRepository.save(user);
     }
 
     @Override

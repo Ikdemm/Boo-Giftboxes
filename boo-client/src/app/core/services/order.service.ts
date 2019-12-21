@@ -13,4 +13,7 @@ export class OrderService {
   confirmOrder(order){
     return this.http.post(this.api+"save",order);
   }
+  orderByUser(){
+    return this.http.get(this.api+"findAllByUser");
+  }
 }
