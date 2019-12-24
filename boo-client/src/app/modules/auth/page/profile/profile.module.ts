@@ -6,7 +6,8 @@ import { ChequeDetailsComponent } from './cheque-details/cheque-details.componen
 import { CommandeDetailsComponent } from './commande-details/commande-details.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatTabsModule } from '@angular/material';
+import { MatTableModule } from '@angular/material'  
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule,
+    MatTableModule
   ]
 })
 export class ProfileModule { }

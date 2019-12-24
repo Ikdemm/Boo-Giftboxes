@@ -11,32 +11,23 @@
                             Changer photo
                         </button>
                     </li>
-                    <li>
-                            <button class="btn photo-button" (click)="navigateDetails()">
-                                <!--<i class="fas fa-camera"></i>-->
-                                Détails du compte
-                            </button>
-                        </li>
-                    <li>
-                        <button class="btn photo-button" (click)="navigateListCheque()">
-                            <!--<i class="fas fa-camera"></i>-->
-                            Liste des Cheques
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn photo-button" (click)="navigateListCommande()">
-                            <!--<i class="fas fa-camera"></i>-->
-                            Liste des Commandes
-                        </button>
-                    </li>
-
                 </ul>
             </div>
 
         </div>
 
         <div class="col-md-7 text-center">
-            <router-outlet></router-outlet>
+            <mat-tab-group>
+                <mat-tab label="Details">
+                    <router-outlet></router-outlet>
+                </mat-tab>
+                <mat-tab label="Commandes">
+                    <app-commande-details></app-commande-details>
+                </mat-tab>
+                <mat-tab label="Chèques">
+                    <app-cheque-details></app-cheque-details>
+                </mat-tab>
+            </mat-tab-group>
         </div>
     </div>
 </div>

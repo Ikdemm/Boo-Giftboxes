@@ -50,3 +50,7 @@ input {
     border-radius: 7px !important;
     margin-bottom: 0.1em;
 }
+
+.profile-tab {
+    background-color: #29246b;
+}

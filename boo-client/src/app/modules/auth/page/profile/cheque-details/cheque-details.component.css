@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+}
+
+td {
+    text-align: left !important;
+}
+
+th {
+    background-color: rgba(125, 206, 216, 0.5);
+}
