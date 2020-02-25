@@ -1,16 +1,15 @@
-            
 <div class="w3-display-container wow fadeIn delay-05s">
     <div id="banner-slide1">
         <div class="container">
-            <div class="row">
-                <h3 id="banner1-title">Le meilleur des cadeaux!</h3>
+            <div class="row banner1">
                 <div class="col-md-12 wow fadeIn delay-05s">
                     <div class="banner-text col-md-6">
-                        <img src="assets/images/home/hello.svg" width="20%">
-                        <p>Je suis BOO le génie des cadeaux. Je propose des<br>
-                            <a id="myBtn" (click)="openBooboxModal()">BOO'BOX</a> qui offrent à leurs bénéficiaires la possibilité<br>
-                            de choisir LE cadeau coup de coeur parmi plusieurs.<br>
-                            C'est parti!</p>
+                        <img src="assets/images/home/hello.svg" width="20%"><br><br>
+                        <p>Moi c'est BOO! Le génie des cadeaux.<br>
+                            Ici tu trouveras des BOO'BOX!!<br>
+                            Ce sont des e-coffrets cadeaux qui offrent à ceux qui<br>
+                            te sont chers la chance de choisir leur cadeau coup<br>
+                            de &#9829; parmi plusieurs.</p>
                         <a [routerLink]="['/boobox-list']">
                             <button type="button" class="btn" id="boobox-button">
                                 Voir BOO'Box
@@ -80,14 +79,14 @@
             
             <div class="col-md-4 about-element text-center">
                 <img src="assets/images/home/avantage2.png" class="about-illustration">
-                <h6 class="about-element-title">Un cadeau qui plaira à coup sûr</h6>
+                <h5 class="about-element-title">Un cadeau qui plaira à coup sûr</h5>
                 <p class="about-element-description">Une BOO'BOX offre à son bénéficiaire plusieurs choix de cadeaux et il choisira par lui-même son coup de cœur.
                 </p>
             </div>
             
             <div class="col-md-4 about-element text-center">
                 <img src="assets/images/home/avantage1.png" class="about-illustration">
-                <h6 class="about-element-title">Un cadeau original</h6>
+                <h5 class="about-element-title">Un cadeau original</h5>
                 <p class="about-element-description">
                     Mis à part le plaisir que procure un cadeau, une BOO'BOX
                     fera découvrir à son bénéficiaire les tendances, les bons plans, les endroits les plus trendy ...
@@ -96,7 +95,7 @@
             
             <div class="col-md-4 about-element text-center">
                 <img src="assets/images/home/avantage3.png" class="about-illustration">
-                <h6 class="about-element-title">Un cadeau en deux clics</h6>
+                <h5 class="about-element-title">Un cadeau en deux clics</h5>
                 <p class="about-element-description">Le manque de temps ne sera plus jamais une excuse pour ne pas faire plaisir aux personnes qu’on aime. En deux clics, fais-toi livrer le meilleur des cadeaux.
                 </p>
             </div>
@@ -110,7 +109,7 @@
     <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1 class="boobox-title text-center">BOO'BOX</h1>
+            <h1 class="boobox-title text-center">MES BOO'BOX</h1>
             <div class="col-md-3 boobox-element" *ngFor="let box of printedBoxes"
             [class.selected]="box.id === selectedId">
                 <img class="boobox-image" [src]="box.imageUrl">
@@ -136,27 +135,27 @@
         <div class="row col-md-12 etapes">
             <div class="col-md-2 text-center etape">
                 <img src="assets/images/home/demarche1.png" class="etape-illustration">
-                <h6 class="etape-title">Commander</h6>
+                <h6 class="etape-title">TU COMMANDES</h6>
                 <div class="etape-number text-center">1</div>
             </div>
             <div class="col-md-2 text-center etape">
-                <img src="assets/images/home/demarche2.png" class="etape-illustration">
-                <h6 class="etape-title">livrer</h6>
+                <img src="assets/images/home/demarche1.svg" class="etape-illustration">
+                <h6 class="etape-title">JE TRAITE</h6>
                 <div class="etape-number text-center">2</div>
             </div>
             <div class="col-md-2 text-center etape">
                 <img src="assets/images/home/demarche3.png" class="etape-illustration">
-                <h6 class="etape-title">offrir</h6>
+                <h6 class="etape-title">TU OFFRES</h6>
                 <div class="etape-number text-center">3</div>
             </div>
             <div class="col-md-2 text-center etape">
                 <img src="assets/images/home/demarche4.png" class="etape-illustration">
-                <h6 class="etape-title">choisir</h6>
+                <h6 class="etape-title">IL CHOISIT</h6>
                 <div class="etape-number text-center">4</div>
             </div>
             <div class="col-md-2 text-center etape">
                 <img src="assets/images/home/demarche5.png" class="etape-illustration">
-                <h6 class="etape-title">profiter</h6>
+                <h6 class="etape-title">IL PROFITE</h6>
                 <div class="etape-number text-center">5</div>
             </div>
         </div>
@@ -172,7 +171,7 @@
 
 <section id="valeurs" class="section-padding wow fadeIn delay-05s">
     <div class="container text-center">
-        <h2 class="valeurs-title text-center"><b>Boo</b>'s valeurs</h2>
+        <h2 class="valeurs-title text-center">Mes valeurs</h2>
         <!--<img src="img/ILLUSTRATIONS/valeurs/valeurs.PNG" class="valeurs-img">-->
         <div class="col-md-12 text-center row valeurs">
             <div class="col-md-3 text-center valeurs-element">
@@ -194,7 +193,7 @@
 
 <section id="bookeurs" class="section-padding wow fadeIn">
     <div class="container">
-        <h2 class="bookeurs-title text-center">Mes BOO'KEURS</h2>
+        <h2 class="bookeurs-title text-center">MES BOO'KEURS</h2>
 
         <div class="bookeurs-description text-center">
             <h5 style="font-weight: bold;">Qui sont les BOO'keurs?</h5>
@@ -222,14 +221,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center">
-                    <h4 class="contact-title">Contactez boo</h4>
+                    <h4 class="contact-title">N'hésite pas à me contacter</h4>
                 </div>
             </div>
             <div class="col-md-8 col-md-push-2 text-center contact-form">
                 <form action="" method="post" role="form" class="contactForm">
                     <div class="form-group">
                         <input type="text" name="name" class="form-control" id="name" placeholder="NOM" data-rule="minlen:3" data-msg="Un nom doit dépasser 3 caractères"/>
-                        <div class="validation">bla bla</div>
+                        <div class="validation"></div>
                     </div>
                     <div class="form-group">
                         <input type="email" class="form-control" name="email" id="email" placeholder="EMAIL" data-rule="email" data-msg="Veuillez entrer un email valide" />
@@ -247,7 +246,7 @@
                         <button class="btn contact-button">Envoyer</button>
                     </div>
                 </form>
-                <div class="col-md-6">
+                <!--<div class="col-md-6">
                     <div class="col-md-1">
                         <img src="assets/images/home/facebook-f-brands.svg" class="contact-icon">
                     </div>
@@ -275,8 +274,12 @@
                         <p class="contact-text">contact@boo.tn</p>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>-->
+        </div></div>
+        <img src="assets/images/bookeurs/facebook.png">
+        <img src="assets/images/bookeurs/instagram.png">
+        <img src="assets/images/bookeurs/mail.png">
+        <img src="assets/images/bookeurs/phone.png">
     </div>
 </section>
 

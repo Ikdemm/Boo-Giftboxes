@@ -16,50 +16,47 @@
 }
 
 #who {
-    background-color: #f3fd6f;
-    padding-top: 15%;
+    background-color: #29246b;
+    padding-top: 13%;
     padding-bottom: 9%;
+    text-align: center;
 }
 
 .who-title {
     font-weight: 900;
-    color: #29246b;
+    color: #ada8eb;
     letter-spacing: 0.1em;
-    margin-left: 25%;
     text-transform: uppercase;
 }
 
 .who-text {
-    color: #29246b;
-    font-size: 1.1em;
+    color: #fff;
+    font-size: 2em;
     font-weight: 100;
-    width: 85%;
     padding-top: 1.5em;
 }
 
 .why-image {
-    width: 10em;
+    width: 100%;
 }
 
 #why {
     padding-top: 5%;
     padding-bottom:5%;
-    background-color: #29246b;
+    background-color: #fff;
+    text-align: center;
 }
 
 .why-title {
     font-weight: 900;
-    color: #f3fd6f;
+    color: #29246b;
     letter-spacing: 0.1em;
-    margin-left: 25%;
-    text-transform: uppercase;
 }
 
 .why-text {
     color: #f3fd6f;
     font-size: 1.1em;
     font-weight: 100;
-    width: 90%;
     padding-top: 3em;
 }
 
@@ -71,8 +68,9 @@
 }
 
 .why-subtitle {
+    padding-top: 1em;
     font-weight: 700;
-    color: #f3fd6f;
+    color: #29246b;
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
@@ -82,14 +80,34 @@
 }
 
 .why-elements {
-    margin-top: 3em;
-    margin-left: 4em;
+    margin-top: 2em;
+}
+
+#engagements {
+    background-color: #c2e2f5;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+    padding: 1%;
+    border-radius: 30px;
+}
+
+.engagements-title {
+    color: #29246b;
+    font-weight: bolder;
+    padding-bottom: 0.5em;
+}
+
+.engagements-text {
+    color: #29246b;
+    width: 90%;
+    font-size: 2em;
 }
 
 #how {
     background-color: #7dced8;
     padding-top: 5%;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
 }
 
 .how-title {
@@ -109,29 +127,33 @@
 }
 
 #engage {
-    padding-top: 5%;
     padding-bottom: 5%;
+    text-align: center;
 }
 
 .engage-title {
     font-weight: 900;
     color: #29246b;
     letter-spacing: 0.1em;
-    margin-left: 14%;
+    text-align: center;
     text-transform: uppercase;
 }
 
 .engage-text {
     color: #29246b;
-    font-size: 1.1em;
-    font-weight: 100;
-    width: 90%;
-    padding-top: 2em;
-    padding-left: 14%;
+    font-size: 1.7em;
+    font-weight: 500;
+    padding-top: 0.5em;
+    text-align: center;
+}
+
+form {
+    width: 35%;
+    margin-left: 32.5%;
 }
 
 #faq {
-    background-color: #29246b;
+    background-color: #33246b;
     padding: 3% 0;
 }
 
@@ -149,7 +171,6 @@ input {
     background-color: white !important;
     color: dimgray !important;
     border: 2px solid #29246b !important;
-    max-width: 90% !important;
     font-size: 0.8em !important;
     padding-left: 0.7em !important;
     padding-top: 1em !important;
@@ -157,7 +178,6 @@ input {
     font-weight: bold !important;
     letter-spacing: 0.1em !important;
     border-radius: 7px !important;
-    margin-bottom: 0.1em;
 }
 
 .submit-button {
@@ -169,5 +189,4 @@ input {
     letter-spacing: 0.1em;
     border-radius: 20px;
     padding: 0.4em 1em;
-    margin: 0.1em 0;
 }

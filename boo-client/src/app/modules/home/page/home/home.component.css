@@ -48,13 +48,10 @@
     margin-top:3%;
   }
   
-  #banner1-title {
-    font-size: 3em;
-    font-weight: 700;
+  .banner1 {
     margin-top: 12%;
     text-align:center;
     color: white;
-    font-family: 'Spectral', serif !important;
   }
   
   #banner2-title {
@@ -464,7 +461,6 @@
   }
   
   .bookeurs-title {
-    text-decoration: underline;
     color: #29246b;
     font-weight: bolder;
     margin-bottom: 1.5em;
@@ -793,13 +789,11 @@
 }
 
 .contact-title {
-  text-transform: uppercase;
   font-weight: bolder;
   color: #7dced8; 
   letter-spacing: 0.1em;
   margin-bottom: 2em;
   padding-top: 1.5em;
-  text-decoration: underline;
 }
 
 input, textarea {

@@ -1,47 +1,42 @@
 <section id="who">
-    <div class="row col-mx-12">
-        <div class="col-md-4">
-            <h1 class="who-title">Qui sont les <br>Boo'keurs</h1>
-        </div>
-        <div class="col-md-8">
-            <p class="who-text">Ce sont des professionnels en partenariat avec BOO. Ils proposent leurs établissements dans les BOO’BOX. 
-                BOO veut faire découvrir, à travers ses BOX, le meilleur de leurs produits et/ou services.
-            </p>
-        </div>
-    </div>
+    <h1 class="who-title">Devenez BOO'KEUR</h1>
+    <p class="who-text">
+        Les BOO'KEURS sont mes <b>partenaires de confiance</b>.<br>
+        Ils font découvrir aux bénéficiaires des cadeaux le<br>
+        le meilleur de leurs produits et/ou services, en<br>
+        proposant leurs établissements dans les BOO'BOX. 
+    </p>
 </section>
 
 <section id="why">
-    <div class="row col-mx-12">
-        <div class="col-md-4">
-            <h1 class="why-title">Pourquoi devenir BOO’KEURS ?</h1>
+    <h1 class="why-title">Pourquoi devenir BOO’KEURS ?</h1>
+    <div class="row col-9 justify-content-center text-center why-elements">
+        <div class="col-sm-4 text-center why-element">
+            <img src="assets/images/bookeurs/why1.png" class="why-image">
+            <h3 class="why-subtitle text-center">AVOIR DE<br>NOUVEAUX<br>CLIENTS</h3>
+            <!--<p class="why-subtext text-center">Une visibilité garantie dans les BOO’BOX et sur le site web.</p>-->
         </div>
-        <div class="col-md-8">
-            <p class="why-text">Vous êtes professionnels  et vous souhaitez vous faire connaitre sur votre secteur ?<br>
-                En devenant BOO’KEUR, BOO vous permet 
-            </p>
+        <div class="col-sm-4 text-center why-element">
+            <img src="assets/images/bookeurs/why2.png" class="why-image">
+            <h3 class="why-subtitle text-center">FAIRE DE LA<br>PUBLICITE<br>GRATUITE</h3>
+            <!--<p class="why-subtext text-center">Des clients potentiels découvriront l’existence de votre activité.</p>-->
+        </div>
+        <div class="col-sm-4 text-center why-element">
+            <img src="assets/images/bookeurs/why3.png" class="why-image">
+            <h3 class="why-subtitle text-center">AUGMENTER<br>VOTRE CHIFFRE<br>D'AFFAIRE</h3>
+            <!--<p class="why-subtext text-center">Par le recrutement d’une clientèle supplémentaire.</p>-->
         </div>
     </div>
-    <div class="row col-9 justify-content-center text-center why-elements">
-        <div class="col-sm-3 text-center why-element">
-            <img src="assets/images/bookeurs/ILL1.svg" class="why-image">
-            <h4 class="why-subtitle text-center">De faire de la publicité gratuite</h4>
-            <p class="why-subtext text-center">Une visibilité garantie dans les BOO’BOX et sur le site web.</p>
-        </div>
-        <div class="col-sm-3 text-center why-element">
-            <img src="assets/images/bookeurs/ILL2.svg" class="why-image">
-            <h4 class="why-subtitle text-center">D’avoir de nouveaux clients</h4>
-            <p class="why-subtext text-center">Des clients potentiels découvriront l’existence de votre activité.</p>
-        </div>
-        <div class="col-sm-3 text-center why-element">
-            <img src="assets/images/bookeurs/ILL3.svg" class="why-image">
-            <h4 class="why-subtitle text-center">D’augmenter votre chiffre d’affaire</h4>
-            <p class="why-subtext text-center">Par le recrutement d’une clientèle supplémentaire.</p>
-        </div>
+    <div id="engagements">
+        <h1 class="engagements-title">Quels sont vos engagements ?</h1>
+        <p class="engagements-text">Accepter les BOO’PONS comme mode de payement de la part des bénéficiaires des BOO’BOX.
+             Vous serez remboursés par la suite sous 10 jours.<br>
+            C'est un partenariat gagnant, simple et avec 0 frais d'engagement : commission uniquement sur le business généré.
+        </p>
     </div>
 </section>
 
-<section id="how">
+<!--<section id="how">
     <div class="row col-mx-12">
         <div class="col-md-4">
             <h1 class="how-title">Quels sont les engagements?</h1>
@@ -52,137 +47,135 @@
             </p>
         </div>
     </div>
-</section>
+</section>-->
 
 <section id="engage">
-    <div class="row col-mx-12">
-        <div class="col-md-7 tex-left">
-            <h1 class="engage-title">Comment ça<br> marche?</h1>
-            <p class="engage-text">Rejoignez BOO et faites partie des BOO’keurs en remplissent ce formulaire.
-                BOO vous contactera dans les plus brefs délais.
-            </p>
+    <h1 class="engage-title">Comment ça marche?</h1>
+    <p class="engage-text">Vous êtes professionnels et vous souhaitez vous faire<br>
+        connaitre sur votre secteur?<br>
+        <br>
+        Devenez BOO'KEUR en remplissant ce formulaire.<br>
+        Je vous contacterai dans les brefs délais.
+    </p>
+    <form (ngSubmit)="submitForm()" #f="ngForm">
+        <div class="form-group">
+            <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                class="form-control"
+                placeholder="Nom"
+                required
+                ngModel
+                #lastName
+            />
         </div>
-        <div class="col-md-5 text-center">
-            <form (ngSubmit)="submitForm()" #f="ngForm">
-                <div class="form-group">
-                    <input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        class="form-control"
-                        placeholder="Nom"
-                        required
-                        ngModel
-                        #lastName
-                    />
-                </div>
-                
-                <div class="form-group">
-                    <input
-                        type="text"
-                        id="firstName"
-                        name="firstName"
-                        class="form-control"
-                        placeholder="Prénom"
-                        required
-                        ngModel
-                        #firstName
-                    />
-                </div>
-                <div class="form-group">
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        class="form-control"
-                        placeholder="Email"
-                        required
-                        ngModel
-                        #email
-                    />
-                </div>
-                <div class="form-group">
-                    <input
-                        type="text"
-                        id="phone"
-                        name="phone"
-                        class="form-control"
-                        placeholder="Téléphone"
-                        required
-                        ngModel
-                        #phone
-                    />
-                </div>
-                <div class="form-group">
-                    <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        class="form-control"
-                        placeholder="Nom de l'établissement"
-                        required
-                        ngModel
-                        #company
-                    />
-                </div>
-                <div class="form-group">
-                    <input
-                        type="text"
-                        id="field"
-                        name="field"
-                        class="form-control"
-                        placeholder="Domaine d'activité"
-                        required
-                        ngModel
-                        #field
-                    />
-                </div>
-                <div class="form-group">
-                    <input
-                        type="text"
-                        id="addressFirstLine"
-                        name="addressFirstLine"
-                        class="form-control"
-                        placeholder="Addresse (Ligne 1)"
-                        required
-                        ngModel
-                        #addressFirstLine
-                    />
-                </div>
-                <div class="form-group">
-                    <input
-                        type="text"
-                        id="addressSecondLine"
-                        name="addressSecondLine"
-                        class="form-control"
-                        placeholder="Addresse (Ligne 2)"
-                        required
-                        ngModel
-                        #addressSecondLine
-                    />
-                </div>
-                <div class="form-group">
-                    <input
-                        type="text"
-                        id="postCode"
-                        name="postCode"
-                        class="form-control"
-                        placeholder="Code Postal"
-                        required
-                        ngModel
-                        #postCode
-                    />
-                </div>
-                <button type="submit" class="btn submit-button" [disabled]="!f.valid">Envoyer</button>
-            </form>
+        
+        <div class="form-group">
+            <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                class="form-control"
+                placeholder="Prénom"
+                required
+                ngModel
+                #firstName
+            />
         </div>
-    </div>
+        <div class="form-group">
+            <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="Email"
+                required
+                ngModel
+                #email
+            />
+        </div>
+        <div class="form-group">
+            <input
+                type="text"
+                id="phone"
+                name="phone"
+                class="form-control"
+                placeholder="Téléphone"
+                required
+                ngModel
+                #phone
+            />
+        </div>
+        <div class="form-group">
+            <input
+                type="text"
+                id="company"
+                name="company"
+                class="form-control"
+                placeholder="Nom de l'établissement"
+                required
+                ngModel
+                #company
+            />
+        </div>
+        <div class="form-group">
+            <input
+                type="text"
+                id="field"
+                name="field"
+                class="form-control"
+                placeholder="Domaine d'activité"
+                required
+                ngModel
+                #field
+            />
+        </div>
+        <div class="form-group">
+            <input
+                type="text"
+                id="addressFirstLine"
+                name="addressFirstLine"
+                class="form-control"
+                placeholder="Addresse (Ligne 1)"
+                required
+                ngModel
+                #addressFirstLine
+            />
+        </div>
+        <div class="form-group">
+            <input
+                type="text"
+                id="addressSecondLine"
+                name="addressSecondLine"
+                class="form-control"
+                placeholder="Addresse (Ligne 2)"
+                required
+                ngModel
+                #addressSecondLine
+            />
+        </div>
+        <div class="form-group">
+            <input
+                type="text"
+                id="postCode"
+                name="postCode"
+                class="form-control"
+                placeholder="Code Postal"
+                required
+                ngModel
+                #postCode
+            />
+        </div>
+        <button type="submit" class="btn submit-button" [disabled]="!f.valid">Envoyer</button>
+    </form>
 </section>
 
-
-
 <section id="faq" class="text-center">
-
+<img src="assets/images/bookeurs/facebook.png">
+<img src="assets/images/bookeurs/instagram.png">
+<img src="assets/images/bookeurs/mail.png">
+<img src="assets/images/bookeurs/phone.png">
 </section>
 
 <app-back-to-top></app-back-to-top>
