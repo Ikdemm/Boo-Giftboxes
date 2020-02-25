@@ -17,6 +17,6 @@ export class CheckService {
     return this.http.get(this.api+"validChequeUser/"+code);
   }
   listCheques(){
-    return this.http.get(this.api+'findAllByUser');
+    return this.http.get<any[]>(this.api+'findAllByUser');
   }
 }

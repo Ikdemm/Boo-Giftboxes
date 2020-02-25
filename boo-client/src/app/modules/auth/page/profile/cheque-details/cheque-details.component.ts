@@ -26,6 +26,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ChequeDetailsComponent implements OnInit {
 
   user: User;
+  displayedColumns = ['date', 'code', 'price', 'status'];
+  dataSource ;
+
   constructor(private _userService: UserService,private chequeService:CheckService) { }
 
   ngOnInit() {
@@ -34,11 +37,9 @@ export class ChequeDetailsComponent implements OnInit {
       console.log(this.user)
     })
     this.chequeService.listCheques().subscribe(data=>{
-      console.log(data)
+      this.dataSource=data
     })
   }
 
-  displayedColumns = ['date', 'code', 'price', 'status'];
-  dataSource = ELEMENT_DATA;
 
 }

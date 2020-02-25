@@ -134,6 +134,8 @@ public class EmailServiceImpl implements EmailService {
                     Context context = new Context();
                     Map<String, Object> model= new HashMap<>();
                     context.setVariable("name",user.getName());
+                    context.setVariable("total",commande.getPrix_totale());
+                    context.setVariable("numOrdre","#00"+commande.getId());
                     context.setVariable("detailCommandes",commande.getDetailCommandes());
                     String text = templateEngine.process("email_confirm.order_template",context);
                     logger.info(text);

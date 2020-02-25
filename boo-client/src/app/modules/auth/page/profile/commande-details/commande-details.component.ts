@@ -27,6 +27,8 @@ export class CommandeDetailsComponent implements OnInit {
 
 
   user: User;
+  dataSource = ELEMENT_DATA;
+
   constructor(private _userService: UserService,private _commandeSerivce:OrderService) { }
 
   ngOnInit() {
@@ -35,11 +37,11 @@ export class CommandeDetailsComponent implements OnInit {
       console.log(this.user)
     })
     this._commandeSerivce.orderByUser().subscribe(data=>{
-      console.log(data)
+      console.log(data);
+      this.dataSource=data;
     })
   }
 
   displayedColumns = ['date', 'address', 'price', 'coffret'];
-  dataSource = ELEMENT_DATA;
 
 }
