@@ -16,23 +16,54 @@
 }
 
 #concept {
-    background-color: #ffdfee;
-    padding-top: 15%;
-    padding-bottom: 15%;
+    padding-top: 10%;
+    padding-bottom: 5%;
 }
 
 .concept-title {
     font-weight: 900;
     color: #29246b;
     letter-spacing: 0.1em;
-    margin-left: 25%;
-    text-transform: uppercase;
+    font-size: 3.5em;
+    margin-bottom: 6%;
 }
 
 .concept-text {
     color: #29246b;
-    font-size: 1.1em;
-    width: 85%;
+    font-size: 1.7em;
+    letter-spacing: 0.2em;
+}
+
+#gift-image {
+    width: 80%;
+}
+
+#blue-frame {
+    background-color: #bcebf1;
+    border-radius: 30px;
+    padding: 1%;
+    margin-top: 3%;
+}
+
+#white-frame {
+    border: #bcebf1 4px solid;
+    border-radius: 50px;
+    padding: 1% 2%;
+    margin: 3%;
+}
+
+.frame-text {
+    color: #29246b;
+    font-size: 1.5em;
+    letter-spacing: 0.2em;
+}
+
+.how-title {
+    font-weight: 900;
+    color: #29246b;
+    letter-spacing: 0.1em;
+    font-size: 2.8em;
+    margin-bottom: 6%;
 }
 
 #contenu {
@@ -78,28 +109,23 @@
 
 .etape-number {
     background-color: #29246b;
+    border: solid #f6b4d1 0.3em;
     color: #f6b4d1;
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: bolder !important;
     border-radius: 50%;
-    height: 2em;
-    width: 2em;
+    height: 2.3em;
+    width: 2.3em;
     margin: auto;
     vertical-align: 50%;
     margin-top: 30%;
-    padding-top: 0.2em;
+    padding-top: 0.18em;
     margin-left: 80%;
   }
 
 .etape-illustration {
 height: 9em !important;
 width: auto;
-}
-
-.etape-text {
-    border: solid #29246b 4px;
-    border-radius: 2em;
-    padding: 1em 1.5em;
 }
 
 .etape-text>h4 {
@@ -110,25 +136,76 @@ text-transform: uppercase;
 
 .etape-text>p {
 color: #29246b;
+font-size: 1.1em;
 }
 
-#faq {
+#contact {
     background-color: #29246b;
-    padding: 3% 0;
+    padding: 3%;
 }
 
-#faq>h1 {
+.contact-text {
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.1em;
+    font-size: 2em;
+    margin-bottom: 6%;
+}
+
+input, textarea {
+    max-width: 500px;
+    background-color: #7dced8 !important;
+    color: #29246b !important;
+    font-weight: 100 !important;
+    font-size: 1.1em !important;
+    font-family: 'Lato', sans-serif !important;
+    letter-spacing: 0.2em;
+    border-radius: 15px !important;
+    border: transparent !important;
+    display: inline-block !important;
+  }
+  
+  textarea {
+    padding: 1em 1em !important;
+  }
+  
+  input {
+    padding:1.6em 1em !important;
+  }
+  
+  ::placeholder {
+    color: #29246b !important;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #29246b !important;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: #29246b !important;
+  }
+  
+  .contact-button {
+    background-color: #7dced8;
+    color: #29246b;
+    /*border: solid 2px #3da7e4;*/
+    padding: 0.5em 2em;
+    font-size: 1em;
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+  
+  .contact-button:hover {
+    background-color: transparent;
     color: #7dced8;
-    font-weight: 700;
-    margin-bottom: 1em;
-}
-
-#faq>button {
-    max-width: 25em;
-}
-
-.dropdown-menu {
-    position: absolute;
-    right: 30%;
-    left: 30%;
-}
+    border: solid 1px #7dced8;
+  }
+  
+  .send-button:hover {
+    border: solid 2px #29246b;
+  }
+  
+  .send-button>i {
+    font-size: 1.5em;
+  }
