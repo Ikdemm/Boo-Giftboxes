@@ -1,0 +1,23 @@
+
+<!-- BooBox -->
+
+<section id="boobox" class="section-padding wow fadeIn delay-05s">
+    <div class="container">
+    <div class="row">
+        <h1 class="boobox-title text-center">Nos BOO'Box</h1>
+        <div class="col-md-12 text-center booboxes">
+            <div class="col-md-3 boobox-element" *ngFor="let box of boobox"
+            [class.selected]="box.id === selectedId">
+                <img class="boobox-image" [src]="box.imageUrl">
+                <div class="boobox-description">
+                    <h3 class="boobox-name">{{box.name}}</h3>
+                    <p class="boobox-price">{{box.priceClient}} dt</p>
+                    <a [routerLink]="['/home/boobox-details', box.id]">
+                        <button class="btn details-button">Plus de détails</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

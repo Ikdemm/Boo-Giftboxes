@@ -1,5 +1,5 @@
-import { Partner } from "./partner.model";
-import { Box } from "./box.model";
+import {Partner} from './partner.model';
+import {Box} from './box.model';
 
 export class Check {
     _id?: string;

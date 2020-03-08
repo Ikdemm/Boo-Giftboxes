@@ -1,5 +1,5 @@
 <mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+    <input [matDatepicker]="picker" matInput placeholder="Choose a date">
+    <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
 </mat-form-field>

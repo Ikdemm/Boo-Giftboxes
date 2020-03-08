@@ -1,21 +1,21 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { PartnersListComponent } from "./partners/partners-list/partners-list.component";
-import { CategoriesListComponent } from "./categories-list/categories-list.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {PartnersListComponent} from './partners/partners-list/partners-list.component';
+import {CategoriesListComponent} from './categories-list/categories-list.component';
 
 const routes: Routes = [
     {
-        path: "",
+        path: '',
         component: CategoriesListComponent
     },
-    
+
     {
-        path: ":name",
+        path: ':name',
         component: PartnersListComponent
     },
     {
-      path: '**',
-      redirectTo: ''
+        path: '**',
+        redirectTo: ''
     }
 ];
 
@@ -23,4 +23,5 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class CategoriesRoutingModule {}
+export class CategoriesRoutingModule {
+}

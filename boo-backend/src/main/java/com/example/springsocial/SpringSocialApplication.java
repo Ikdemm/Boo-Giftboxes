@@ -2,8 +2,7 @@ package com.example.springsocial;
 
 import com.example.springsocial.config.AppProperties;
 import com.example.springsocial.config.FileStorageProperties;
-import com.example.springsocial.controller.AuthController;
-import com.example.springsocial.model.*;
+
 import com.example.springsocial.services.CoffretService;
 import com.example.springsocial.services.CommandeService;
 import com.example.springsocial.services.UserSevice;
@@ -17,14 +16,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import org.springframework.mail.javamail.JavaMailSender;
 
 @SpringBootApplication
 @EnableConfigurationProperties({AppProperties.class, FileStorageProperties.class})

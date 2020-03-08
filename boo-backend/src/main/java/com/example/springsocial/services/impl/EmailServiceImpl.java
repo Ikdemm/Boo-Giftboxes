@@ -181,5 +181,45 @@ public class EmailServiceImpl implements EmailService {
             });
             logger.info("after thread method");
     }
+
+    @Override
+    public void sendResetPasswordMail(User user, String token) {
+        logger.info("inside sendASynchronousMail method");
+        quickService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    logger.info("inside thread method");
+                    MimeMessage mimeMessage = emailSender.createMimeMessage();
+                    MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true,"utf-8");
+                    Context context = new Context();
+                    Map<String, Object> model= new HashMap<>();
+                    context.setVariable("name",user.getName());
+                    context.setVariable("login",user.getEmail());
+                    context.setVariable("password",user.getPassword());
+                    context.setVariable("token",token);
+
+                    logger.info(context.getVariable("name").toString());
+                    String text = templateEngine.process("email_reset_password",context);
+                    logger.info(text);
+                    helper.setText(text, true);
+                    helper.setSubject("Réinitialiser votre mot de passe");
+                    helper.setTo(user.getEmail());
+                    emailSender.send(mimeMessage);
+                }catch(Exception e){
+                    logger.error("Exception occur while send a mail : ",e);
+                }
+            }
+        });
+        logger.info("after thread method");
+
+    }
+
+    @Override
+    public void sendCheckCachingMail(Cheque cheque, User user) {
+        /**
+         * TODO: send mail
+         */
+    }
 }
 

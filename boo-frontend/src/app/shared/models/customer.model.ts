@@ -1,5 +1,5 @@
-import { User } from "./user.model";
-import { Address } from "./address.model";
+import {User} from './user.model';
+import {Address} from './address.model';
 
 export class Customer extends User {
     firstname: string;

@@ -1,4 +1,5 @@
-import { v4 as uuid } from 'uuid';
+import {v4 as uuid} from 'uuid';
+
 /* Not sure ..... */
 
 export class Check {
@@ -6,5 +7,5 @@ export class Check {
     date: Date;
     status: string;
     code: uuid;
-    email:string;
+    email: string;
 }

@@ -8,7 +8,7 @@ import { ThirdStepComponent } from './page/third-step/third-step.component';
 
 export const BasketRoutes: Routes = [
     {
-      path: 'basket',
+      path: '',
       component: FirstStepComponent
     },
     {

@@ -4,7 +4,12 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 
 
 const routes: Routes = [
+
   {
+    path:'',
+    loadChildren: () => import('./layout/layout.module').then(mod => mod.LayoutModule),
+  }
+  /*{
     path: 'login',
     loadChildren: () => import('./modules/auth/auth.module').then(mod => mod.AuthModule),
   },
@@ -17,7 +22,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/basket/basket.module').then(mod => mod.BasketModule),
   },
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: '**', redirectTo: '/home'}
+  {path: '**', redirectTo: '/home'}*/
 ];
 
 @NgModule({

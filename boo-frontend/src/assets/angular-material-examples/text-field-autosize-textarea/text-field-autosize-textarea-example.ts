@@ -4,18 +4,19 @@ import {take} from 'rxjs/operators';
 
 /** @title Auto-resizing textarea */
 @Component({
-  selector: 'text-field-autosize-textarea-example',
-  templateUrl: './text-field-autosize-textarea-example.html',
-  styleUrls: ['./text-field-autosize-textarea-example.css'],
+    selector: 'text-field-autosize-textarea-example',
+    templateUrl: './text-field-autosize-textarea-example.html',
+    styleUrls: ['./text-field-autosize-textarea-example.css'],
 })
 export class TextFieldAutosizeTextareaExample {
-  constructor(private ngZone: NgZone) {}
+    @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
-  @ViewChild('autosize') autosize: CdkTextareaAutosize;
+    constructor(private ngZone: NgZone) {
+    }
 
-  triggerResize() {
-    // Wait for changes to be applied, then trigger textarea resize.
-    this.ngZone.onStable.pipe(take(1))
-        .subscribe(() => this.autosize.resizeToFitContent(true));
-  }
+    triggerResize() {
+        // Wait for changes to be applied, then trigger textarea resize.
+        this.ngZone.onStable.pipe(take(1))
+            .subscribe(() => this.autosize.resizeToFitContent(true));
+    }
 }

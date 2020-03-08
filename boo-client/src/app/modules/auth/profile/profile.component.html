@@ -1,0 +1,27 @@
+!<div class="container col-mx-12 content">
+    <div class="row">
+        <div class="col-md-5 text-center">
+            <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/jon-snow-rhaegar-targaryen-1554321615.jpg?crop=0.482xw:0.962xh;0,0&resize=768:*"
+                class="profile-pic">
+            <div fxLayout="column" fxLayoutAlign="space-between center">
+                    <ul class="profile-list">
+                        <li  class="profile-list-item" *ngFor="let sideItem of sidelist">
+                            <a [routerLink]="sideItem.path" routerLinkActive="active">
+                                {{sideItem.text}}
+                            </a>
+                        </li>
+
+
+
+
+                    </ul>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-7 text-center">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

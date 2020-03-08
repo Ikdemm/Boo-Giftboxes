@@ -2,6 +2,7 @@ package com.example.springsocial.security;
 
 import com.example.springsocial.config.AppProperties;
 import com.example.springsocial.model.Role;
+import com.example.springsocial.model.User;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,8 +10,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,13 +35,26 @@ public class TokenProvider {
         List roles=userPrincipal.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
         return Jwts.builder()
                 .setSubject(Long.toString(userPrincipal.getId()))
+                .setIssuer(userPrincipal.getEmail())
                 .setIssuedAt(new Date())
                 .setExpiration(expiryDate)
                 .claim("role",roles)
                 .signWith(SignatureAlgorithm.HS512, appProperties.getAuth().getTokenSecret())
                 .compact();
     }
-
+    public String generateResetPasswordJwt(User user) {
+        Date now = new Date();
+        Date expiryDate = new Date(now.getTime() + appProperties.getAuth().getTokenExpirationMsec());
+        List roles = new ArrayList(user.getRoles());
+        return Jwts.builder()
+                .setSubject(Long.toString(user.getId()))
+                .setIssuer(user.getEmail())
+                .setIssuedAt(new Date())
+                .setExpiration(expiryDate)
+                .claim("role",roles)
+                .signWith(SignatureAlgorithm.HS512, appProperties.getAuth().getTokenSecret())
+                .compact();
+    }
     public Long getUserIdFromToken(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(appProperties.getAuth().getTokenSecret())

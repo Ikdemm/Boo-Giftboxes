@@ -1,7 +1,7 @@
-<div class="example-container"
-    [class.mat-elevation-z2]="!isActive"
-    [class.mat-elevation-z8]="isActive">
-  Example
+<div [class.mat-elevation-z2]="!isActive"
+     [class.mat-elevation-z8]="isActive"
+     class="example-container">
+    Example
 </div>
 
-<button mat-button (click)="isActive = !isActive">Toggle Elevation</button>
+<button (click)="isActive = !isActive" mat-button>Toggle Elevation</button>

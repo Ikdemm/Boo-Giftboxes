@@ -4,9 +4,6 @@ import com.example.springsocial.security.CustomUserDetailsService;
 import com.example.springsocial.security.RestAuthenticationEntryPoint;
 import com.example.springsocial.security.TokenAuthenticationFilter;
 import com.example.springsocial.security.oauth2.CustomOAuth2UserService;
-import com.example.springsocial.security.oauth2.HttpCookieOAuth2AuthorizationRequestRepository;
-import com.example.springsocial.security.oauth2.OAuth2AuthenticationFailureHandler;
-import com.example.springsocial.security.oauth2.OAuth2AuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,14 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomOAuth2UserService customOAuth2UserService;
 
-    @Autowired
-    private OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
 
-    @Autowired
-    private OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
-
-    @Autowired
-    private HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
 
     @Bean
     public TokenAuthenticationFilter tokenAuthenticationFilter() {
@@ -57,19 +47,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       the authorization request. But, since our service is stateless, we can't save it in
       the session. We'll save the request in a Base64 encoded cookie instead.
     */
-    @Bean
-    public HttpCookieOAuth2AuthorizationRequestRepository cookieAuthorizationRequestRepository() {
-        return new HttpCookieOAuth2AuthorizationRequestRepository();
-    }
 
     /** Added Exception For Clients **/
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/coffrets/getBoxes");
+      /*  web.ignoring().antMatchers("/coffrets/getBoxes");
         web.ignoring().antMatchers("/categories/getCategories");
         web.ignoring().antMatchers("/mail/send-mail");
-        web.ignoring().antMatchers("/auth/*");
+        web.ignoring().antMatchers("/auth/*");*/
+
 
     }
 
@@ -121,24 +108,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                 .permitAll()
-                .antMatchers("/auth/**", "/oauth2/**", "/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html")
+                .antMatchers("/auth/login",
+                        "/auth/signup",
+                        "/auth/reset-password",
+                        "/oauth2/**", "/v2/api-docs",
+                        "/swagger-resources/**",
+                        "/swagger-ui.html")
                 .permitAll()
                 .anyRequest()
-                .authenticated()
-                .and()
-                .oauth2Login()
-                .authorizationEndpoint()
-                .baseUri("/oauth2/authorize")
-                .authorizationRequestRepository(cookieAuthorizationRequestRepository())
-                .and()
-                .redirectionEndpoint()
-                .baseUri("/oauth2/callback/*")
-                .and()
-                .userInfoEndpoint()
-                .userService(customOAuth2UserService)
-                .and()
-                .successHandler(oAuth2AuthenticationSuccessHandler)
-                .failureHandler(oAuth2AuthenticationFailureHandler);
+                .authenticated();
 
         // Add our custom Token based authentication filter
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

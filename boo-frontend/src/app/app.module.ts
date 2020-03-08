@@ -1,66 +1,46 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { MatButtonModule, MatIconModule } from '@angular/material';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { TranslateModule } from '@ngx-translate/core';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterModule, Routes} from '@angular/router';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import {MatButtonModule, MatIconModule} from '@angular/material';
+import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {TranslateModule} from '@ngx-translate/core';
 import 'hammerjs';
 
-import { FuseModule } from '@fuse/fuse.module';
-import { FuseSharedModule } from '@fuse/shared.module';
-import { FuseProgressBarModule, FuseSidebarModule, FuseThemeOptionsModule } from '@fuse/components';
+import {FuseModule} from '@fuse/fuse.module';
+import {FuseSharedModule} from '@fuse/shared.module';
+import {FuseProgressBarModule, FuseSidebarModule, FuseThemeOptionsModule} from '@fuse/components';
 
-import { fuseConfig } from 'app/fuse-config';
+import {fuseConfig} from 'app/fuse-config';
 
-import { FakeDbService } from 'app/fake-db/fake-db.service';
-import { AppComponent } from 'app/app.component';
-import { AppStoreModule } from 'app/store/store.module';
-import { LayoutModule } from 'app/layout/layout.module';
-import { CoreModule } from './core/core.module';
-import { AuthGuard } from './core/_guards/auth-guard';
+import {AppComponent} from 'app/app.component';
+import {LayoutModule} from 'app/layout/layout.module';
+import {CoreModule} from './core/core.module';
+import {AuthGuard} from './core/_guards/auth-guard';
+import { DatePipe } from '@angular/common';
 
 const appRoutes: Routes = [
-   /* {
-        path        : 'apps',
-        loadChildren: './main/apps/apps.module#AppsModule'
-    },*/
-  /*  {
-        path        : 'pages',
-        loadChildren: './main/pages/pages.module#PagesModule'
-    },*/
-    /*{
-        path        : 'ui',
-        loadChildren: './main/ui/ui.module#UIModule'
-    },*/
-    /*{
-        path        : 'documentation',
-        loadChildren: './main/documentation/documentation.module#DocumentationModule'
-    },*/
-  /*  {
-        path        : 'angular-material-elements',
-        loadChildren: './main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule'
-    },*/
+
     {
-        path        : 'admin',
+        path: 'admin',
         loadChildren: './main/admin/admin.module#AdminModule',
-        data:{role:"ROLE_ADMIN"},
+        data: {role: 'ROLE_ADMIN'},
         canActivate: [AuthGuard]
     },
     {
-        path        : 'partner',
+        path: 'partner',
         loadChildren: './main/partner/partner.module#PartnerModule',
-        data:{role:"ROLE_PARTNER"},
+        data: {role: 'ROLE_PARTNER'},
         canActivate: [AuthGuard]
     },
     {
-        path        : 'auth',
+        path: 'auth',
         loadChildren: './main/pages/pages.module#PagesModule'
     },
     {
-        path      : '**',
+        path: '**',
         redirectTo: 'auth'
     }
 ];
@@ -69,17 +49,14 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
 
         TranslateModule.forRoot(),
-        InMemoryWebApiModule.forRoot(FakeDbService, {
-            delay             : 0,
-            passThruUnknownUrl: true
-        }),
+
 
         // Material moment date module
         MatMomentDateModule,
@@ -97,13 +74,14 @@ const appRoutes: Routes = [
         //Core Modules
         CoreModule,
         // App modules
-        LayoutModule,
-        AppStoreModule
+        LayoutModule
     ],
-    bootstrap   : [
+    bootstrap: [
         AppComponent
+    ],
+    providers:[
+        DatePipe
     ]
 })
-export class AppModule
-{
+export class AppModule {
 }

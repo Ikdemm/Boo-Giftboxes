@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BooponComponent } from './page/boopon/boopon.component'; 
+import { BooponComponent } from './boopon/boopon.component';
 
 
 const booponRoutes: Routes = [
-  { path: 'boopon', component: BooponComponent }
+  { path: '', component: BooponComponent },
 ];
 
 @NgModule({

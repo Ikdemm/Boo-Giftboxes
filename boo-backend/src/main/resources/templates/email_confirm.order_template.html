@@ -1,17 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Paiement valide</title>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
     <meta name="x-apple-disable-message-reformatting">
     <title>Paiement valide</title>
     <style>
+        * {
+            font-family: 'Lato', sans-serif;
+        }
         html,
-        body {
+        .body {
             margin: 0 auto !important;
             /*padding: 0 !important;*/
             /*height: 100% !important;*/
@@ -47,7 +51,7 @@
 
         /* What it does: Uses a better rendering method when resizing images in IE. */
         img {
-            -ms-interpolation-mode:bicubic;
+            -ms-interpolation-mode: bicubic;
         }
 
         /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
@@ -56,7 +60,7 @@
         }
 
         /* What it does: A work-around for email clients meddling in triggered links. */
-        *[x-apple-data-detectors],  /* iOS */
+        *[x-apple-data-detectors], /* iOS */
         .unstyle-auto-detected-links *,
         .aBn {
             border-bottom: 0 !important;
@@ -94,12 +98,14 @@
                 min-width: 320px !important;
             }
         }
+
         /* iPhone 6, 6S, 7, 8, and X */
         @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
             u ~ div .email-container {
                 min-width: 375px !important;
             }
         }
+
         /* iPhone 6+, 7+, and 8+ */
         @media only screen and (min-device-width: 414px) {
             u ~ div .email-container {
@@ -110,7 +116,7 @@
 
     <style>
 
-        body{
+        .body {
             font-family: 'Lato', sans-serif;
             background: #29246b;
         }
@@ -209,37 +215,40 @@
     </style>
 </head>
 <body style="margin: 0; padding: 0;">
-<div id="top">
-    <img src="https://i.ibb.co/gdtD9Rh/logo-yellow.png" id="logo">
-    <p id="page-title">Commande enregistrée et payement effectué avec succès</p>
+<div class="body" style="margin: 0; padding: 1px;">
+    <div id="top">
+        <img id="logo" src="https://i.ibb.co/gdtD9Rh/logo-yellow.png">
+        <p id="page-title">Commande enregistrée et payement effectué avec succès</p>
+    </div>
+
+    <div id="content-box">
+        <h2 id="content-title">HELLO <span th:text="${name}"></span></h2>
+        <p class="text">Dans quelques instants, tu auras un cadeau prêt à offrir et c'est dans ta boite mail.<br>
+            Le jour J fais-lui parvenir sa BOO'BOX dans la sienne et le tour est joué !</p>
+        <table>
+            <tr>
+                <th class="first">BOO'BOX</th>
+                <th class="second">Quantité</th>
+                <th class="third">PRIX</th>
+            </tr>
+            <tr id="table-content" th:each="detailCommande : ${detailCommandes}">
+                <td class="first"><span th:text="${detailCommande.getCoffret().getName()}"></span></td>
+                <td class="second"><span th:text="${detailCommande.getQuantite()}"></span></td>
+                <td class="third"><span th:text="${detailCommande.getPrix()}"></span></td>
+            </tr>
+        </table>
+        <div id="total-box">
+            <p class="total-text">TOTAL: <span th:text="${total}"></span></p>
+        </div>
+        <br><br><br>
+        <p class="text">Merci de m'avoir fait confiance. Bon cadeau !</p>
+        <p class="text">Comme par magie, BOO !</p>
+        <p class="text">Une question? Un problème? Ou une simple demande d'information?</p>
+        <br>
+        <p class="text">N'hésites pas à me contacter!</p>
+        <img id="contacts" src="https://i.ibb.co/MfPL3ff/contacts-white.png">
+    </div>
 </div>
 
-<div id="content-box">
-    <h2 id="content-title">HELLO <span th:text="${name}"></span></h2>
-    <p class="text">Dans quelques instants, tu auras un cadeau prêt à offrir et c'est dans ta boite mail.<br>
-        Le jour J fais-lui parvenir sa BOO'BOX dans la sienne et le tour est joué !</p>
-    <table>
-        <tr>
-            <th class="first">BOO'BOX</th>
-            <th class="second">Quantité</th>
-            <th class="third">PRIX</th>
-        </tr>
-        <tr id="table-content" th:each="detailCommande : ${detailCommandes}">
-            <td class="first"><span th:text="${detailCommande.getCoffret().getName()}"></span></td>
-            <td class="second"><span th:text="${detailCommande.getQuantite()}"></span></td>
-            <td class="third"><span th:text="${detailCommande.getPrix()}"></span></td>
-        </tr>
-    </table>
-    <div id="total-box">
-        <p class="total-text">TOTAL: <span th:text="${total}"></span></p>
-    </div>
-    <br><br><br>
-    <p class="text">Merci de m'avoir fait confiance. Bon cadeau !</p>
-    <p class="text">Comme par magie, BOO !</p>
-    <p class="text">Une question? Un problème? Ou une simple demande d'information?</p>
-    <br>
-    <p class="text">N'hésites pas à me contacter!</p>
-    <img src="https://i.ibb.co/MfPL3ff/contacts-white.png" id="contacts">
-</div>
 </body>
 </html>

@@ -12,5 +12,5 @@ public interface UserSevice extends GenericService<User> {
 
     List<User> findPartnerByCategory(Long id);
 
-    void ResetPassword(String email);
+    User findUserByEmail(String email);
 }

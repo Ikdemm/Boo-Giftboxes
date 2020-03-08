@@ -6,11 +6,11 @@ import {TooltipPosition} from '@angular/material';
  * @title Tooltip with a custom position
  */
 @Component({
-  selector: 'tooltip-position-example',
-  templateUrl: 'tooltip-position-example.html',
-  styleUrls: ['tooltip-position-example.css'],
+    selector: 'tooltip-position-example',
+    templateUrl: 'tooltip-position-example.html',
+    styleUrls: ['tooltip-position-example.css'],
 })
 export class TooltipPositionExample {
-  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-  position = new FormControl(this.positionOptions[0]);
+    positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+    position = new FormControl(this.positionOptions[0]);
 }

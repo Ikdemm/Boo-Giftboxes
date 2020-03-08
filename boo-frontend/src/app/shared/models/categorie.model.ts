@@ -1,4 +1,4 @@
-import { Partner } from "./partner.model";
+import {Partner} from './partner.model';
 
 
 export class Categorie {

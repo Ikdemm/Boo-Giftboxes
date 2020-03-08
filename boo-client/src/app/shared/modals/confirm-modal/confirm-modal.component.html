@@ -6,8 +6,9 @@
 </mat-dialog-content>
 <mat-dialog-actions>
     <div fxLayout="row" fxLayoutAlign="space-between center">
-        <button *ngIf="data.titleCancelButton" mat-button color="primary" class="btn cancel-button"
-            (click)="onDismiss()">{{data.titleCancelButton}}</button>
-        <button *ngIf="data.titleConfirmButton" mat-raised-button class="btn confirm-button" (click)="onConfirm()">{{data.titleConfirmButton}}</button>
+        <button (click)="onDismiss()" *ngIf="data.titleCancelButton" class="btn cancel-button" color="primary"
+                mat-button>{{data.titleCancelButton}}</button>
+        <button (click)="onConfirm()" *ngIf="data.titleConfirmButton" class="btn confirm-button"
+                mat-raised-button>{{data.titleConfirmButton}}</button>
     </div>
 </mat-dialog-actions>

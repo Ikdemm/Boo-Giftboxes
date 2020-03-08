@@ -1,13 +1,13 @@
 <mat-form-field color="accent">
-  <mat-label>Inherited calendar color</mat-label>
-  <input matInput [matDatepicker]="picker1">
-  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-  <mat-datepicker #picker1></mat-datepicker>
+    <mat-label>Inherited calendar color</mat-label>
+    <input [matDatepicker]="picker1" matInput>
+    <mat-datepicker-toggle [for]="picker1" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
 </mat-form-field>
 
 <mat-form-field color="accent">
-  <mat-label>Custom calendar color</mat-label>
-  <input matInput [matDatepicker]="picker2">
-  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-  <mat-datepicker #picker2 color="primary"></mat-datepicker>
+    <mat-label>Custom calendar color</mat-label>
+    <input [matDatepicker]="picker2" matInput>
+    <mat-datepicker-toggle [for]="picker2" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #picker2 color="primary"></mat-datepicker>
 </mat-form-field>

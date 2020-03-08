@@ -1,15 +1,15 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8"
-       matSort #sort="matSort">
-  <!-- Basic column: name is used for header label AND data property -->
-  <simple-column name="name" sortable></simple-column>
-  <simple-column name="position"></simple-column>
+<table #sort="matSort" [dataSource]="dataSource" class="mat-elevation-z8"
+       mat-table matSort>
+    <!-- Basic column: name is used for header label AND data property -->
+    <simple-column name="name" sortable></simple-column>
+    <simple-column name="position"></simple-column>
 
-  <!-- Name doesn't match the data property (or transform needed); define a custom data accessor -->
-  <simple-column name="weight" [dataAccessor]="getWeight"></simple-column>
+    <!-- Name doesn't match the data property (or transform needed); define a custom data accessor -->
+    <simple-column [dataAccessor]="getWeight" name="weight"></simple-column>
 
-  <!-- Name doesn't match desired header text; define a custom label -->
-  <simple-column name="symbol" label="SYMBOL!"></simple-column>
+    <!-- Name doesn't match desired header text; define a custom label -->
+    <simple-column label="SYMBOL!" name="symbol"></simple-column>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let data; columns: displayedColumns;"></tr>
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let data; columns: displayedColumns;" mat-row></tr>
 </table>

@@ -11,6 +11,8 @@ public interface EmailService {
     void sendChequeMail( Cheque cheque,User user);
     void sendOrderMail(User user, Commande commande);
     void sendSignUpMail(User user);
+    void sendResetPasswordMail(User usern, String token);
+    void sendCheckCachingMail(Cheque cheque,User user);
 
 
 }

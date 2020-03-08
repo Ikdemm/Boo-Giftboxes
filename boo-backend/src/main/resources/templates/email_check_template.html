@@ -1,15 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width" name="viewport">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="x-apple-disable-message-reformatting">
     <title>BOO'BOX</title>
     <style>
+        * {
+            font-family: 'Lato', sans-serif;
+        }
         html,
-        body {
+        .body {
             margin: 0 auto !important;
             /*padding: 0 !important;*/
             /*height: 100% !important;*/
@@ -45,7 +49,7 @@
 
         /* What it does: Uses a better rendering method when resizing images in IE. */
         img {
-            -ms-interpolation-mode:bicubic;
+            -ms-interpolation-mode: bicubic;
         }
 
         /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
@@ -54,7 +58,7 @@
         }
 
         /* What it does: A work-around for email clients meddling in triggered links. */
-        *[x-apple-data-detectors],  /* iOS */
+        *[x-apple-data-detectors], /* iOS */
         .unstyle-auto-detected-links *,
         .aBn {
             border-bottom: 0 !important;
@@ -92,12 +96,14 @@
                 min-width: 320px !important;
             }
         }
+
         /* iPhone 6, 6S, 7, 8, and X */
         @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
             u ~ div .email-container {
                 min-width: 375px !important;
             }
         }
+
         /* iPhone 6+, 7+, and 8+ */
         @media only screen and (min-device-width: 414px) {
             u ~ div .email-container {
@@ -107,8 +113,10 @@
     </style>
 
     <style>
-
-        body{
+        * {
+            font-family: 'Lato', sans-serif;
+        }
+        .body {
             font-family: 'Lato', sans-serif;
             background: #29246b;
         }
@@ -163,25 +171,29 @@
     </style>
 </head>
 <body style="margin: 0; padding: 0;">
-<div id="top">
-    <img src="https://i.ibb.co/pdSrC64/logo-blue.png" id="logo">
-    <p id="page-title">Ci-joint une BOO'BOX!</p>
+<div class="body" style="margin: 0; padding: 1px;">
+    <div id="top">
+        <img id="logo" src="https://i.ibb.co/pdSrC64/logo-blue.png">
+        <p id="page-title">Ci-joint une BOO'BOX!</p>
+    </div>
+
+    <div id="content-box">
+        <img id="gift" src="https://i.ibb.co/HVQzrRJ/gift.png">
+        <p class="text">Parce que vous êtes une personne spéciale, une BOO'BOX vous est offerte pour
+            vous faire plaisir tout en vous offrant la chance de choisir!</p>
+        <p class="text">La BOO'BOX ci-joint contient un BOO'K et un BOO'PON. <span th:text="${code}"></span></p>
+        <img src="https://i.ibb.co/0Xf7HVb/boobox.png">
+        <br>
+        <p class="text">Enregistrez le code de votre BOO'PON sur www.boo.tn dans la rubrique "J'ai un BOO'PON" pour
+            l'activer ainsi le sécuriser.</p>
+        <p class="text">Bon choix !</p>
+        <p class="text">Comme par magie, BOO!</p>
+        <p class="text">Une question? Un problème? Ou une simple demande d'information?</p>
+        <p class="text">N'hésites pas à me contacter!</p>
+        <img id="contacts" src="https://i.ibb.co/MfPL3ff/contacts-white.png">
+    </div>
 </div>
 
-<div id="content-box">
-    <img src="https://i.ibb.co/HVQzrRJ/gift.png" id="gift">
-    <p class="text">Parce que vous êtes une personne spéciale, une BOO'BOX vous est offerte pour
-        vous faire plaisir tout en vous offrant la chance de choisir!</p>
-    <p class="text">La BOO'BOX ci-joint contient un BOO'K et un BOO'PON. <span th:text="${code}"></span></p>
-    <img src="https://i.ibb.co/0Xf7HVb/boobox.png">
-    <br>
-    <p class="text">Enregistrez le code de votre BOO'PON sur www.boo.tn dans la rubrique "J'ai un BOO'PON" pour l'activer ainsi le sécuriser.</p>
-    <p class="text">Bon choix !</p>
-    <p class="text">Comme par magie, BOO!</p>
-    <p class="text">Une question? Un problème? Ou une simple demande d'information?</p>
-    <p class="text">N'hésites pas à me contacter!</p>
-    <img src="https://i.ibb.co/MfPL3ff/contacts-white.png" id="contacts">
-</div>
 
 </body>
 </html>

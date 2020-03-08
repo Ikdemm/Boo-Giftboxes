@@ -1,24 +1,18 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
-import { PartnersService } from "app/core/_services/partners.service";
-import { fuseAnimations } from "@fuse/animations";
-import {
-    MatTableDataSource,
-    MatPaginator,
-    MatSort,
-    MatDialog
-} from "@angular/material";
-import { PartnersAddComponent } from "../partners-add/partners-add.component";
-import { CategoriesService } from "app/core/_services/categories.service";
-import { ActivatedRoute } from "@angular/router";
-import { Categorie } from "app/shared/models/categorie.model";
-import { Partner } from "app/shared/models/partner.model";
-import { TabGroupStretchedExample } from "assets/angular-material-examples/tab-group-stretched/tab-group-stretched-example";
-import { LayoutUtilsService, MessageType } from "app/core/_utils/layout-utils.service";
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {PartnersService} from 'app/core/_services/partners.service';
+import {fuseAnimations} from '@fuse/animations';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {PartnersAddComponent} from '../partners-add/partners-add.component';
+import {CategoriesService} from 'app/core/_services/categories.service';
+import {ActivatedRoute} from '@angular/router';
+import {Categorie} from 'app/shared/models/categorie.model';
+import {Partner} from 'app/shared/models/partner.model';
+import {LayoutUtilsService, MessageType} from 'app/core/_utils/layout-utils.service';
 
 @Component({
-    selector: "app-partners-list",
-    templateUrl: "./partners-list.component.html",
-    styleUrls: ["./partners-list.component.scss"],
+    selector: 'app-partners-list',
+    templateUrl: './partners-list.component.html',
+    styleUrls: ['./partners-list.component.scss'],
     animations: fuseAnimations,
     encapsulation: ViewEncapsulation.None
 })
@@ -26,28 +20,30 @@ export class PartnersListComponent implements OnInit {
     dataSource;
     category: Categorie;
     @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild("sort") sort: MatSort;
-    displayedColumns = ["id","image", "name", "phone", "address", "actions"];
+    @ViewChild('sort') sort: MatSort;
+    displayedColumns = ['id', 'image', 'name', 'phone', 'address', 'actions'];
     hasItems = false;
     loading = true;
+
     constructor(
         private categoriesService: CategoriesService,
         private activatedRoute: ActivatedRoute,
         private partnersSrevice: PartnersService,
         private _matDialog: MatDialog,
         private layoutUtilsService: LayoutUtilsService
-
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         const routeSubscription = this.activatedRoute.params.subscribe(
             params => {
-                const name = params["name"];
+                const name = params['name'];
                 this.loadCategory(name);
                 console.log(this.category);
             }
         );
     }
+
     loadCategory(name) {
         this.categoriesService.findByName(name).subscribe(
             data => {
@@ -77,7 +73,7 @@ export class PartnersListComponent implements OnInit {
                                     resolve => {
                                         let reader = new FileReader();
                                         reader.readAsDataURL(data);
-                                        reader.onload = e=> resolve(reader.result);
+                                        reader.onload = e => resolve(reader.result);
                                     }
                                 );
                                 this.dataSource.data.push(partner);
@@ -97,9 +93,9 @@ export class PartnersListComponent implements OnInit {
     }
 
     addNewPartner() {
-        console.log("ADD NEW PARTNER");
+        console.log('ADD NEW PARTNER');
         let dialogRef = this._matDialog.open(PartnersAddComponent, {
-            panelClass: "mail-compose-dialog"
+            panelClass: 'mail-compose-dialog'
         });
         dialogRef.componentInstance.category = this.category;
         dialogRef.afterClosed().subscribe(response => {
@@ -109,22 +105,25 @@ export class PartnersListComponent implements OnInit {
             this.getListPartnersByCategory(this.category.id);
         });
     }
+
     deletePartner(partner) {
         this.partnersSrevice.delete(partner.id).subscribe(
-            data=>{
+            data => {
                 this.layoutUtilsService.showActionNotification(
-                    "Partner " + partner.email + " has been delete",
+                    'Partner ' + partner.email + ' has been delete',
                     MessageType.Delete
                 );
-                this.getListPartnersByCategory(this.category.id)
+                this.getListPartnersByCategory(this.category.id);
             },
-            err=>{
+            err => {
                 this.layoutUtilsService.showActionNotification(
                     err.message,
                     MessageType.Error
                 );
             }
-        )
+        );
     }
-    editPartner(partner) {}
+
+    editPartner(partner) {
+    }
 }

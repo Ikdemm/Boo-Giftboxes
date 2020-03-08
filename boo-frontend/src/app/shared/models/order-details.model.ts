@@ -1,4 +1,4 @@
-import { Box } from "./box.model";
+import {Box} from './box.model';
 
 export class OrderDetails {
     _id?: string;

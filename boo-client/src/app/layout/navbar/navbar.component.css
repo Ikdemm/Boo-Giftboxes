@@ -1,0 +1,121 @@
+.navbar-default {
+    background-color: #29246b;
+    border: 0px;
+    padding: 20px 0;
+    transition: all 0.3s;
+}
+
+.navbar-right {
+    float: right;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #fff;
+    outline: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #fff;
+    outline: none;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #f3fd6f;
+    /*color: #fffde0;*/
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    /*color: #fffde0;*/
+    color: #f3fd6f;
+    background-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background: #29246b;
+    }
+}
+
+.top-nav-collapse {
+    padding: 0.5em;
+    background: #29246b;
+    opacity: 0.9;
+}
+
+.bg-color {
+    background-color: #29246b;
+    /*min-height: 650px;*/
+}
+
+.navbar-toggle {
+    position: relative;
+    text-transform: uppercase;
+    background-color: #fff;
+    border-radius: 4px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.navbar-link {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+#boopon-button, #login-button ,#logout-button{
+    display: inline-block;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 4px;
+    border-radius: 2em;
+    box-sizing: border-box;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #7dced8;
+    text-align: center;
+    transition: all 0.2s;
+    font-weight: bolder;
+}
+
+#boopon-button:hover, #login-button:hover ,#logout-button:hover{
+    background-color: #29246b !important;
+    color: white;
+}
+
+.navbar-brand {
+    margin-top: -10px;
+    margin-right: 10px;
+}
+
+#boopon-button {
+    background-color: #f3fd6f;
+    color: #29246b !important;
+    font-weight: 900 !important;
+}
+
+#login-button,#logout-button {
+    background-color: #f6b4d1;
+}
+
+#boopon-button, #login-button ,#logout-button{
+    font-size: 0.7em;
+    font-weight: 200;
+    letter-spacing: 0.2em;
+}
+
+#boopon-button:hover {
+    color: #fff !important;
+    background-color: #29246b !important;
+    border: solid 2px #fff !important;
+}
+
+#login-button:hover,#logout-button:hover {
+    color: #fff !important;
+    background-color: #29246b !important;
+    border: solid 2px #fff !important;
+}

@@ -1,25 +1,22 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Observable, Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
-import { FuseConfigService } from '@fuse/services/config.service';
-import { navigation } from 'app/navigation/navigation';
-import { AuthenticationService } from 'app/core/_services/authentication.service';
+import {FuseConfigService} from '@fuse/services/config.service';
+import {navigation} from 'app/navigation/navigation';
+import {AuthenticationService} from 'app/core/_services/authentication.service';
 
 @Component({
-    selector     : 'vertical-layout-1',
-    templateUrl  : './layout-1.component.html',
-    styleUrls    : ['./layout-1.component.scss'],
+    selector: 'vertical-layout-1',
+    templateUrl: './layout-1.component.html',
+    styleUrls: ['./layout-1.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class VerticalLayout1Component implements OnInit, OnDestroy
 {
     fuseConfig: any;
     navigation: any;
-    user;
 
-    isLoggedIn$: Observable<boolean>;
-    isLoggedInCheck:Boolean;
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -29,26 +26,14 @@ export class VerticalLayout1Component implements OnInit, OnDestroy
      * @param {FuseConfigService} _fuseConfigService
      */
     constructor(
-        private _fuseConfigService: FuseConfigService,
-        private _authenticationService:AuthenticationService,
-         private cdRef : ChangeDetectorRef,
-        
+        private _fuseConfigService: FuseConfigService
     )
     {
-       
         // Set the defaults
         this.navigation = navigation;
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
-        this.isLoggedIn$ = this._authenticationService.isLoggedIn;
-        this.isLoggedIn$.subscribe(data=>{
-            console.log(data);
-         //   this.cdRef.detectChanges();
-
-        })
-
-
     }
 
     // -----------------------------------------------------------------------------------------------------

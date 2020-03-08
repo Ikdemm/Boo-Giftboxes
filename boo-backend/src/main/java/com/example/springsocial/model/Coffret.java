@@ -21,8 +21,8 @@ public class Coffret implements Serializable {
     @Column(nullable = false)
     private Long priceClient;
 
-    /*@Column(nullable = false)
-    private Long pricePartner;*/
+    @Column(nullable = false)
+    private Long pricePartner;
 
     @Column(nullable = true)
     private String fileUrl;
@@ -66,13 +66,13 @@ public class Coffret implements Serializable {
         this.priceClient = priceClient;
     }
 
-    /*public Long getPricePartner() {
+    public Long getPricePartner() {
         return pricePartner;
     }
 
     public void setPricePartner(Long pricePartner) {
         this.pricePartner = pricePartner;
-    }*/
+    }
 
     public String getFileUrl() {
         return fileUrl;

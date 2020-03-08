@@ -1,9 +1,9 @@
 <mat-form-field class="example-user-input">
-  <input matInput placeholder="Tooltip message" [formControl]="message">
+    <input [formControl]="message" matInput placeholder="Tooltip message">
 </mat-form-field>
 
-<button mat-raised-button
-        [matTooltip]="message.value"
-        aria-label="Button that displays a tooltip with a custom message">
-  Action
+<button [matTooltip]="message.value"
+        aria-label="Button that displays a tooltip with a custom message"
+        mat-raised-button>
+    Action
 </button>

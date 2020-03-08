@@ -119,10 +119,13 @@ public class UserSeviceImpl implements UserSevice {
     }
 
     @Override
-    public void ResetPassword(String email) {
-        /**
-         *  TODO Reset password Method
-         */
+    public User findUserByEmail(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if(user.isPresent()){
+            return user.get();
+        }else{
+            throw new ResourceNotFoundException("USER","EMAIL",email);
+        }
     }
 
 

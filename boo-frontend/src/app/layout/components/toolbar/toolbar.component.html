@@ -1,17 +1,17 @@
 <mat-toolbar class="p-0 mat-elevation-z1">
 
-    <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
+    <div fxFill fxFlex fxLayout="row" fxLayoutAlign="start center">
 
         <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
 
-            <button mat-icon-button class="navbar-toggle-button"
-                    *ngIf="!hiddenNavbar && !rightNavbar" (click)="toggleSidebarOpen('navbar')" fxHide.gt-md>
+            <button (click)="toggleSidebarOpen('navbar')" *ngIf="!hiddenNavbar && !rightNavbar"
+                    class="navbar-toggle-button" fxHide.gt-md mat-icon-button>
                 <mat-icon class="secondary-text">menu</mat-icon>
             </button>
 
-            <div class="toolbar-separator" *ngIf="!hiddenNavbar && !rightNavbar" fxHide.gt-md></div>
+            <div *ngIf="!hiddenNavbar && !rightNavbar" class="toolbar-separator" fxHide.gt-md></div>
 
-            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="horizontalNavbar">
+            <div *ngIf="horizontalNavbar" fxLayout="row" fxLayoutAlign="start center">
                 <div class="logo ml-16">
                     <img class="logo-icon" src="assets/images/logos/fuse.svg">
                 </div>
@@ -25,8 +25,8 @@
 
         <div class="" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
 
-            <button mat-button [matMenuTriggerFor]="userMenu"
-                    class="user-button">
+            <button [matMenuTriggerFor]="userMenu" class="user-button"
+                    mat-button>
                 <div fxLayout="row" fxLayoutAlign="center center">
                     <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/fatma.jpg">
                     <span class="username mr-12" fxHide fxShow.gt-sm>Fatma Douiri</span>
@@ -46,7 +46,7 @@
                     <span>Inbox</span>
                 </button>-->
 
-                <button (click)="logout()" mat-menu-item class="">
+                <button (click)="logout()" class="" mat-menu-item>
                     <mat-icon>exit_to_app</mat-icon>
                     <span>Se déconnecter</span>
                 </button>

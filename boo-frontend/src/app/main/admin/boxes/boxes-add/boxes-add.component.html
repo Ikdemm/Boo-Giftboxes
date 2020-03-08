@@ -1,93 +1,87 @@
 <div class="dialog-content-wrapper">
-  <mat-toolbar class="mat-accent m-0">
-    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-      <span class="title dialog-title">Nouveau Coffret </span>
-      <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
-    <form name="composeForm" [formGroup]="boxAddForm" class="compose-form" fxLayout="column" fxFlex>
-      
-      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Nouveau Coffret </span>
+            <button (click)="matDialogRef.close()" aria-label="Close dialog" mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="p-24 m-0" fusePerfectScrollbar mat-dialog-content>
+        <form [formGroup]="boxAddForm" class="compose-form" fxFlex fxLayout="column" name="composeForm">
 
-        <mat-form-field appearance="outline" fxFlex="100">
-          <mat-label>Nom</mat-label>
-          <input matInput formControlName="name" required>
-          <mat-error>Vous devez nommer votre coffret</mat-error>
-        </mat-form-field>
+            <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
 
-      </div>
-      
-      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Nom</mat-label>
+                    <input formControlName="name" matInput required>
+                    <mat-error>Vous devez nommer votre coffret</mat-error>
+                </mat-form-field>
 
-        <mat-form-field appearance="outline" fxFlex="100">
-          <mat-label>Description</mat-label>
-          <input matInput formControlName="description" required>
-          <mat-error>Vous devez ajouter une description au coffret</mat-error>
-        </mat-form-field>
+            </div>
 
-      </div>
+            <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
 
-      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Description</mat-label>
+                    <input formControlName="description" matInput required>
+                    <mat-error>Vous devez ajouter une description au coffret</mat-error>
+                </mat-form-field>
 
-        <mat-form-field appearance="outline" fxFlex="100">
-          <mat-label>Prix Cient</mat-label>
-          <input type="number" min="0" matInput formControlName="priceClient" required>
-          <mat-error>Vous devez entrer le prix pour client</mat-error>
-        </mat-form-field>
+            </div>
 
-      </div>
+            <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
 
-      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Prix Cient</mat-label>
+                    <input formControlName="priceClient" matInput min="0" required type="number">
+                    <mat-error>Vous devez entrer le prix pour client</mat-error>
+                </mat-form-field>
 
-        <mat-form-field appearance="outline" fxFlex="100">
-          <mat-label>Prix Partenaire</mat-label>
-          <input type="number" min="0" matInput formControlName="pricePartner" required>
-          <mat-error>Vous devez entrer le prix pour partenaire</mat-error>
-        </mat-form-field>
+            </div>
 
-      </div>
+            <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
 
-      
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Prix Partenaire</mat-label>
+                    <input formControlName="pricePartner" matInput min="0" required type="number">
+                    <mat-error>Vous devez entrer le prix pour partenaire</mat-error>
+                </mat-form-field>
 
-      
+            </div>
 
 
-   
-     
-    </form>
-  </div>
-  <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
-    <div>
-      <button mat-raised-button color="accent" (click)="submitBox(boxAddForm)" class="save-button"
-        [disabled]="boxAddForm.invalid" aria-label="SAVE">
-        SEND
-        
-      </button>
-      <mat-label> <span class="primary-text" [ngStyle]="{'color': 'green'}"> Catalog:</span>
-      </mat-label>
-      <button (click)="fileInput1.click()" mat-icon-button matTooltip="Attach a file">
-        <mat-icon>attach_file</mat-icon>
-        <input #fileInput1 type="file" style="display:none;" (change)="onCatalogFileChange($event)">
-      </button>
-      
-      <mat-label *ngIf="catalogFile"> <span  class="secondary-text">{{catalogFile.name}}</span>
-      </mat-label>
-
-      <mat-label > <span class="primary-text" [ngStyle]="{'color': 'green'}"> Image:</span>
-      </mat-label>
-      <button (click)="fileInput.click()" mat-icon-button matTooltip="Attach a file">
-        <mat-icon>attach_file</mat-icon>
-        <input #fileInput type="file" style="display:none;" (change)="onImageFileChange($event)">
-      </button>
-   
-      <mat-label *ngIf="imageFile"> <span class="secondary-text">{{imageFile.name}}</span>
-      </mat-label>
-   
+        </form>
     </div>
+    <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center" mat-dialog-actions>
+        <div>
+            <button (click)="submitBox(boxAddForm)" [disabled]="boxAddForm.invalid" aria-label="SAVE" class="save-button"
+                    color="accent" mat-raised-button>
+                SEND
+
+            </button>
+            <mat-label><span [ngStyle]="{'color': 'green'}" class="primary-text"> Catalog:</span>
+            </mat-label>
+            <button (click)="fileInput1.click()" mat-icon-button matTooltip="Attach a file">
+                <mat-icon>attach_file</mat-icon>
+                <input #fileInput1 (change)="onCatalogFileChange($event)" style="display:none;" type="file">
+            </button>
+
+            <mat-label *ngIf="catalogFile"><span class="secondary-text">{{catalogFile.name}}</span>
+            </mat-label>
+
+            <mat-label><span [ngStyle]="{'color': 'green'}" class="primary-text"> Image:</span>
+            </mat-label>
+            <button (click)="fileInput.click()" mat-icon-button matTooltip="Attach a file">
+                <mat-icon>attach_file</mat-icon>
+                <input #fileInput (change)="onImageFileChange($event)" style="display:none;" type="file">
+            </button>
+
+            <mat-label *ngIf="imageFile"><span class="secondary-text">{{imageFile.name}}</span>
+            </mat-label>
+
+        </div>
 
 
-  </div>
+    </div>
 </div>

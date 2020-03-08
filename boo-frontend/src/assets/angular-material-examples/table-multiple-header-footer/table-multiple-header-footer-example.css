@@ -1,19 +1,19 @@
 table {
-  width: 100%;
+    width: 100%;
 }
 
 .example-first-header-row th {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .example-second-header-row {
-  font-style: italic;
+    font-style: italic;
 }
 
 .example-first-footer-row {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .example-second-footer-row td {
-  color: #900000;
+    color: #900000;
 }

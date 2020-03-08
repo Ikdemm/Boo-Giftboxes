@@ -1,0 +1,198 @@
+<div class="w3-display-container wow fadeIn delay-05s">
+    <div id="banner-slide1">
+        <div class="container">
+            <div class="row banner1">
+                <div class="col-md-12 wow fadeIn delay-05s">
+                    <div class="banner-text col-md-6">
+                        <img src="assets/images/home/hello.svg" width="20%"><br><br>
+                        <p>Moi c'est BOO! Le génie des cadeaux.<br>
+                            Ici tu trouveras des BOO'BOX!!<br>
+                            Ce sont des e-coffrets cadeaux qui offrent à ceux qui<br>
+                            te sont chers la chance de choisir leur cadeau coup<br>
+                            de &#9829; parmi plusieurs.</p>
+                        <a [routerLink]="['./boobox-list']">
+                            <button type="button" class="btn" id="boobox-button">
+                                Voir BOO'Box
+                            </button>
+                        </a>
+                        <a [routerLink]="['./guide']">
+                            <button type="button" class="btn" id="guide-button">
+                                Voir Guide
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img src="assets/images/home/banner1.svg" class="banner-illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay-detail text-center">
+        <!--<a href="#about"><i class="fa fa-angle-double-down"></i></a>-->
+        <a href="#about">
+            <img src="assets/images/home/double-arrow.svg">
+        </a>
+    </div>
+
+</div> 
+
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content text-center">
+        <span class="close">&times;</span>
+        <img src="assets/images/home/contenu-boobox.PNG" width="70%" height="auto">
+    </div>
+    
+</div>
+    
+<!-- About -->
+
+<section id="about" class="section-padding wow fadeIn delay-05s">
+    <div class="container">
+        <h5 class="text-center title-about">Pourquoi offrir une BOO’BOX? </h5>
+        <div class="row">
+            
+            <div class="col-md-4 about-element text-center">
+                <img src="assets/images/home/avantage2.png" class="about-illustration">
+                <h5 class="about-element-title">Un cadeau qui plaira à coup sûr</h5>
+                <p class="about-element-description">Une BOO'BOX offre à son bénéficiaire plusieurs choix de cadeaux et il choisira par lui-même son coup de cœur.
+                </p>
+            </div>
+            
+            <div class="col-md-4 about-element text-center">
+                <img src="assets/images/home/avantage1.png" class="about-illustration">
+                <h5 class="about-element-title">Un cadeau original</h5>
+                <p class="about-element-description">
+                    Mis à part le plaisir que procure un cadeau, une BOO'BOX
+                    fera découvrir à son bénéficiaire les tendances, les bons plans, les endroits les plus trendy ...
+                </p>
+            </div>
+            
+            <div class="col-md-4 about-element text-center">
+                <img src="assets/images/home/avantage3.png" class="about-illustration">
+                <h5 class="about-element-title">Un cadeau en deux clics</h5>
+                <p class="about-element-description">Le manque de temps ne sera plus jamais une excuse pour ne pas faire plaisir aux personnes qu’on aime. En deux clics, fais-toi livrer le meilleur des cadeaux.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BooBox -->
+
+<section id="boobox" class="section-padding wow fadeIn delay-05s">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="boobox-title text-center">MES BOO'BOX</h1>
+            <div class="col-md-3 boobox-element" *ngFor="let box of printedBoxes"
+            [class.selected]="box.id === selectedId">
+                <img class="boobox-image" [src]="box.imageUrl">
+                <div class="boobox-description">
+                    <h3 class="boobox-name">{{box.name}}</h3>
+                    <p class="boobox-price">{{box.priceClient}} dt</p>
+                    <a [routerLink]="['./boobox-details', box.id]">
+                        <button class="btn details-button">Plus de détails</button>
+                    </a>
+                </div>
+            </div>
+            <a [routerLink]="['./boobox-list']">Voir tout les boobox</a>
+        </div>
+    </div>
+    </div>
+</section>
+
+<!-- Guide -->
+
+<section id="guide" class="section-padding wow fadeIn delay-05s">
+    <div class="container text-center">
+        <h3 class="guide-title text-center">Comment ça marche?</h3>
+        <div class="row col-md-12 etapes">
+            <div class="col-md-2 text-center etape">
+                <img src="assets/images/home/demarche1.png" class="etape-illustration">
+                <h6 class="etape-title">TU COMMANDES</h6>
+                <div class="etape-number text-center">1</div>
+            </div>
+            <div class="col-md-2 text-center etape">
+                <img src="assets/images/home/demarche1.svg" class="etape-illustration">
+                <h6 class="etape-title">JE TRAITE</h6>
+                <div class="etape-number text-center">2</div>
+            </div>
+            <div class="col-md-2 text-center etape">
+                <img src="assets/images/home/demarche3.png" class="etape-illustration">
+                <h6 class="etape-title">TU OFFRES</h6>
+                <div class="etape-number text-center">3</div>
+            </div>
+            <div class="col-md-2 text-center etape">
+                <img src="assets/images/home/demarche4.png" class="etape-illustration">
+                <h6 class="etape-title">IL CHOISIT</h6>
+                <div class="etape-number text-center">4</div>
+            </div>
+            <div class="col-md-2 text-center etape">
+                <img src="assets/images/home/demarche5.png" class="etape-illustration">
+                <h6 class="etape-title">IL PROFITE</h6>
+                <div class="etape-number text-center">5</div>
+            </div>
+        </div>
+        <a [routerLink]="['/guide']">
+            <button class="btn guide-button">
+                Voir Guide
+            </button>
+        </a>
+    </div>
+</section>
+
+<!-- Valeurs --> 
+
+<section id="valeurs" class="section-padding wow fadeIn delay-05s">
+    <div class="container text-center">
+        <h2 class="valeurs-title text-center">Mes valeurs</h2>
+        <!--<img src="img/ILLUSTRATIONS/valeurs/valeurs.PNG" class="valeurs-img">-->
+        <div class="col-md-12 text-center row valeurs">
+            <div class="col-md-3 text-center valeurs-element">
+                <img class="valeurs-image" src="assets/images/home/valeur1.png">
+                <h4 class="valeurs-name" style="color: #7dced8; padding-top:1em;">La confiance</h4>
+            </div>
+            <div class="col-md-3 text-center valeurs-element">
+                <img class="valeurs-image" src="assets/images/home/valeur2.png">
+                <h4 class="valeurs-name" style="color: #f8f297">L'innovation & <br> la créativité</h4>
+            </div>
+            <div class="col-md-3 text-center valeurs-element">
+                <img class="valeurs-image" src="assets/images/home/valeur3.png">
+                <h4 class="valeurs-name" style="color: #f6b4d1">le plaisir & <br> le partage</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="bookeurs" class="section-padding wow fadeIn">
+    <div class="container">
+        <h2 class="bookeurs-title text-center">MES BOO'KEURS</h2>
+
+        <div class="bookeurs-description text-center">
+            <h5 style="font-weight: bold;">Qui sont les BOO'keurs?</h5>
+            <p>Ce sont mes partenaires de confiances. Ils offrent leurs établissements dans les BOO'BOX.</p>
+            <p style="font-weight: bold;">les BOO'keurs sont répartis selon les catégories suivantes:</p>
+        </div>
+
+        <div class="container" style="margin-top:3em;">
+            <owl-carousel [options]="mySlideOptions" [items]="images" [carouselClasses]="['owl-theme', 'sliding']" >
+                <div class="item" *ngFor="let image of mySlideImages;let i = index">
+                 <div style="padding: 1.5em;">
+                   <img src={{image}}/>
+                 </div>
+                </div>
+            </owl-carousel>
+        </div>
+        <div class="text-center ">
+            <button class="btn bookeurs-button" [routerLink]="['/home/bookeur']">Devenir Boo'keur</button>
+        </div>
+    </div>
+</section>
+
+
+<app-back-to-top></app-back-to-top>

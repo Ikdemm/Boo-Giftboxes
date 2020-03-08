@@ -104,4 +104,18 @@ public class Cheque {
     public void setCoffret(Coffret coffret) {
         this.coffret = coffret;
     }
+
+    @Override
+    public String toString() {
+        return "Cheque{" +
+                "id=" + id +
+                ", date=" + date +
+                ", status=" + status +
+                ", code=" + code +
+                ", email='" + email + '\'' +
+                ", client=" + client +
+                ", partner=" + partner +
+                ", coffret=" + coffret +
+                '}';
+    }
 }

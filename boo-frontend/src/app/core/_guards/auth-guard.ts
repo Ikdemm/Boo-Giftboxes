@@ -1,39 +1,35 @@
-import { Injectable } from "@angular/core";
-import {
-    Router,
-    CanActivate,
-    ActivatedRouteSnapshot,
-    RouterStateSnapshot
-} from "@angular/router";
-import { toUnicode } from "punycode";
-import { AuthenticationService } from "../_services/authentication.service";
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import {AuthenticationService} from '../_services/authentication.service';
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
     constructor(
         private router: Router,
         private authService: AuthenticationService
-    ) {}
+    ) {
+    }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        console.log(localStorage.getItem("token"));
-        if (localStorage.getItem("token")) {
-            const role =this.authService.decode().role[0];
+        console.log(localStorage.getItem('token'));
+        if (localStorage.getItem('token')) {
+            const role = this.authService.decode().role[0];
             const allowedRole = route.data.role;
-            if(role == allowedRole)
-              return true
-           /* else{
-              if (role == "ROLE_PARTNER" && allowedRole == "ROLE_PARTNER")
-              
-            }*/
+            if (role == allowedRole) {
+                return true;
+            }
+            /* else{
+               if (role == "ROLE_PARTNER" && allowedRole == "ROLE_PARTNER")
+
+             }*/
             /*console.log("role "+role);
             console.log("allowed Rolewed "+route.data.role)
             return true;*/
         }
-        this.router.navigate(["/auth/login"], {
-            queryParams: { returnUrl: state.url }
+        this.router.navigate(['/auth/login'], {
+            queryParams: {returnUrl: state.url}
         });
         return false;
         /* console.log(localStorage.getItem('currentUser'))

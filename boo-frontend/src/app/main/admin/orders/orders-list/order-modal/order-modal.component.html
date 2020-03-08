@@ -1,111 +1,111 @@
 <div class="dialog-content-wrapper">
-  <mat-toolbar class="mat-accent m-0">
-    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-      <span class="title dialog-title">Commande N°{{order.id}} Détails </span>
-      <div>
-        <span class="title dialog-title">Status: {{order.status}} </span>
-        <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
-          <mat-icon>close</mat-icon>
-        </button>
-      </div>
-
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
-    <form name="composeForm" class="compose-form" fxLayout="column" fxFlex [formGroup]="orderForm">
-      <div fxLayout="row" fxLayoutAlign="space-between">
-        <!-- NAME ATTRIBUT -->
-        <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
-          <mat-label>Full Name</mat-label>
-          <input matInput placeholder="name" name="name" formControlName="name" required>
-        </mat-form-field>
-        <!-- / NAME ATTRIBUT -->
-
-        <!-- EMAIL ATTRIBUT -->
-        <mat-form-field appearance="outline" class="mr-16" fxFlex="45">
-          <mat-label>Email</mat-label>
-          <input matInput placeholder="email" name="email" formControlName="email" required>
-
-        </mat-form-field>
-        <!-- / EMAIL ATTRIBUT -->
-      </div>
-      <div fxLayout="row" fxLayoutAlign="space-between">
-        <!-- DATE ATTRIBUT -->
-        <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
-          <mat-label>DATE</mat-label>
-          <input matInput placeholder="date" name="date" formControlName="date" required>
-        </mat-form-field>
-        <!-- / NAME ATTRIBUT -->
-
-        <!-- PRIX TOTALE ATTRIBUT -->
-        <mat-form-field appearance="outline" class="mr-16" fxFlex="45">
-          <mat-label>Prix Totale</mat-label>
-          <input matInput placeholder="Prix Totale" name="prix_totale" formControlName="totalPrice" required>
-
-        </mat-form-field>
-        <!-- / PRIX TOTALE ATTRIBUT -->
-      </div>
-      <div fxLayout="row" fxLayoutAlign="space-between">
-        <!-- PHONE ATTRIBUT -->
-        <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
-          <mat-label>Numéro de Téléphone</mat-label>
-          <input matInput placeholder="Numéro de Téléphone" name="phone" formControlName="phone" required>
-        </mat-form-field>
-        <!-- / PHONE ATTRIBUT -->
-
-        <!-- ADRESSE ATTRIBUT -->
-        <mat-form-field appearance="outline" class="mr-16" fxFlex="45">
-          <mat-label>Adresse</mat-label>
-          <input matInput placeholder="Adresse" name="adresse" formControlName="adresse" required>
-        </mat-form-field>
-        <!-- / ADRESSE ATTRIBUT -->
-      </div>
-      <div>
-        <mat-accordion class="example-headers-align">
-          <mat-expansion-panel *ngFor="let detailCommande of order.detailCommandes">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Nom du Coffret: {{detailCommande.coffret.name | uppercase}}
-              </mat-panel-title>
-              <mat-panel-description fxFlex fxLayout="row" fxLayoutAlign="space-between">
-                <div>
-                    QUNTITÉ : {{detailCommande.quantite}}
-                </div>
-                <div>
-                    PRIX : {{detailCommande.prix}}
-                </div>
-                <div>
-                    Voir Détails
-                </div>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div *ngFor="let cheque of detailCommande.cheques" fxLayout="row" fxLayoutAlign="space-between">
-              <mat-form-field appearance="outline" class="mr-16" fxFlex="30">
-                <mat-label>Date</mat-label>
-                <input matInput placeholder="Date" name="date"  value="{{cheque.date | date}}" disabled>
-              </mat-form-field>
-              <mat-form-field appearance="outline" class="mr-16" fxFlex="30">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="Email" name="email" value="{{cheque.email}}" disabled>
-              </mat-form-field>
-              <mat-form-field appearance="outline" class="mr-16" fxFlex="30">
-                <mat-label>Status</mat-label>
-                <input matInput placeholder="Status" name="Status" value="{{cheque.status}}" disabled>
-              </mat-form-field>
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Commande N°{{order.id}} Détails </span>
+            <div>
+                <span class="title dialog-title">Status: {{order.status}} </span>
+                <button (click)="close()" aria-label="Close dialog" mat-icon-button>
+                    <mat-icon>close</mat-icon>
+                </button>
             </div>
 
-          </mat-expansion-panel>
-          
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="p-24 m-0" fusePerfectScrollbar mat-dialog-content>
+        <form [formGroup]="orderForm" class="compose-form" fxFlex fxLayout="column" name="composeForm">
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <!-- NAME ATTRIBUT -->
+                <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
+                    <mat-label>Full Name</mat-label>
+                    <input formControlName="name" matInput name="name" placeholder="name" required>
+                </mat-form-field>
+                <!-- / NAME ATTRIBUT -->
 
-        </mat-accordion>
-      </div>
-    </form>
-  </div>
-  <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
-    <div>
+                <!-- EMAIL ATTRIBUT -->
+                <mat-form-field appearance="outline" class="mr-16" fxFlex="45">
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" matInput name="email" placeholder="email" required>
+
+                </mat-form-field>
+                <!-- / EMAIL ATTRIBUT -->
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <!-- DATE ATTRIBUT -->
+                <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
+                    <mat-label>DATE</mat-label>
+                    <input formControlName="date" matInput name="date" placeholder="date" required>
+                </mat-form-field>
+                <!-- / NAME ATTRIBUT -->
+
+                <!-- PRIX TOTALE ATTRIBUT -->
+                <mat-form-field appearance="outline" class="mr-16" fxFlex="45">
+                    <mat-label>Prix Totale</mat-label>
+                    <input formControlName="totalPrice" matInput name="prix_totale" placeholder="Prix Totale" required>
+
+                </mat-form-field>
+                <!-- / PRIX TOTALE ATTRIBUT -->
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <!-- PHONE ATTRIBUT -->
+                <mat-form-field appearance="outline" floatLabel="always" fxFlex="45">
+                    <mat-label>Numéro de Téléphone</mat-label>
+                    <input formControlName="phone" matInput name="phone" placeholder="Numéro de Téléphone" required>
+                </mat-form-field>
+                <!-- / PHONE ATTRIBUT -->
+
+                <!-- ADRESSE ATTRIBUT -->
+                <mat-form-field appearance="outline" class="mr-16" fxFlex="45">
+                    <mat-label>Adresse</mat-label>
+                    <input formControlName="adresse" matInput name="adresse" placeholder="Adresse" required>
+                </mat-form-field>
+                <!-- / ADRESSE ATTRIBUT -->
+            </div>
+            <div>
+                <mat-accordion class="example-headers-align">
+                    <mat-expansion-panel *ngFor="let detailCommande of order.detailCommandes">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Nom du Coffret: {{detailCommande.coffret.name | uppercase}}
+                            </mat-panel-title>
+                            <mat-panel-description fxFlex fxLayout="row" fxLayoutAlign="space-between">
+                                <div>
+                                    QUNTITÉ : {{detailCommande.quantite}}
+                                </div>
+                                <div>
+                                    PRIX : {{detailCommande.prix}}
+                                </div>
+                                <div>
+                                    Voir Détails
+                                </div>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div *ngFor="let cheque of detailCommande.cheques" fxLayout="row" fxLayoutAlign="space-between">
+                            <mat-form-field appearance="outline" class="mr-16" fxFlex="30">
+                                <mat-label>Date</mat-label>
+                                <input disabled matInput name="date" placeholder="Date" value="{{cheque.date | date}}">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="mr-16" fxFlex="30">
+                                <mat-label>Email</mat-label>
+                                <input disabled matInput name="email" placeholder="Email" value="{{cheque.email}}">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="mr-16" fxFlex="30">
+                                <mat-label>Status</mat-label>
+                                <input disabled matInput name="Status" placeholder="Status" value="{{cheque.status}}">
+                            </mat-form-field>
+                        </div>
+
+                    </mat-expansion-panel>
+
+
+                </mat-accordion>
+            </div>
+        </form>
+    </div>
+    <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center" mat-dialog-actions>
+        <div>
+
+        </div>
+
 
     </div>
-
-
-  </div>
 </div>

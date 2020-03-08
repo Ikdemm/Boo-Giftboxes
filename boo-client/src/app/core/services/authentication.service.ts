@@ -27,6 +27,15 @@ export class AuthenticationService {
         return user;
       }));
   }
+  updatePassword(updatePassword){
+    return this.http.post<any>(this.api + 'update-password', updatePassword);
+  }
+  changePassword(changePassword){
+    return this.http.post<any>(this.api + 'change-password', changePassword);
+  }
+  resetPassword(email){
+    return this.http.post<any>(this.api + 'reset-password', {email});
+  }
   get isLoggedIn() {
     return this.loggedIn.asObservable(); // {2}
   }
@@ -41,5 +50,8 @@ export class AuthenticationService {
   }
   decode() {
     return decode(localStorage.getItem('token'));
+  }
+  decodeReset(token){
+    return decode(token);
   }
 }

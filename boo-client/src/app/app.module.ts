@@ -20,10 +20,7 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     HttpClientModule,
     BrowserModule,
-    HomeModule,
-    AuthModule,
-    BooponModule,
-    BasketModule,
+
     AppRoutingModule,
     BrowserAnimationsModule,
     OwlModule,

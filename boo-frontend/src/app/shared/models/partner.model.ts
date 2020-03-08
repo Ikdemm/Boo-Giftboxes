@@ -1,16 +1,16 @@
-import { Categorie } from "./categorie.model";
+import {Categorie} from './categorie.model';
 
-export class Partner  {
+export class Partner {
 
-      name:string;
-      email:string;
-      imageUrl:any;
-      phone:string;
-      address:string;
-      city:string;
-      state:string;
-      postalCode:string;
-      password:string;
-      category:Categorie;
+    name: string;
+    email: string;
+    imageUrl: any;
+    phone: string;
+    address: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    password: string;
+    category: Categorie;
 
 }

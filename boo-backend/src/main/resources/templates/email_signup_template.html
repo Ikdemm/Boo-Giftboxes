@@ -1,49 +1,219 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Envoyer Mail lors de l'ajout d'un partenaire</title>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-
-    <!-- use the font -->
+    <meta charset="utf-8">
+    <meta content="width=device-width" name="viewport">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>BOO'BOX</title>
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            font-size: 48px;
+        * {
+            font-family: 'Lato', sans-serif;
         }
+        html,
+        .body {
+            margin: 0 auto !important;
+            /*padding: 0 !important;*/
+            /*height: 100% !important;*/
+            width: 100% !important;
+            background: #29246b;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        *[x-apple-data-detectors], /* iOS */
+        .unstyle-auto-detected-links *,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+    </style>
+
+    <style>
+        body,
+        .body {
+            font-family: 'Lato', sans-serif;
+            background: #29246b;
+        }
+
+        #gift {
+            width: 15%;
+            alignment: center;
+            padding: 2px 2px;
+        }
+
+        #top {
+            width: 100%;
+            text-align: center;
+            padding-top: 1em;
+        }
+
+        #logo {
+            height: 4em;
+        }
+
+        #page-title {
+            color: #7cccd7;
+            font-weight: 700;
+            font-size: 1em;
+        }
+
+        #content-box {
+            background-color: white;
+            border-radius: 2em;
+            text-align: center;
+            padding: 2% 5%;
+            margin: 3% 5%;
+        }
+
+        #content-title {
+            color: #29246b;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .text {
+            color: #29246b;
+            text-align: center;
+            font-size: 1.2em;
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .button-reset {
+            alignment: center;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 2em;
+            background: #29246b;
+            color: #7cccd7;
+            display: inline-block;
+            padding: 10px 20px;
+
+        }
+
+        #contacts {
+            margin-top: 5%;
+            width: 80%;
+        }
+
     </style>
 </head>
 <body style="margin: 0; padding: 0;">
+<div class="body" style="margin: 0; padding: 1px;">
+    <div id="top">
+        <img id="logo" src="https://i.ibb.co/pdSrC64/logo-blue.png">
+    </div>
 
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
-    <tr>
-        <td align="center" bgcolor="#78ab46" style="padding: 40px 0 30px 0;">
-            <img src="cid:logo.png" alt="https://www.techmagister.info" style="display: block;" />
-        </td>
-    </tr>
-    <tr>
-        <td bgcolor="#eaeaea" style="padding: 40px 30px 40px 30px;">
-            <p>Cher <span th:text="${name}"></span>,</p>
-            <p>Plein de coffrets cadeaux vous attendent chez boo.tn.</p>
-            <p>Veuillez accéder à votre interface BOO'keur à partir de ce lien .... et entrer vos coordonnés:</p>
-            <p>Login: <span th:text="${login}"></span></p>
-            <p>Mot de passe: <span th:text="${password}"></span></p>
-            <#--<p>CLick here to verify your email <b>${token}</b></p>-->
-            <p>Pour plus d'informations, veuillez nous contacter par téléphone: 21 115 217 ou répondre à ce mail.</p>
-            <p>Cordialement</p>
-        </td>
-    </tr>
-    <tr>
-        <td bgcolor="#777777" style="padding: 30px 30px 30px 30px;">
-            <p>${signature}</p>
-            <p>${location}</p>
-        </td>
-    </tr>
-</table>
+    <div id="content-box">
+        <h2 id="content-title">HELLO <span th:text="${name}"></span></h2>
+        <p class="text">Bienvenue dans le monde des cadeaux.</p>
+        <p class="text">Désormais je suis là pour toi, pour t’aider à gâter</p>
+        <p class="text">ceux qui te sont chers.</p>
+        <div class="row">
+            <p class="text"><b><i>À Eux De Choisir,</i></b></p>
+            <p class="text"><b><i>À Nous De Faire Plaisir !</i></b></p>
+        </div>
+        <div class="row">
+            <img id="gift" src="https://i.ibb.co/HVQzrRJ/gift.png">
+        </div>
+        <div class="row">
+            <a class="button-reset">
+                Fais-leur plaisir!
+            </a>
+        </div>
+
+        <br>
+        <p class="text">Comme par magie, BOO!</p>
+        <p class="text">Une question? Un problème? Ou une simple demande d'information?</p>
+        <p class="text">N'hésites pas à me contacter!</p>
+        <img id="contacts" src="https://i.ibb.co/MfPL3ff/contacts-white.png">
+    </div>
+
+</div>
 
 </body>
 </html>

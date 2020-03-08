@@ -1,78 +1,78 @@
 <div>
-  <button mat-raised-button (click)="tables.push(tables.length)">Add table</button>
-  <button mat-raised-button (click)="tables.pop()">Remove table</button>
+    <button (click)="tables.push(tables.length)" mat-raised-button>Add table</button>
+    <button (click)="tables.pop()" mat-raised-button>Remove table</button>
 </div>
 
 <div>
-  Sticky Headers:
-  <mat-button-toggle-group multiple [value]="['header-1']"
-                           #stickyHeaders="matButtonToggleGroup"
-                           class="example-sticky-toggle-group">
-    <mat-button-toggle value="header-1"> Row 1 </mat-button-toggle>
-    <mat-button-toggle value="header-2"> Row 2 </mat-button-toggle>
-  </mat-button-toggle-group>
+    Sticky Headers:
+    <mat-button-toggle-group #stickyHeaders="matButtonToggleGroup" [value]="['header-1']"
+                             class="example-sticky-toggle-group"
+                             multiple>
+        <mat-button-toggle value="header-1"> Row 1</mat-button-toggle>
+        <mat-button-toggle value="header-2"> Row 2</mat-button-toggle>
+    </mat-button-toggle-group>
 </div>
 
 <div>
-  Sticky Footers:
-  <mat-button-toggle-group multiple [value]="['footer-1']"
-                           #stickyFooters="matButtonToggleGroup"
-                           class="example-sticky-toggle-group">
-    <mat-button-toggle value="footer-1"> Row 1 </mat-button-toggle>
-    <mat-button-toggle value="footer-2"> Row 2 </mat-button-toggle>
-  </mat-button-toggle-group>
+    Sticky Footers:
+    <mat-button-toggle-group #stickyFooters="matButtonToggleGroup" [value]="['footer-1']"
+                             class="example-sticky-toggle-group"
+                             multiple>
+        <mat-button-toggle value="footer-1"> Row 1</mat-button-toggle>
+        <mat-button-toggle value="footer-2"> Row 2</mat-button-toggle>
+    </mat-button-toggle-group>
 </div>
 
 <div>
-  Sticky Columns:
-  <mat-button-toggle-group multiple [value]="['position', 'symbol']"
-                           #stickyColumns="matButtonToggleGroup"
-                           class="example-sticky-toggle-group">
-    <mat-button-toggle value="position"> Position </mat-button-toggle>
-    <mat-button-toggle value="name"> Name </mat-button-toggle>
-    <mat-button-toggle value="weight"> Weight </mat-button-toggle>
-    <mat-button-toggle value="symbol"> Symbol </mat-button-toggle>
-  </mat-button-toggle-group>
+    Sticky Columns:
+    <mat-button-toggle-group #stickyColumns="matButtonToggleGroup" [value]="['position', 'symbol']"
+                             class="example-sticky-toggle-group"
+                             multiple>
+        <mat-button-toggle value="position"> Position</mat-button-toggle>
+        <mat-button-toggle value="name"> Name</mat-button-toggle>
+        <mat-button-toggle value="weight"> Weight</mat-button-toggle>
+        <mat-button-toggle value="symbol"> Symbol</mat-button-toggle>
+    </mat-button-toggle-group>
 </div>
 
 <div class="example-container mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" *ngFor="let table of tables">
-    <ng-container matColumnDef="position" [sticky]="isSticky(stickyColumns, 'position')">
-      <th mat-header-cell *matHeaderCellDef> Position </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-      <td mat-footer-cell *matFooterCellDef> Position Footer </td>
-    </ng-container>
+    <table *ngFor="let table of tables" [dataSource]="dataSource" mat-table>
+        <ng-container [sticky]="isSticky(stickyColumns, 'position')" matColumnDef="position">
+            <th *matHeaderCellDef mat-header-cell> Position</th>
+            <td *matCellDef="let element" mat-cell> {{element.position}} </td>
+            <td *matFooterCellDef mat-footer-cell> Position Footer</td>
+        </ng-container>
 
-    <ng-container matColumnDef="name" [sticky]="isSticky(stickyColumns, 'name')">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      <td mat-footer-cell *matFooterCellDef> Name Footer </td>
-    </ng-container>
+        <ng-container [sticky]="isSticky(stickyColumns, 'name')" matColumnDef="name">
+            <th *matHeaderCellDef mat-header-cell> Name</th>
+            <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+            <td *matFooterCellDef mat-footer-cell> Name Footer</td>
+        </ng-container>
 
-    <ng-container matColumnDef="weight" [stickyEnd]="isSticky(stickyColumns, 'weight')">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-      <td mat-footer-cell *matFooterCellDef> Weight Footer </td>
-    </ng-container>
+        <ng-container [stickyEnd]="isSticky(stickyColumns, 'weight')" matColumnDef="weight">
+            <th *matHeaderCellDef mat-header-cell> Weight</th>
+            <td *matCellDef="let element" mat-cell> {{element.weight}} </td>
+            <td *matFooterCellDef mat-footer-cell> Weight Footer</td>
+        </ng-container>
 
-    <ng-container matColumnDef="symbol" [stickyEnd]="isSticky(stickyColumns, 'symbol')">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-      <td mat-footer-cell *matFooterCellDef> Symbol Footer </td>
-    </ng-container>
+        <ng-container [stickyEnd]="isSticky(stickyColumns, 'symbol')" matColumnDef="symbol">
+            <th *matHeaderCellDef mat-header-cell> Symbol</th>
+            <td *matCellDef="let element" mat-cell> {{element.symbol}} </td>
+            <td *matFooterCellDef mat-footer-cell> Symbol Footer</td>
+        </ng-container>
 
-    <ng-container matColumnDef="filler">
-      <th mat-header-cell *matHeaderCellDef> Filler header cell </th>
-      <td mat-cell *matCellDef="let element"> Filler data cell </td>
-      <td mat-footer-cell *matFooterCellDef> Filler footer cell </td>
-    </ng-container>
+        <ng-container matColumnDef="filler">
+            <th *matHeaderCellDef mat-header-cell> Filler header cell</th>
+            <td *matCellDef="let element" mat-cell> Filler data cell</td>
+            <td *matFooterCellDef mat-footer-cell> Filler footer cell</td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isSticky(stickyHeaders, 'header-1')"></tr>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isSticky(stickyHeaders, 'header-2')"></tr>
+        <tr *matHeaderRowDef="displayedColumns; sticky: isSticky(stickyHeaders, 'header-1')" mat-header-row></tr>
+        <tr *matHeaderRowDef="displayedColumns; sticky: isSticky(stickyHeaders, 'header-2')" mat-header-row></tr>
 
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 
-    <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: isSticky(stickyFooters, 'footer-1')"></tr>
-    <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: isSticky(stickyFooters, 'footer-2')"></tr>
-  </table>
+        <tr *matFooterRowDef="displayedColumns; sticky: isSticky(stickyFooters, 'footer-1')" mat-footer-row></tr>
+        <tr *matFooterRowDef="displayedColumns; sticky: isSticky(stickyFooters, 'footer-2')" mat-footer-row></tr>
+    </table>
 </div>

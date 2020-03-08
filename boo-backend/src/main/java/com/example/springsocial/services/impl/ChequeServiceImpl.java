@@ -25,6 +25,7 @@ public class ChequeServiceImpl implements ChequeService {
     @Override
     public Cheque findByCodeUser(UUID code, User user) {
             Cheque cheque = chequeRepository.findByCode(code);
+            log.info(cheque.toString());
             if(cheque!=null && cheque.getStatus()==ChequeStatusEnum.initial){
                 cheque.setClient(user);
                 cheque.setStatus(ChequeStatusEnum.checkedByUser);
@@ -40,6 +41,7 @@ public class ChequeServiceImpl implements ChequeService {
     @Override
     public Cheque findByCodePartner(UUID code, User user) {
         Cheque cheque = chequeRepository.findByCode(code);
+        log.info(cheque.toString());
         if(cheque!=null && cheque.getStatus()==ChequeStatusEnum.checkedByUser){
             cheque.setPartner(user);
             cheque.setStatus(ChequeStatusEnum.checkedByPartner);

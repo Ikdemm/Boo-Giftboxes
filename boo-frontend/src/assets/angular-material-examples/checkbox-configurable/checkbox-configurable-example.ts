@@ -4,13 +4,13 @@ import {Component} from '@angular/core';
  * @title Configurable checkbox
  */
 @Component({
-  selector: 'checkbox-configurable-example',
-  templateUrl: 'checkbox-configurable-example.html',
-  styleUrls: ['checkbox-configurable-example.css'],
+    selector: 'checkbox-configurable-example',
+    templateUrl: 'checkbox-configurable-example.html',
+    styleUrls: ['checkbox-configurable-example.css'],
 })
 export class CheckboxConfigurableExample {
-  checked = false;
-  indeterminate = false;
-  labelPosition = 'after';
-  disabled = false;
+    checked = false;
+    indeterminate = false;
+    labelPosition = 'after';
+    disabled = false;
 }
